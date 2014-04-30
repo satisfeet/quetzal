@@ -1,5 +1,9 @@
 {
 
-  "name": "manager"
+  "name": "manager",
+
+	"static": {
+		"path": "/srv"
+	}
 
 }
