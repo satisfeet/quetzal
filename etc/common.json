@@ -4,6 +4,12 @@
 
 	"static": {
 		"path": "/srv"
-	}
+	},
+
+  "builder": {
+    "source": "/",
+    "scripts": "/srv/javascripts/build.js",
+    "styles": "/srv/stylesheets/build.css"
+  }
 
 }

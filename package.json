@@ -20,8 +20,10 @@
   "dependencies": {
     "koa": "~0.5.5",
     "koa-static": "~1.4.3",
-    "lodash": "~2.4.1",
-    "supervisor": "~0.6.0"
+    "component-builder2": "~0.2.2",
+    "component-resolver": "~1.1.1",
+    "supervisor": "~0.6.0",
+    "lodash": "~2.4.1"
   },
 
   "devDependencies": {

@@ -1,0 +1,17 @@
+{
+
+  "name": "manager",
+
+  "paths": [
+    "app"
+  ],
+
+  "locals": [
+
+  ],
+
+  "scripts": [
+    "app/index.js"
+  ]
+
+}
