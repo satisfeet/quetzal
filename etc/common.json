@@ -13,8 +13,11 @@
 	},
 
   "builder": {
-    "scripts": "/srv/javascripts/build.js",
-    "styles": "/srv/stylesheets/build.css"
+    "output": {
+      "script": "/srv/javascripts/build.js",
+      "style": "/srv/stylesheets/build.css"
+    },
+    "install": true
   }
 
 }

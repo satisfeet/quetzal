@@ -2,10 +2,14 @@
 <html>
 	<head>
     <title><%= name %></title>
-    <% include link.html %>
+    <link rel="stylesheet" href="/stylesheets/build.css" />
 	</head>
   <body>
-    <% include body.html %>
-    <% include script.html %>
+    <% include header.html %>
+    <% include content.html %>
+    <script src="/javascripts/build.js"></script>
+    <script>
+      require('manager');
+    </script>
 	</body>
 </html>
