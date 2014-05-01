@@ -24,7 +24,6 @@
     "component-builder": "~1.1.5",
     "component-resolver": "~1.1.1",
     "supervisor": "~0.6.0",
-    "thunkify": "~2.1.1",
     "lodash": "~2.4.1"
   },
 
