@@ -7,7 +7,11 @@
   ],
 
   "locals": [
+    "navbar"
+  ],
 
+  "styles": [
+    "app/index.css"
   ],
 
   "scripts": [
