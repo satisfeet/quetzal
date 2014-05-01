@@ -2,12 +2,17 @@
 
   "name": "manager",
 
+  "views": {
+    "root": "/usr/views",
+    "layout": "layout/index",
+    "viewExt": "html"
+  },
+
 	"static": {
 		"path": "/srv"
 	},
 
   "builder": {
-    "source": "/",
     "scripts": "/srv/javascripts/build.js",
     "styles": "/srv/stylesheets/build.css"
   }
