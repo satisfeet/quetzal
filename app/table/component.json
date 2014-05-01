@@ -1,13 +1,13 @@
 {
 
-  "name": "customers",
+  "name": "table",
 
   "scripts": [
     "index.js"
   ],
 
   "dependencies": {
-    "visionmedia/page.js": "~1.3.7"
+    "component/domify": "~1.2.2"
   }
 
 }
