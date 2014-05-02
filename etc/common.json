@@ -3,9 +3,8 @@
   "name": "manager",
 
   "views": {
-    "root": "/usr/views",
-    "layout": "layout/index",
-    "viewExt": "html"
+    "path": "/usr/views",
+    "default": "jade"
   },
 
 	"static": {

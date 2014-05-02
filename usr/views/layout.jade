@@ -1,0 +1,11 @@
+doctype
+html
+  head
+    title= name
+    link(rel='stylesheet', href='/stylesheets/build.css')
+  body
+    include includes/header
+    include includes/content
+    script(src='/javascripts/build.js')
+    script
+      | require('manager');
