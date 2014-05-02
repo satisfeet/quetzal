@@ -1,11 +1,10 @@
-var dom        = require('dom4');
-var page       = require('page');
-var query      = require('query');
-var superagent = require('superagent');
+import page       from 'page';
+import superagent from 'superagent';
 
-var Table = require('table');
+import Table  from 'table';
+import Layout from 'layout';
 
-var element = query('main');
+var layout = new Layout(document);
 
 page('/customers', function(context, next) {
   var customers = [
@@ -13,7 +12,7 @@ page('/customers', function(context, next) {
     { name: 'Edison Trent', email: 'edison@yahoo.com' }
   ];
 
-  dom.replace(element, new Table().list(customers).element);
+  layout.insert(new Table().list(customers).element);
 });
 
 page();
