@@ -1,9 +1,14 @@
-var domify = require('domify');
+import domify from 'domify';
 
-var table = '<table></table>';
+import row    from './row';
+import table  from './table';
+
+function Row(model) {
+  this.element = domify(row(model));
+}
 
 function Table() {
-  this.element = domify(table);
+  this.element = domify(table());
 }
 
 Table.prototype.list = function(models) {
@@ -13,9 +18,9 @@ Table.prototype.list = function(models) {
 };
 
 Table.prototype.add = function(model) {
-  this.element.appendChild(domify('<tr><td>' + model.name + '</td></tr>'));
+  this.element.appendChild(new Row(model).element);
 
   return this;
 };
 
-module.exports = Table;
+export default Table;

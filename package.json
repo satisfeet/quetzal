@@ -21,6 +21,8 @@
     "koa": "~0.5.5",
     "koa-ejs": "~1.0.0",
     "koa-static": "~1.4.3",
+    "builder-jade": "~1.0.1",
+    "builder-es6-module-to-cjs": "~1.1.0",
     "component-builder": "~1.1.5",
     "component-resolver": "~1.1.1",
     "supervisor": "~0.6.0",
