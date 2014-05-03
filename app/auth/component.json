@@ -1,0 +1,19 @@
+{
+
+  "name": "auth",
+
+  "scripts": [
+    "index.js"
+  ],
+
+  "templates": [
+    "template.jade"
+  ],
+
+  "dependencies": {
+    "component/domify": "*",
+    "visionmedia/jade": "*",
+    "visionmedia/superagent": "*"
+  }
+
+}

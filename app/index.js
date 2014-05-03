@@ -1,10 +1,18 @@
 import page       from 'page';
 import superagent from 'superagent';
 
+import Auth   from 'auth';
 import Table  from 'table';
 import Layout from 'layout';
 
+var auth = new Auth(document);
 var layout = new Layout(document);
+
+page('*', function(context, next) {
+  if (auth.state) return next();
+
+  layout.insert(auth.element);
+});
 
 page('/', function(context, next) {
   var element = document.createElement('h1');
