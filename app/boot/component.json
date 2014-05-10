@@ -1,0 +1,23 @@
+{
+
+  "name": "boot",
+
+  "locals": [
+    "auth",
+    "shell"
+  ],
+
+  "scripts": [
+    "index.js",
+    "layout/index.js",
+    "routes/session.js",
+    "routes/customers.js"
+  ],
+
+  "dependencies": {
+    "component/query": "*",
+    "component/domify": "*",
+    "visionmedia/page.js": "*"
+  }
+
+}

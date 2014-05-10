@@ -2,7 +2,7 @@ import page  from 'page';
 import auth  from 'auth';
 import shell from 'shell';
 
-import layout from './layout';
+import layout from '../layout';
 
 page('*', function(context, next) {
   if (context.path === '/login') return next();

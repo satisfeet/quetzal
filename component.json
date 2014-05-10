@@ -7,8 +7,7 @@
   ],
 
   "locals": [
-    "auth",
-    "shell"
+    "boot"
   ],
 
   "styles": [
@@ -16,14 +15,7 @@
   ],
 
   "scripts": [
-    "app/index.js",
-    "app/layout.js",
-    "app/security.js"
-  ],
-
-  "dependencies": {
-    "component/query": "*",
-    "visionmedia/page.js": "*"
-  }
+    "app/index.js"
+  ]
 
 }
