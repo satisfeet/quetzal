@@ -1,48 +1,21 @@
-import domify     from 'domify';
+import emitter    from 'emitter';
 import superagent from 'superagent';
 
-import template from './template';
+var auth = new emitter();
 
-function Auth() {
-  this.element = domify(template());
-
-  this.state = false;
-  this.username = null;
-  this.password = null;
-
-  bindToInputEvent(this.element, this);
-  bindToSubmitEvent(this.element, this);
-}
-
-export default Auth;
-
-function authenticate(account, callback) {
-  superagent.head('http://engine.satisfeet.me')
-    .auth(account.username, account.password)
-    .accept('json')
+auth.authenticate = function(account) {
+  superagent.post('http://engine.satisfeet.me')
+    .send(account).withCredentials()
     .end(function(err, res) {
-      if (err) return callback(err);
+      console.log('end', err, res);
+      if (err) return auth.emit('error', err);
 
-      callback(null, !res.unauthorized);
+      if (res.status === 200) {
+        auth.emit('success');
+      } else {
+        auth.emit('failure');
+      }
     });
-}
+};
 
-function bindToInputEvent(element, view) {
-  element.querySelector('form')
-    .addEventListener('input', function(e) {
-      view[e.target.name] = e.target.value;
-    });
-}
-
-function bindToSubmitEvent(element, view) {
-  element.querySelector('form')
-    .addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      authenticate(view, function(err, success) {
-        if (!success) return view.failure();
-
-        view.state = true;
-      });
-    });
-}
+module.exports = auth;

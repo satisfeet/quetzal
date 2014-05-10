@@ -1,0 +1,24 @@
+{
+
+  "name": "shell",
+
+  "scripts": [
+    "index.js",
+    "table/index.js",
+    "login/index.js"
+  ],
+
+  "templates": [
+    "table/row.jade",
+    "table/table.jade",
+    "login/form.jade"
+  ],
+
+  "dependencies": {
+    "component/query": "*",
+    "component/domify": "*",
+    "component/emitter": "*",
+    "visionmedia/jade": "*"
+  }
+
+}
