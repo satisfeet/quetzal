@@ -2,6 +2,10 @@
 
   "name": "shell",
 
+  "styles": [
+
+  ],
+
   "scripts": [
     "index.js",
     "table/index.js",

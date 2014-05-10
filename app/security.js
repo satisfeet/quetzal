@@ -11,14 +11,10 @@ page('*', function(context, next) {
 });
 
 auth.on('error', function() {
-  console.log('error');
-
   shell.login.error();
 });
 
 auth.on('failure', function() {
-  console.log('failure');
-
   shell.login.failure();
 });
 

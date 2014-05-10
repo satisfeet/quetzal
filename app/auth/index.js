@@ -4,8 +4,8 @@ import superagent from 'superagent';
 var auth = new emitter();
 
 auth.authenticate = function(account) {
-  superagent.post('http://engine.satisfeet.me')
-    .send(account).withCredentials()
+  superagent.post('http://engine.satisfeet.me/session')
+    .send(account)
     .end(function(err, res) {
       console.log('end', err, res);
       if (err) return auth.emit('error', err);

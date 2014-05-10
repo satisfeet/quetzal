@@ -9,12 +9,12 @@ function Login() {
 
   this.element = domify(form());
 
-  bindToSubmitEvent(query('form', this.element), this);
+  bindToSubmitEvent(this.element, this);
 }
 
 Login.prototype.error = function() {
-  [].slice.call(query.all('form-group', this.element))
-      .forEach(function(element) {
+  [].slice.call(query.all('.form-group', this.element))
+    .forEach(function(element) {
       element.classList.add('has-error');
     });
 
@@ -22,7 +22,7 @@ Login.prototype.error = function() {
 };
 
 Login.prototype.failure = function() {
-  [].slice.call(query.all('form-group', this.element))
+  [].slice.call(query.all('.form-group', this.element))
     .forEach(function(element) {
       element.classList.add('has-warning');
     });
@@ -31,7 +31,7 @@ Login.prototype.failure = function() {
 };
 
 Login.prototype.success = function() {
-  [].slice.call(query.all('form-group', this.element))
+  [].slice.call(query.all('.form-group', this.element))
     .forEach(function(element) {
       element.classList.add('has-success');
     });
@@ -42,12 +42,15 @@ Login.prototype.success = function() {
 export default Login;
 
 function bindToSubmitEvent(element, view) {
-  element.addEventListener('submit', function(e) {
+  var form = query('form', element);
+
+  console.log('bound');
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    var username = e.target[0].value;
-    var password = e.target[1].value;
-
-    view.emit('submit', username, password);
+    view.emit('submit', {
+      username: e.target[0].value,
+      password: e.target[1].value
+    });
   });
 }
