@@ -1,0 +1,12 @@
+tr
+  td= name
+  td
+    if (email)
+      a(href='mailto:' + email)= email
+    else
+      | No email present.
+  td
+    if (address.street && address.zip)
+      | #{address.street}, #{address.city} #{address.zip}
+    else
+      | #{address.city}

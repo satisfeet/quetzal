@@ -1,19 +1,21 @@
 {
 
-  "name": "shell",
+  "name": "customers",
 
-  "styles": [
-
+  "locals": [
+    "agent"
   ],
 
   "scripts": [
     "index.js",
-    "login/index.js",
-    "navbar/index.js"
+    "manager.js",
+    "table/table.js",
+    "table/row.js"
   ],
 
   "templates": [
-    "login/form.jade"
+    "table/row.jade",
+    "table/table.jade"
   ],
 
   "dependencies": {

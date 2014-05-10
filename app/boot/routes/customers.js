@@ -1,23 +1,20 @@
-import auth  from 'auth';
-import page  from 'page';
-import shell from 'shell';
-import agent from 'agent';
+import page      from 'page';
+import layout    from '../layout';
+import customers from 'customers';
 
-import layout from '../layout';
+console.log(customers);
 
 page('/customers', resolve, function(context, next) {
-  shell.table.list(context.state.customers);
+  customers.table.list(context.state.customers);
 
-  layout.empty().insert(shell.table.element);
+  layout.empty().insert(customers.table.element);
 });
 
 function resolve(context, next) {
   if (context.state.customers) return next();
 
-  agent.get('/customers').end(function(err, res) {
-    if (err) throw err;
-
-    context.state.customers = res.body;
+  customers.manager.find(function(customers) {
+    context.state.customers = customers;
 
     next();
   });
