@@ -13,28 +13,17 @@ function Login() {
 }
 
 Login.prototype.error = function() {
-  [].slice.call(query.all('.form-group', this.element))
-    .forEach(function(element) {
-      element.classList.add('has-error');
-    });
+  query('.help-text', this.element).classList.remove('hidden');
 
-  return this;
+  return this.state('error');
 };
 
-Login.prototype.failure = function() {
-  [].slice.call(query.all('.form-group', this.element))
-    .forEach(function(element) {
-      element.classList.add('has-warning');
-    });
+Login.prototype.state = function(state) {
+  var result = query.all('.form-group', this.element);
 
-  return this;
-};
-
-Login.prototype.success = function() {
-  [].slice.call(query.all('.form-group', this.element))
-    .forEach(function(element) {
-      element.classList.add('has-success');
-    });
+  [].slice.call(result).forEach(function(element) {
+    element.className = 'form-group has-' + state;
+  });
 
   return this;
 };
@@ -44,13 +33,12 @@ export default Login;
 function bindToSubmitEvent(element, view) {
   var form = query('form', element);
 
-  console.log('bound');
   form.addEventListener('submit', function(e) {
     e.preventDefault();
 
     view.emit('submit', {
-      username: e.target[0].value,
-      password: e.target[1].value
+      username: query('#username', form).value,
+      password: query('#password', form).value
     });
   });
 }

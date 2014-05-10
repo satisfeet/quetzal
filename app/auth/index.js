@@ -1,21 +1,32 @@
-import emitter    from 'emitter';
-import superagent from 'superagent';
+import store   from 'store';
+import request from 'superagent';
 
-var auth = new emitter();
+export function check(callback) {
+  var session = store.get('session');
 
-auth.authenticate = function(account) {
-  superagent.post('http://engine.satisfeet.me/session')
+  if (!session) return callback(null, false);
+
+  request.get('http://engine.satisfeet.me/session')
+    .set('Authorization', 'Bearer ' + session)
+    .end(function(err, res) {
+      if (err) return callback(err);
+
+      callback(null, res.ok);
+    });
+}
+
+export function authenticate(account, callback) {
+  request.post('http://engine.satisfeet.me/session')
     .send(account)
     .end(function(err, res) {
-      console.log('end', err, res);
-      if (err) return auth.emit('error', err);
+      if (err) return callback(err);
 
-      if (res.status === 200) {
-        auth.emit('success');
+      if (res.ok) {
+        store.set('session', res.body.token);
+
+        callback(null, true);
       } else {
-        auth.emit('failure');
+        callback(null, false);
       }
     });
-};
-
-module.exports = auth;
+}

@@ -8,6 +8,7 @@
 
   "dependencies": {
     "component/emitter": "*",
+    "marcuswestin/store.js": "*",
     "visionmedia/superagent": "*"
   }
 

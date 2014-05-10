@@ -5,23 +5,26 @@ import shell from 'shell';
 import layout from './layout';
 
 page('*', function(context, next) {
-  if (auth.state) return next();
+  auth.check(function(err, active) {
+    if (err) throw err;
 
-  layout.empty().insert(shell.login.element);
+    if (!active) {
+      layout.empty().insert(shell.login.element);
+    } else {
+      next();
+    }
+  });
 });
 
-auth.on('error', function() {
-  shell.login.error();
-});
+shell.login.on('submit', function(account) {
+  console.log('account', account);
+  auth.authenticate(account, function(err, active) {
+    if (err) return shell.login.error();
 
-auth.on('failure', function() {
-  shell.login.failure();
-});
-
-auth.on('success', function() {
-  shell.login.success();
-});
-
-shell.login.on('submit', function(username, password) {
-  auth.authenticate(username, password);
+    if (active) {
+      shell.login.state('success');
+    } else {
+      shell.login.state('warning');
+    }
+  });
 });

@@ -1,11 +1,15 @@
 div.col-xs-6.col-xs-offset-3
   form(role='form')
-    div.form-group
-      label(for='username') Username
-      input.form-control(name='username', type='text',
-        placeholder='Your username', required)
-    div.form-group
-      label(for='password') Password
-      input.form-control(name='password', type='password',
-        placeholder='Your password', required)
-    button.btn.btn-default(type='submit') Authenticate
+    fieldset
+      legend Login
+      p.help-text.bg-danger.hidden
+        | An error occured while checking account permissions.
+      div.form-group
+        label(for='username') Username
+        input.form-control(id='username', name='username', type='text',
+          placeholder='Your username', required)
+      div.form-group
+        label(for='password') Password
+        input.form-control(id='password', name='password', type='password',
+          placeholder='Your password', required)
+      button.btn.btn-default(type='submit') Authenticate

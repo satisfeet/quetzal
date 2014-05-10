@@ -2,15 +2,15 @@ import query from 'query';
 
 var element = query('#content');
 
-exports.empty = function() {
-  while (element.lastElement) {
-    element.lastElement.remove();
+export function empty() {
+  while (element.lastElementChild) {
+    element.lastElementChild.remove();
   }
 
   return exports;
-};
+}
 
-exports.insert = function(el) {
+export function insert(el) {
   element.appendChild(el);
 
   return exports;
