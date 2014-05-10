@@ -5,10 +5,9 @@ import emitter from 'emitter';
 import form from './form.jade';
 
 function Login() {
-  emitter(this)
-
   this.element = domify(form());
 
+  emitter(this);
   bindToSubmitEvent(this.element, this);
 }
 

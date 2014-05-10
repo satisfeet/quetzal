@@ -1,1 +1,1 @@
-require('boot');
+import 'boot';

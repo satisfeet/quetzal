@@ -1,7 +1,7 @@
-import auth    from 'auth';
-import page    from 'page';
-import shell   from 'shell';
-import agent   from 'agent';
+import auth  from 'auth';
+import page  from 'page';
+import shell from 'shell';
+import agent from 'agent';
 
 import layout from '../layout';
 

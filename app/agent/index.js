@@ -1,5 +1,5 @@
-import store   from 'store';
-import request from 'superagent';
+import store      as store   from 'store';
+import superagent as request from 'superagent';
 
 var resource = 'http://engine.satisfeet.me';
 
