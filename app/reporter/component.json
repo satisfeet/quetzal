@@ -1,0 +1,21 @@
+{
+
+  "name": "reporter",
+
+  "locals": [
+    "agent"
+  ],
+
+  "scripts": [
+    "index.js"
+  ],
+
+  "templates": [
+    "template.jade"
+  ],
+
+  "dependencies": {
+    "visionmedia/jade": "*"
+  }
+
+}

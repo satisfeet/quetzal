@@ -5,12 +5,14 @@
   "locals": [
     "auth",
     "shell",
+    "reporter",
     "customers"
   ],
 
   "scripts": [
     "index.js",
     "layout/index.js",
+    "routes/common.js",
     "routes/session.js",
     "routes/customers.js"
   ],

@@ -2,8 +2,6 @@ import page      from 'page';
 import layout    from '../layout';
 import customers from 'customers';
 
-console.log(customers);
-
 page('/customers', resolve, function(context, next) {
   customers.table.list(context.state.customers);
 
