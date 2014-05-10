@@ -1,7 +1,7 @@
 import auth    from 'auth';
 import page    from 'page';
 import shell   from 'shell';
-import request from 'superagent';
+import agent   from 'agent';
 
 import layout from '../layout';
 
@@ -14,13 +14,11 @@ page('/customers', resolve, function(context, next) {
 function resolve(context, next) {
   if (context.state.customers) return next();
 
-  request.get('http://engine.satisfeet.me/customers')
-    .set('Authorization', 'Bearer ' + auth.sign())
-    .end(function(err, res) {
-      if (err) throw err;
+  agent.get('/customers').end(function(err, res) {
+    if (err) throw err;
 
-      context.state.customers = res.body;
+    context.state.customers = res.body;
 
-      next();
-    });
+    next();
+  });
 }

@@ -1,38 +1,32 @@
-import store   from 'store';
-import request from 'superagent';
+import store from 'store';
+import agent from 'agent';
 
 export function sign() {
   return store.get('session');
 }
 
 export function check(callback) {
-  var session = store.get('session');
+  if (!store.get('session')) return callback(null, false);
 
-  if (!session) return callback(null, false);
+  agent.get('/session').end(function(err, res) {
+    if (err) return callback(err);
 
-  request.get('http://engine.satisfeet.me/session')
-    .set('Authorization', 'Bearer ' + session)
-    .end(function(err, res) {
-      if (err) return callback(err);
-
-      callback(null, res.ok);
-    });
+    callback(null, res.ok);
+  });
 }
 
 export function signIn(account, callback) {
-  request.post('http://engine.satisfeet.me/session')
-    .send(account)
-    .end(function(err, res) {
-      if (err) return callback(err);
+  agent.post('/session').send(account).end(function(err, res) {
+    if (err) return callback(err);
 
-      if (res.ok) {
-        store.set('session', res.body.token);
+    if (res.ok) {
+      store.set('session', res.body.token);
 
-        callback(null, true);
-      } else {
-        callback(null, false);
-      }
-    });
+      callback(null, true);
+    } else {
+      callback(null, false);
+    }
+  });
 }
 
 export function signOut(callback) {
