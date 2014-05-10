@@ -1,5 +1,7 @@
-import Login from './login';
-import Table from './table';
+import Login  from './login';
+import Table  from './table';
+import Navbar from './navbar';
 
-exports.login = new Login();
-exports.table = new Table();
+export var login = new Login();
+export var table = new Table();
+export var navbar = new Navbar();

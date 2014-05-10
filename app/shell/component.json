@@ -9,7 +9,8 @@
   "scripts": [
     "index.js",
     "table/index.js",
-    "login/index.js"
+    "login/index.js",
+    "navbar/index.js"
   ],
 
   "templates": [

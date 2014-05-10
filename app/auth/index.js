@@ -15,7 +15,7 @@ export function check(callback) {
     });
 }
 
-export function authenticate(account, callback) {
+export function signIn(account, callback) {
   request.post('http://engine.satisfeet.me/session')
     .send(account)
     .end(function(err, res) {
@@ -29,4 +29,10 @@ export function authenticate(account, callback) {
         callback(null, false);
       }
     });
+}
+
+export function signOut(callback) {
+  store.remove('session');
+
+  callback(null);
 }
