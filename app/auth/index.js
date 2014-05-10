@@ -1,6 +1,10 @@
 import store   from 'store';
 import request from 'superagent';
 
+export function sign() {
+  return store.get('session');
+}
+
 export function check(callback) {
   var session = store.get('session');
 
