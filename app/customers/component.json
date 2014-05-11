@@ -14,10 +14,12 @@
   "scripts": [
     "index.js",
     "form/index.js",
+    "show/index.js",
     "table/index.js"
   ],
 
   "templates": [
+    "show/section.jade",
     "form/form.jade",
     "table/row.jade",
     "table/table.jade"
