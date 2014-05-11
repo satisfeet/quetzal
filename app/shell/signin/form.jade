@@ -1,9 +1,9 @@
 div.col-xs-6.col-xs-offset-3
   form(role='form')
+    legend Login
+    p.help-text.bg-danger.hidden
+      | An error occured while checking account permissions.
     fieldset
-      legend Login
-      p.help-text.bg-danger.hidden
-        | An error occured while checking account permissions.
       div.form-group
         label(for='username') Username
         input.form-control(id='username', name='username', type='text',

@@ -25,7 +25,10 @@ page(function(context, next) {
 
 page('/signin', signin);
 page('/signout', signout);
+
 page('/reporter', reporter);
-page('/customers', customers);
+
+page('/customers', customers.list);
+page('/customers/create', customers.create);
 
 page();
