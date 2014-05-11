@@ -2,8 +2,6 @@ import page  from 'page';
 import auth  from 'auth';
 import shell from 'shell';
 
-import layout from '../layout';
-
 page('*', function(context, next) {
   if (context.path === '/login') return next();
 
@@ -21,7 +19,7 @@ page('*', function(context, next) {
 });
 
 page('/login', function(context, next) {
-  layout.empty().insert(shell.login.element);
+  shell.layout.empty().append(shell.signin.element);
 });
 
 page('/logout', function(context, next) {
@@ -34,18 +32,18 @@ page('/logout', function(context, next) {
   });
 });
 
-shell.login.on('submit', function(account) {
+shell.signin.on('submit', function(account) {
   auth.signIn(account, function(err, active) {
-    if (err) return shell.login.error();
+    if (err) return shell.signin.error();
 
     if (active) {
-      shell.login.state('success');
+      shell.signin.state('success');
 
       setTimeout(function() {
         page('/');
       }, 500);
     } else {
-      shell.login.state('warning');
+      shell.signin.state('warning');
     }
   });
 });

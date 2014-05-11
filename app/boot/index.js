@@ -1,8 +1,7 @@
-import page   from 'page';
-import domify from 'domify';
+import page from 'page';
 
-import './routes/session';
-import './routes/common';
-import './routes/customers';
+import './secure';
+import './common';
+import './customers';
 
 page();

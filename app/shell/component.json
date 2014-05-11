@@ -2,24 +2,22 @@
 
   "name": "shell",
 
-  "styles": [
-
-  ],
-
   "scripts": [
     "index.js",
-    "login/index.js",
-    "navbar/index.js"
+    "layout/index.js",
+    "navbar/index.js",
+    "signin/index.js"
   ],
 
   "templates": [
-    "login/form.jade"
+    "signin/form.jade"
   ],
 
   "dependencies": {
     "component/query": "*",
     "component/domify": "*",
     "component/emitter": "*",
+    "component/delegate": "*",
     "visionmedia/jade": "*"
   }
 

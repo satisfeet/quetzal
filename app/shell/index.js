@@ -1,5 +1,7 @@
-import Login  from './login';
+import Layout from './layout';
 import Navbar from './navbar';
+import Signin  from './signin';
 
-export var login = new Login();
+export var layout = new Layout();
 export var navbar = new Navbar();
+export var signin = new Signin();

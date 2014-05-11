@@ -1,5 +1,5 @@
-import Table from './table/table.js';
+import Table   from './table';
+import Manager from './manager';
 
 export var table = new Table();
-
-export var manager = require('./manager');
+export var manager = new Manager();
