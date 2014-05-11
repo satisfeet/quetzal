@@ -1,20 +1,39 @@
-import agent   from 'agent';
-import emitter from 'emitter';
+import agent from 'agent';
 
 function Manager() {
-  emitter(this);
+
 }
 
 Manager.prototype.find = function(callback) {
   var self = this;
 
   agent.get('/customers').end(function(err, res) {
-    if (err) return self.emit('error', err);
+    if (err) return callback(err);
 
-    callback(res.body);
+    callback(null, res.body);
+  });
+
+  return this;
+};
+
+Manager.prototype.persist = function(customer, callback) {
+  var self = this;
+
+  sanitize(customer);
+
+  agent.post('/customers').send(customer).end(function(err, res) {
+    if (err) return callback(err);
+
+    callback(null);
   });
 
   return this;
 };
 
 export default Manager;
+
+function sanitize(customer) {
+  if (!customer.address.city) {
+    delete customer.address;
+  }
+}

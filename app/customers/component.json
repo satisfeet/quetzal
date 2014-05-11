@@ -6,6 +6,10 @@
     "agent"
   ],
 
+  "styles": [
+    "table/row.css"
+  ],
+
   "scripts": [
     "index.js",
     "manager.js",
@@ -24,7 +28,8 @@
     "component/domify": "*",
     "component/events": "*",
     "component/emitter": "*",
-    "visionmedia/jade": "*"
+    "visionmedia/jade": "*",
+    "visionmedia/page.js": "*"
   }
 
 }
