@@ -18,17 +18,21 @@
   "main": "lib",
 
   "dependencies": {
-    "co-fs": "~1.2.0",
+    "lodash": "~2.4.1",
+    "supervisor": "~0.6.0",
     "koa": "~0.6.0",
+    "koa-etag": "~1.2.3",
     "koa-views": "~2.0.3",
     "koa-static": "~1.4.5",
+    "koa-compress": "~1.0.6",
+    "uglify-js": "~2.4.13",
+    "sqwish": "~0.2.2",
     "then-jade": "~2.0.0",
     "builder-jade": "~1.0.1",
     "builder-es6-module-to-cjs": "~1.1.0",
+    "component-minify": "~1.1.1",
     "component-builder": "~1.1.5",
-    "component-resolver": "~1.1.1",
-    "supervisor": "~0.6.0",
-    "lodash": "~2.4.1"
+    "component-resolver": "~1.1.1"
   },
 
   "devDependencies": {
