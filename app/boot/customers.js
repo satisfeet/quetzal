@@ -3,9 +3,11 @@ import shell     from 'shell';
 import customers from 'customers';
 
 page('/customers', resolve, function(context, next) {
-  customers.table.list(context.state.customers);
+  var models = context.state.customers;
 
-  shell.layout.empty().append(customers.table.element);
+  shell.layout
+    .empty()
+    .append(customers.table.list(models).element);
 });
 
 function resolve(context, next) {

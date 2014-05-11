@@ -10,14 +10,16 @@
   ],
 
   "templates": [
-    "signin/form.jade"
+    "signin/form.jade",
+    "layout/content.jade",
+    "layout/sidebar.jade"
   ],
 
   "dependencies": {
     "component/query": "*",
+    "component/events": "*",
     "component/domify": "*",
     "component/emitter": "*",
-    "component/delegate": "*",
     "visionmedia/jade": "*"
   }
 

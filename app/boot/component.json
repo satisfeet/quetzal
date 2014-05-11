@@ -13,7 +13,7 @@
   "scripts": [
     "index.js",
     "secure.js",
-    "common.js",
+    "reporter.js",
     "customers.js"
   ],
 

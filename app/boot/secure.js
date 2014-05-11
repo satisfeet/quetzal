@@ -19,7 +19,8 @@ page('*', function(context, next) {
 });
 
 page('/login', function(context, next) {
-  shell.layout.empty().append(shell.signin.element);
+  shell.layout
+    .overlay(shell.signin.element);
 });
 
 page('/logout', function(context, next) {
@@ -40,6 +41,8 @@ shell.signin.on('submit', function(account) {
       shell.signin.state('success');
 
       setTimeout(function() {
+        shell.layout.setup();
+
         page('/');
       }, 500);
     } else {

@@ -1,14 +1,15 @@
-import query    from 'query';
-import domify   from 'domify';
-import emitter  from 'emitter';
-import delegate from 'delegate';
+import query   from 'query';
+import events  from 'events';
+import domify  from 'domify';
+import emitter from 'emitter';
 
 import form from './form.jade';
 
 function Signin() {
   this.element = domify(form());
 
-  delegate.bind(this.element, 'form', 'submit', this.submit);
+  this.events = events(this.element, this);
+  this.events.bind('submit form');
 }
 
 emitter(Signin.prototype);
@@ -19,7 +20,7 @@ Signin.prototype.error = function() {
   return this.state('error');
 };
 
-Signin.prototype.state = function() {
+Signin.prototype.state = function(state) {
   var result = query.all('.form-group', this.element);
 
   [].slice.call(result).forEach(function(element) {
@@ -29,10 +30,10 @@ Signin.prototype.state = function() {
   return this;
 };
 
-Signin.prototype.submit = function(e) {
+Signin.prototype.onsubmit = function(e) {
   if (e) e.preventDefault();
 
-  view.emit('submit', {
+  this.emit('submit', {
     username: query('#username', this.element).value,
     password: query('#password', this.element).value
   });
