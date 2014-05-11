@@ -15,7 +15,7 @@ export function check(callback) {
   });
 }
 
-export function signIn(account, callback) {
+export function signin(account, callback) {
   agent.post('/session').send(account).end(function(err, res) {
     if (err) return callback(err);
 
@@ -29,7 +29,7 @@ export function signIn(account, callback) {
   });
 }
 
-export function signOut(callback) {
+export function signout(callback) {
   store.remove('session');
 
   callback(null);

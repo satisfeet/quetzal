@@ -1,7 +1,39 @@
+import page  from 'page';
+
 import Layout from './layout';
 import Navbar from './navbar';
 import Signin  from './signin';
 
-export var layout = new Layout();
 export var navbar = new Navbar();
-export var signin = new Signin();
+export var layout = new Layout();
+
+page('/signin', function(context, next) {
+  var signin = new Signin();
+
+  signin.once('submit', function(account) {
+    auth.signin(account, function(err, success) {
+      if (err) return signin.error();
+      if (!active) return signin.state('warning');
+
+      signin.state('success');
+
+      setTimeout(function() {
+        layout.setup();
+
+        page('/');
+      }, 500);
+    });
+  });
+
+  layout.overlay(signin.element);
+});
+
+page('/signout', function(context, next) {
+  navbar.hideActions();
+
+  auth.signout(function(err) {
+    if (err) throw err;
+
+    page('/login');
+  });
+});
