@@ -12,7 +12,8 @@
 
   "scripts": [
     "index.js",
-    "secure.js",
+    "signin.js",
+    "signout.js",
     "reporter.js",
     "customers.js"
   ],
