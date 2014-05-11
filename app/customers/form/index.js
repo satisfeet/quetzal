@@ -18,12 +18,12 @@ Form.prototype.onsubmit = function(e) {
   if (e) e.preventDefault();
 
   this.emit('submit', {
-    name: query('#name', this.element).value,
+    name:  query('#name', this.element).value,
     email: query('#email', this.element).value,
     address: {
       street: query('#street', this.element).value,
-      city: query('#city', this.element).value,
-      zip: query('#zip', this.element).value
+      city:   query('#city', this.element).value,
+      zip:    query('#zip', this.element).value
     }
   });
 };
