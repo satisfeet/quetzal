@@ -1,11 +1,16 @@
+import page   from 'page';
+import shell  from 'shell';
 import agent  from 'agent';
+import domify from 'domify';
 
-export function resolve(callback) {
+import template from './template';
+
+page('/', function() {
   agent.get('/').end(function(err, res) {
     if (err) throw err;
 
-    callback(res.body);
+    shell.layout
+      .empty()
+      .append(domify(template(res.body)));
   });
-}
-
-export var template = require('./template');
+});
