@@ -18,6 +18,7 @@
   "main": "lib",
 
   "dependencies": {
+    "co-fs": "~1.2.0",
     "koa": "~0.6.0",
     "koa-views": "~2.0.3",
     "koa-static": "~1.4.5",
