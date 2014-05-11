@@ -11,7 +11,7 @@
   ],
 
   "dependencies": {
-    "marcuswestin/store.js": "*"
+    "marcuswestin/store.js": "v1.3.16"
   }
 
 }

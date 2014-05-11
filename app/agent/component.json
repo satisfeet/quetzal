@@ -11,8 +11,8 @@
   ],
 
   "dependencies": {
-    "visionmedia/superagent": "*",
-    "marcuswestin/store.js": "*"
+    "visionmedia/superagent": "0.18.0",
+    "marcuswestin/store.js": "v1.3.16"
   }
 
 }
