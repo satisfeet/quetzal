@@ -9,10 +9,12 @@
   "scripts": [
     "index.js",
     "manager.js",
+    "form/index.js",
     "table/index.js"
   ],
 
   "templates": [
+    "form/form.jade",
     "table/row.jade",
     "table/table.jade"
   ],
@@ -20,6 +22,7 @@
   "dependencies": {
     "component/query": "*",
     "component/domify": "*",
+    "component/events": "*",
     "component/emitter": "*",
     "visionmedia/jade": "*"
   }
