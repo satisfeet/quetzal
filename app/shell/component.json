@@ -16,11 +16,11 @@
   ],
 
   "dependencies": {
-    "component/query": "*",
-    "component/events": "*",
-    "component/domify": "*",
-    "component/emitter": "*",
-    "visionmedia/jade": "*"
+    "component/query": "0.0.3",
+    "component/events": "1.0.6",
+    "component/domify": "1.2.2",
+    "component/emitter": "1.1.2",
+    "visionmedia/jade": "1.3.1"
   }
 
 }
