@@ -1,9 +1,7 @@
-# manager
+# Manager
 
 The inventory management frontend service for
 [satisfeet](http://engine.satisfeet.me).
-
-## Todos
 
 ## License
 

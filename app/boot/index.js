@@ -1,7 +1,7 @@
 import page from 'page';
 
 import './secure';
-import './common';
+import './reporter';
 import './customers';
 
 page();
