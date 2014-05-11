@@ -1,11 +1,11 @@
 import query  from 'query';
 import domify from 'domify';
 
-import Row      from './row.js';
-import template from './table.jade';
+import row   from './row';
+import table from './table';
 
 function Table() {
-  this.element = domify(template());
+  this.element = domify(table());
 }
 
 Table.prototype.list = function(models) {
@@ -15,7 +15,7 @@ Table.prototype.list = function(models) {
 };
 
 Table.prototype.add = function(model) {
-  query('tbody', this.element).appendChild(new Row(model).element);
+  query('tbody', this.element).appendChild(domify(row(model)));
 
   return this;
 };

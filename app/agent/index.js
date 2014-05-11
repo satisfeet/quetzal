@@ -1,31 +1,35 @@
 import store      as store   from 'store';
 import superagent as request from 'superagent';
 
-var resource = 'http://engine.satisfeet.me';
-
-export function post(path) {
-  var req = request.post(resource + path);
-
-  return sign(req);
+function Agent() {
+  this.resource = 'http://engine.satisfeet.me';
 }
 
-export function get(path) {
-  var req = request.get(resource + path);
+Agent.prototype.post = function(path) {
+  var req = request.post(this.resource + path);
 
   return sign(req);
-}
+};
 
-export function put(path) {
-  var req = request.put(resource + path);
-
-  return sign(req);
-}
-
-export function del(path) {
-  var req = request.del(resource + path);
+Agent.prototype.get = function(path) {
+  var req = request.get(this.resource + path);
 
   return sign(req);
-}
+};
+
+Agent.prototype.put = function(path) {
+  var req = request.put(this.resource + path);
+
+  return sign(req);
+};
+
+Agent.prototype.del = function(path) {
+  var req = request.del(this.resource + path);
+
+  return sign(req);
+};
+
+export default new Agent();
 
 function sign(req) {
   var token = store.get('session');

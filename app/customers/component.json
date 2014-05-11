@@ -9,8 +9,7 @@
   "scripts": [
     "index.js",
     "manager.js",
-    "table/table.js",
-    "table/row.js"
+    "table/index.js"
   ],
 
   "templates": [

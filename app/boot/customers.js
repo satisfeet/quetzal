@@ -1,11 +1,11 @@
 import page      from 'page';
-import layout    from '../layout';
+import shell     from 'shell';
 import customers from 'customers';
 
 page('/customers', resolve, function(context, next) {
   customers.table.list(context.state.customers);
 
-  layout.empty().insert(customers.table.element);
+  shell.layout.empty().append(customers.table.element);
 });
 
 function resolve(context, next) {
