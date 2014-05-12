@@ -30,7 +30,7 @@ page('/sign-in', function(context, next) {
       signin.state('success');
 
       setTimeout(function() {
-        layout.setup();
+        layout.closeOverlay();
 
         page('/');
       }, 500);
@@ -39,7 +39,7 @@ page('/sign-in', function(context, next) {
     auth.signin(account);
   });
 
-  layout.overlay(signin.element);
+  layout.openOverlay(signin.element);
 });
 
 page('/sign-out', function(context, next) {

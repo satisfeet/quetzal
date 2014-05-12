@@ -1,58 +1,51 @@
 import query  from 'query';
 import domify from 'domify';
 
-import content from './content';
-import sidebar from './sidebar';
-
 function Layout() {
-  this.element = query('main');
-
-  this.setup();
+  this.element = query('#main');
+  this.sidebar = query('#sidebar', this.element);
+  this.content = query('#content', this.element);
 }
 
-Layout.prototype.setup = function() {
-  this.sidebar = domify(sidebar());
-  this.content = domify(content());
-
-  this.element.innerHTML = '';
-  this.element.appendChild(this.sidebar);
-  this.element.appendChild(this.content);
-
-  return this;
-};
-
 Layout.prototype.empty = function() {
-  var element = this.content.firstElementChild;
-
-  while (element.lastElementChild) {
-    element.lastElementChild.remove();
+  while (this.content.lastElementChild) {
+    this.content.lastElementChild.remove();
   }
 
   return this;
 };
 
 Layout.prototype.append = function(element) {
-  this.content.firstElementChild.appendChild(element);
+  this.content.appendChild(element);
 
   return this;
 };
 
-Layout.prototype.insert = function(html) {
-  this.content.firstElementChild.appendChild(domify(html));
-
-  return this;
-};
-
-Layout.prototype.replace = function(element) {
+Layout.prototype.insert = function(element) {
   return this.empty().append(element);
 };
 
-Layout.prototype.overlay = function(element) {
-  while (this.element.lastElementChild) {
-    this.element.lastElementChild.remove();
-  }
+Layout.prototype.replace = function(html) {
+  return this.insert(domify(html));
+};
+
+Layout.prototype.openOverlay = function(element) {
+  this.sidebar.classList.add('blur');
+  this.content.classList.add('blur');
 
   this.element.appendChild(element);
+
+  setTimeout(function() {
+    element.classList.add('overlay-in');
+  }, 500);
+
+  return this;
+};
+
+Layout.prototype.closeOverlay = function() {
+  this.sidebar.classList.remove('blur');
+  this.content.classList.remove('blur');
+  this.element.lastElementChild.remove();
 
   return this;
 };
