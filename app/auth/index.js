@@ -4,6 +4,13 @@ import emitter from 'emitter';
 
 function Auth() {
   emitter(this);
+
+  var self = this;
+
+  this.agent = agent('/session');
+  this.agent.on('error', function(err) {
+    self.emit('error', err);
+  });
 }
 
 Auth.prototype.token = function() {
@@ -17,10 +24,8 @@ Auth.prototype.check = function() {
 
   var self = this;
 
-  agent.get('/session').end(function(err, res) {
-    if (err) return self.emit('error', err);
-
-    self.emit('check', res.ok);
+  this.agent.get(function(ok, body) {
+    self.emit('check', ok);
   });
 
   return this;
@@ -29,12 +34,10 @@ Auth.prototype.check = function() {
 Auth.prototype.signin = function(account) {
   var self = this;
 
-  agent.post('/session').send(account).end(function(err, res) {
-    if (err) return self.emit('error', err);
-    if (!res.ok) return self.emit('signin', false);
+  this.agent.post(account, function(ok, body) {
+    if (ok) store.set('session', body.token);
 
-    store.set('session', res.body.token);
-    self.emit('signin', true);
+    self.emit('signin', ok);
   });
 
   return this;

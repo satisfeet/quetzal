@@ -7,6 +7,7 @@
   ],
 
   "dependencies": {
+    "component/emitter": "~1.1.2",
     "visionmedia/superagent": "~0.18.0",
     "marcuswestin/store.js": "~v1.3.16"
   }
