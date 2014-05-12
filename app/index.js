@@ -5,17 +5,12 @@ import shell from 'shell';
 page(function(context, next) {
   if (context.path === '/signin') return next();
 
-  auth.check(function(err, success) {
-    if (err) throw err;
+  auth.once('check', function(success) {
+    if (success) return next();
 
-    if (!success) {
-      page('/signin');
-    } else {
-      shell.navbar.showActions();
-
-      next();
-    }
+    page('/signin');
   });
+  auth.check();
 });
 
 import 'reporter';

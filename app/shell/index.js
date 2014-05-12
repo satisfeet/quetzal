@@ -12,8 +12,10 @@ page('/signin', function(context, next) {
   var signin = new Signin();
 
   signin.on('submit', function(account) {
-    auth.signin(account, function(err, success) {
-      if (err) return signin.error();
+    auth.once('error', function(error) {
+      signin.error(error);
+    });
+    auth.once('signin', function(success) {
       if (!success) return signin.state('warning');
 
       signin.state('success');
@@ -24,17 +26,23 @@ page('/signin', function(context, next) {
         page('/');
       }, 500);
     });
+    auth.signin(account);
   });
 
   layout.overlay(signin.element);
 });
 
 page('/signout', function(context, next) {
-  navbar.hideActions();
+  auth.signout();
 
-  auth.signout(function(err) {
-    if (err) throw err;
-
-    page('/login');
-  });
+  page('/signin');
 });
+
+auth.once('check', toggleNavbarActions);
+auth.once('signin', toggleNavbarActions);
+
+function toggleNavbarActions(success) {
+  if (!success) return navbar.hideActions();
+
+  navbar.showActions();
+}

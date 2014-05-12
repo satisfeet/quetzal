@@ -11,6 +11,7 @@
   ],
 
   "dependencies": {
+    "component/emitter": "~1.1.2",
     "marcuswestin/store.js": "~v1.3.16"
   }
 

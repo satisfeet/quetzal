@@ -1,36 +1,49 @@
-import store from 'store';
-import agent from 'agent';
+import store   from 'store';
+import agent   from 'agent';
+import emitter from 'emitter';
 
-export function sign() {
-  return store.get('session');
+function Auth() {
+  emitter(this);
 }
 
-export function check(callback) {
-  if (!store.get('session')) return callback(null, false);
+Auth.prototype.token = function() {
+  return store.get('session');
+};
+
+Auth.prototype.check = function() {
+  if (!store.get('session')) {
+    return this.emit('check', false);
+  }
+
+  var self = this;
 
   agent.get('/session').end(function(err, res) {
-    if (err) return callback(err);
+    if (err) return self.emit('error', err);
 
-    callback(null, res.ok);
+    self.emit('check', res.ok);
   });
-}
 
-export function signin(account, callback) {
+  return this;
+};
+
+Auth.prototype.signin = function(account) {
+  var self = this;
+
   agent.post('/session').send(account).end(function(err, res) {
-    if (err) return callback(err);
+    if (err) return self.emit('error', err);
+    if (!res.ok) return self.emit('signin', false);
 
-    if (res.ok) {
-      store.set('session', res.body.token);
-
-      callback(null, true);
-    } else {
-      callback(null, false);
-    }
+    store.set('session', res.body.token);
+    self.emit('signin', true);
   });
-}
 
-export function signout(callback) {
+  return this;
+};
+
+Auth.prototype.signout = function() {
   store.remove('session');
 
-  callback(null);
-}
+  return this;
+};
+
+export default new Auth();
