@@ -1,22 +1,19 @@
 {
 
-  "name": "shell",
+  "name": "signin",
 
   "locals": [
-    "auth"
+    "auth",
+    "layout"
   ],
 
   "scripts": [
     "index.js",
-    "layout/index.js",
-    "navbar/index.js",
-    "signin/index.js"
+    "signin.js"
   ],
 
   "templates": [
-    "signin/form.jade",
-    "layout/content.jade",
-    "layout/sidebar.jade"
+    "form.jade"
   ],
 
   "dependencies": {

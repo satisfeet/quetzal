@@ -43,7 +43,7 @@ Auth.prototype.signin = function(account) {
 Auth.prototype.signout = function() {
   store.remove('session');
 
-  return this;
+  return this.emit('signout');
 };
 
 export default new Auth();

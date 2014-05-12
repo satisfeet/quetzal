@@ -2,10 +2,6 @@
 
   "name": "agent",
 
-  "locals": [
-    "auth"
-  ],
-
   "scripts": [
     "index.js"
   ],

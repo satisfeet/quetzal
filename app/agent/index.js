@@ -1,5 +1,5 @@
-import store      as store   from 'store';
-import superagent as request from 'superagent';
+import store   from 'store';
+import request from 'superagent';
 
 function Agent() {
   this.resource = 'http://engine.satisfeet.me';

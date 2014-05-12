@@ -1,6 +1,9 @@
 import page  from 'page';
 import auth  from 'auth';
-import shell from 'shell';
+
+import 'navbar';
+import 'signin';
+import 'signout';
 
 page(function(context, next) {
   if (context.path === '/signin') return next();
