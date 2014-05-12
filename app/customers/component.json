@@ -15,14 +15,16 @@
     "index.js",
     "form/index.js",
     "show/index.js",
-    "table/index.js"
+    "table/index.js",
+    "confirm/index.js"
   ],
 
   "templates": [
     "show/section.jade",
     "form/form.jade",
     "table/row.jade",
-    "table/table.jade"
+    "table/table.jade",
+    "confirm/form.jade"
   ],
 
   "dependencies": {

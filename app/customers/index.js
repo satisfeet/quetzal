@@ -2,9 +2,10 @@ import page   from 'page';
 import agent  from 'agent';
 import layout from 'layout';
 
-import Form  from './form';
-import Show  from './show';
-import Table from './table';
+import Form    from './form';
+import Show    from './show';
+import Table   from './table';
+import Confirm from './confirm';
 
 var manager = agent('/customers');
 
@@ -49,7 +50,22 @@ page('/customers/:customer/change', resolve, function(context, next) {
 });
 
 page('/customers/:customer/delete', resolve, function(context, next) {
+  var confirm = new Confirm(context.state.customer);
 
+  confirm.once('submit', function(customer) {
+    manager.del(customer.id, function(ok, body) {
+      layout.closeOverlay();
+
+      page('/customers');
+    });
+  });
+  confirm.once('cancel', function(customer) {
+    layout.closeOverlay();
+
+    page('/customers/' + customer.id)
+  });
+
+  layout.openOverlay(confirm.element);
 });
 
 function resolve(context, next) {
