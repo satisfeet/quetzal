@@ -1,17 +1,22 @@
-section(data-id=id)
-  div.page-header
-    h3= name
-    h4= email
-  div.row
-    address
-    if (address.street && address.city && address.zip)
-      | #{address.street}
-      br
-      | #{address.city}, #{address.zip}
-    else
-      | #{address.city}
-  div.row
-    div.col-xs-2.col-xs-offset-4
-      a.btn.btn-warning(href='/customers/' + id + '/change') Change
-    div.col-xs-2
-      a.btn.btn-danger(href='/customers/' + id + '/delete') Delete
+section
+  div.col-xs-8
+    div.row
+      div.page-header
+        h3= name
+        h4= email
+        address
+        if (address.street && address.city && address.zip)
+          | #{address.street}
+          br
+          | #{address.city}, #{address.zip}
+        else
+          | #{address.city}
+    div.row
+      div.col-xs-4.col-xs-offset-8
+        div.btn-group
+          a.btn.btn-warning(href='/customers/' + id + '/change') Change
+          a.btn.btn-danger(href='/customers/' + id + '/delete') Delete
+  div.col-xs-4
+    div.thumbnail
+      img.img-rounded.img-responsive(alt='profile image',
+        src='http://www.gfcactivatingland.org/media/uploads/images/profile_placeholder.png')
