@@ -12,7 +12,7 @@ page('/customers', function(context, next) {
   var table = new Table();
 
   manager.get(function(ok, body) {
-    layout.replace(table.list(body).element);
+    layout.insert(table.list(body).element);
   });
 });
 
@@ -25,13 +25,13 @@ page('/customers/create', function(context, next) {
     });
   });
 
-  layout.replace(form.element);
+  layout.insert(form.element);
 });
 
 page('/customers/:customer', resolve, function(context, next) {
   var show = new Show(context.state.customer);
 
-  layout.replace(show.element);
+  layout.insert(show.element);
 });
 
 page('/customers/:customer/change', resolve, function(context, next) {
@@ -45,7 +45,7 @@ page('/customers/:customer/change', resolve, function(context, next) {
     });
   });
 
-  layout.replace(form.element);
+  layout.insert(form.element);
 });
 
 page('/customers/:customer/delete', resolve, function(context, next) {

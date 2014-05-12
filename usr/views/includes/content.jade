@@ -1,3 +1,14 @@
-main.container
+main#main.container
   div.row
-    block content
+    div#sidebar.col-xs-3.well
+      block sidebar
+        h3.text-center Controls
+        ul.nav.nav-pills.nav-stacked
+          li
+            a(href='/') Reporter
+          li
+            a(href='/customers') Customers
+            ul
+              li: a(href='/customers/create') Create
+    div#content.col-xs-9
+      block content
