@@ -2,6 +2,10 @@
 
   "name": "shell",
 
+  "locals": [
+    "auth"
+  ],
+
   "scripts": [
     "index.js",
     "layout/index.js",
