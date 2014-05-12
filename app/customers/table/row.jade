@@ -6,7 +6,12 @@ tr(data-id=id)
     else
       | No email present.
   td
-    if (address.street && address.zip)
-      | #{address.street}, #{address.city} #{address.zip}
+    if (address.street)
+      | #{address.street}
     else
-      | #{address.city}
+      | No address present.
+  td
+    if (address.zip)
+      | #{address.zip}, #{address.city}
+    else
+      | No zip present, #{address.city}
