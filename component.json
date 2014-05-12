@@ -9,8 +9,6 @@
   "locals": [
     "auth",
     "navbar",
-    "signin",
-    "signout",
     "reporter",
     "customers"
   ],
