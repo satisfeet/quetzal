@@ -6,11 +6,9 @@ import layout from 'layout';
 import template from './template';
 
 page('/', function() {
-  agent.get('/').end(function(err, res) {
-    if (err) throw err;
-
+  agent().get('/', function(ok, body) {
     layout
       .empty()
-      .append(domify(template(res.body)));
+      .append(domify(template(body)));
   });
 });

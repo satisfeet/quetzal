@@ -6,13 +6,13 @@ import Form  from './form';
 import Show  from './show';
 import Table from './table';
 
+var manager = agent('/customers');
+
 page('/customers', function(context, next) {
   var table = new Table();
 
-  agent.get('/customers').end(function(err, res) {
-    if (err) throw err;
-
-    layout.replace(table.list(res.body).element);
+  manager.get(function(ok, body) {
+    layout.replace(table.list(body).element);
   });
 });
 
@@ -20,9 +20,7 @@ page('/customers/create', function(context, next) {
   var form = new Form();
 
   form.once('submit', function(customer) {
-    agent.post('/customers').send(customer).end(function(err, res) {
-      if (err) throw err;
-
+    manager.post(customer, function(ok, body) {
       page('/customers');
     });
   });
@@ -40,11 +38,9 @@ page('/customers/:customer/change', resolve, function(context, next) {
   var form = new Form(context.state.customer);
 
   form.once('submit', function(customer) {
-    var id = customer.id = context.state.customer.id;
+    customer.id = context.state.customer.id;
 
-    agent.put('/customers/' + id).send(customer).end(function(err, res) {
-      if (err) throw err;
-
+    manager.put(customer.id, customer, function(ok, body) {
       page('/customers/' + customer.id);
     });
   });
@@ -57,10 +53,8 @@ page('/customers/:customer/delete', resolve, function(context, next) {
 });
 
 function resolve(context, next) {
-  agent.get('/customers/' + context.params.customer).end(function(err, res) {
-    if (err) throw err;
-
-    context.state.customer = res.body;
+  manager.get(context.params.customer, function(ok, body) {
+    context.state.customer = body;
 
     next();
   });
