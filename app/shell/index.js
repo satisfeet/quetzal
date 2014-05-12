@@ -1,4 +1,5 @@
-import page  from 'page';
+import page from 'page';
+import auth from 'auth';
 
 import Layout from './layout';
 import Navbar from './navbar';
@@ -10,10 +11,10 @@ export var layout = new Layout();
 page('/signin', function(context, next) {
   var signin = new Signin();
 
-  signin.once('submit', function(account) {
+  signin.on('submit', function(account) {
     auth.signin(account, function(err, success) {
       if (err) return signin.error();
-      if (!active) return signin.state('warning');
+      if (!success) return signin.state('warning');
 
       signin.state('success');
 

@@ -3,13 +3,13 @@ import auth  from 'auth';
 import shell from 'shell';
 
 page(function(context, next) {
-  if (context.path === '/login') return next();
+  if (context.path === '/signin') return next();
 
-  auth.check(function(err, active) {
+  auth.check(function(err, success) {
     if (err) throw err;
 
-    if (!active) {
-      page('/login');
+    if (!success) {
+      page('/signin');
     } else {
       shell.navbar.showActions();
 
