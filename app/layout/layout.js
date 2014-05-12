@@ -43,6 +43,10 @@ Layout.prototype.insert = function(html) {
   return this;
 };
 
+Layout.prototype.replace = function(element) {
+  return this.empty().append(element);
+};
+
 Layout.prototype.overlay = function(element) {
   while (this.element.lastElementChild) {
     this.element.lastElementChild.remove();

@@ -4,7 +4,7 @@
 
   "locals": [
     "agent",
-    "shell"
+    "layout"
   ],
 
   "scripts": [
