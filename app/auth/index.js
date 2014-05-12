@@ -1,52 +1,51 @@
-import store   from 'store';
-import agent   from 'agent';
-import emitter from 'emitter';
+import page   from 'page';
+import layout from 'layout';
 
-function Auth() {
-  emitter(this);
+import Auth   from './auth';
+import SignIn from './sign-in';
 
-  var self = this;
+var auth = new Auth();
 
-  this.agent = agent('/session');
-  this.agent.on('error', function(err) {
-    self.emit('error', err);
+page(function(context, next) {
+  if (context.path === '/sign-in') return next();
+
+  auth.once('check', function(success) {
+    if (success) return next();
+
+    page('/sign-in');
   });
-}
+  auth.check();
+});
 
-Auth.prototype.token = function() {
-  return store.get('session');
-};
+page('/sign-in', function(context, next) {
+  var signin = new SignIn();
 
-Auth.prototype.check = function() {
-  if (!store.get('session')) {
-    return this.emit('check', false);
-  }
+  signin.on('submit', function(account) {
+    auth.once('error', function(error) {
+      signin.error(error);
+    });
+    auth.once('signin', function(success) {
+      if (!success) return signin.state('warning');
 
-  var self = this;
+      signin.state('success');
 
-  this.agent.get(function(ok, body) {
-    self.emit('check', ok);
+      setTimeout(function() {
+        layout.setup();
+
+        page('/');
+      }, 500);
+    });
+
+    auth.signin(account);
   });
 
-  return this;
-};
+  layout.overlay(signin.element);
+});
 
-Auth.prototype.signin = function(account) {
-  var self = this;
+page('/sign-out', function(context, next) {
+  auth.signout();
 
-  this.agent.post(account, function(ok, body) {
-    if (ok) store.set('session', body.token);
+  page('/sign-in');
+});
 
-    self.emit('signin', ok);
-  });
-
-  return this;
-};
-
-Auth.prototype.signout = function() {
-  store.remove('session');
-
-  return this.emit('signout');
-};
-
-export default new Auth();
+export default auth;
