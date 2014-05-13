@@ -1,5 +1,3 @@
-import query   from 'query';
-import events  from 'events';
 import domify  from 'domify';
 import emitter from 'emitter';
 
@@ -8,14 +6,12 @@ import form from './form.jade';
 function SignIn() {
   this.element = domify(form());
 
-  this.events = events(this.element, this);
-  this.events.bind('submit');
+  emitter(this);
+  bindToSubmitEvent(this.element, this);
 }
 
-emitter(SignIn.prototype);
-
 SignIn.prototype.state = function(state) {
-  var result = query.all('.form-group', this.element);
+  var result = this.element.querySelectorAll('.form-group');
 
   [].slice.call(result).forEach(function(element) {
     element.className = 'form-group has-' + state;
@@ -25,7 +21,7 @@ SignIn.prototype.state = function(state) {
 };
 
 SignIn.prototype.alert = function(state, message) {
-  var element = query('.alert', this.element);
+  var element = this.element.querySelector('.alert');
 
   element.className = 'alert alert-' + state;
   element.innerText = message;
@@ -33,15 +29,21 @@ SignIn.prototype.alert = function(state, message) {
   return this;
 };
 
-SignIn.prototype.onsubmit = function(e) {
-  if (e) e.preventDefault();
+SignIn.prototype.resolve = function() {
+  var element = this.element;
 
-  this.emit('submit', {
-    username: query('#username', this.element).value,
-    password: query('#password', this.element).value
-  });
-
-  return this;
+  return {
+    username: element.username.value,
+    password: element.password.value
+  };
 };
 
 export default SignIn;
+
+function bindToSubmitEvent(element, view) {
+  element.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    view.emit('submit', view.resolve());
+  });
+}
