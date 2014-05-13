@@ -11,6 +11,10 @@ function Auth() {
   }.bind(this));
 }
 
+Auth.prototype.user = function() {
+  return store.get('user');
+};
+
 Auth.prototype.token = function() {
   return store.get('session');
 };
@@ -22,7 +26,7 @@ Auth.prototype.check = function() {
 
   this.agent.get(function(ok, body) {
     if (!ok) store.set('session', null);
-  
+
     this.emit('check', ok);
   }.bind(this));
 
@@ -31,7 +35,10 @@ Auth.prototype.check = function() {
 
 Auth.prototype.signin = function(account) {
   this.agent.post(account, function(ok, body) {
-    if (ok) store.set('session', body.token);
+    if (ok) {
+      store.set('user', account.username);
+      store.set('session', body.token);
+    }
 
     this.emit('signin', ok);
   }.bind(this));
