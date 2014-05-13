@@ -1,9 +1,8 @@
-div.col-xs-4.col-xs-offset-4.overlay(data-id=id)
-  form(role='form')
-    legend Confirm
-    p.help-text
+form(data-id=id, role='form')
+  legend Confirm
+  fieldset
+    div.alert.alert-danger
       | Do you really want to delete customer #{name}?
-    fieldset
-      div.btn-group
-        button.btn.btn-danger Delete
-        button.btn.btn-default Cancel
+    div.btn-group.pull-right
+      button.btn.btn-danger Delete
+      button.btn.btn-default Cancel
