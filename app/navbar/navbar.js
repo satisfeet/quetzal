@@ -1,26 +1,21 @@
-import query  from 'query';
-import events from 'events';
+import query from 'query';
 
 function Navbar() {
   this.element = query('.navbar');
 
-  this.events = events(this.element, this);
-  this.events.bind('click .dropdown-toggle', 'toggleActions');
-  this.events.bind('click .dropdown-menu li > a', 'toggleActions');
+  bindToDropdownClickEvent(this.element, this);
+  bindToDropdownMenuClickEvent(this.element, this);
 }
 
 Navbar.prototype.setActions = function(name) {
-  query('.dropdown-toggle #user').innerText = name;
+  this.element.querySelector('#user').innerText = name;
 
   return this;
 };
 
-Navbar.prototype.toggleActions = function(e) {
-  // we only want to prevent the default event on .dropdown-toggle
-  if (e && e.target.className) e.preventDefault();
-
+Navbar.prototype.toggleActions = function() {
   if (this.active) {
-    query('.dropdown', this.element).classList.toggle('open');
+    this.element.querySelector('.dropdown').classList.toggle('open');
   }
 
   return this;
@@ -29,15 +24,31 @@ Navbar.prototype.toggleActions = function(e) {
 Navbar.prototype.toggleActionsState = function(active) {
   this.active = active;
 
-  var element = query('.dropdown', this.element);
-
   if (!this.active) {
-    element.classList.add('hidden');
+    this.element.querySelector('.dropdown').classList.add('hidden');
   } else {
-    element.classList.remove('hidden');
+    this.element.querySelector('.dropdown').classList.remove('hidden');
   }
 
   return this;
 };
 
 export default Navbar;
+
+function bindToDropdownClickEvent(element, view) {
+  element.querySelector('.dropdown-toggle')
+    .addEventListener('click', function(e) {
+      e.preventDefault();
+
+      view.toggleActions();
+    });
+}
+
+function bindToDropdownMenuClickEvent(element, view) {
+  element.querySelector('.dropdown-menu')
+    .addEventListener('click', function(e) {
+      if (e.target instanceof HTMLAnchorElement) {
+        view.toggleActions();
+      }
+    });
+}

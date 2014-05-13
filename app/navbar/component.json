@@ -17,8 +17,7 @@
   ],
 
   "dependencies": {
-    "component/query": "~0.0.3",
-    "component/events": "~1.0.6"
+    "component/query": "~0.0.3"
   }
 
 }
