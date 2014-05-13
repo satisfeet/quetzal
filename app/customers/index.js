@@ -51,7 +51,7 @@ page('/customers/:customer/change', resolve, function(context, next) {
   layout.content.empty().append(form.element);
 });
 
-page('/customers/:customer/delete', resolve, function(context, next) {
+page('/customers/:customer/remove', resolve, function(context, next) {
   var confirm = new Confirm(context.state.customer);
 
   confirm.once('submit', function(customer) {

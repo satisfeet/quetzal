@@ -1,14 +1,7 @@
 section#body
   div.container
     div.row
-      div#sidebar.col-xs-3.well
+      div#sidebar.col-xs-3
         block sidebar
-          h3.text-center Controls
-          ul.nav.nav-pills.nav-stacked
-            li: a(href='/') Reporter
-            li
-              a(href='/customers') Customers
-              ul
-                li: a(href='/customers/create') Create
       div#content.col-xs-9
         block content
