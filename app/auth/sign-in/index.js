@@ -14,18 +14,21 @@ function SignIn() {
 
 emitter(SignIn.prototype);
 
-SignIn.prototype.error = function() {
-  query('.help-text', this.element).classList.remove('hidden');
-
-  return this.state('error');
-};
-
 SignIn.prototype.state = function(state) {
   var result = query.all('.form-group', this.element);
 
   [].slice.call(result).forEach(function(element) {
     element.className = 'form-group has-' + state;
   });
+
+  return this;
+};
+
+SignIn.prototype.alert = function(state, message) {
+  var element = query('.alert', this.element);
+
+  element.className = 'alert alert-' + state;
+  element.innerText = message;
 
   return this;
 };

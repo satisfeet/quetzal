@@ -19,6 +19,7 @@ function Overlay() {
 Overlay.prototype.fade = function() {
   var element = this.element;
 
+  element.classList.remove('hidden');
   setTimeout(function() {
     element.classList.add('overlay-fade')
   }, 500);
@@ -34,6 +35,7 @@ Overlay.prototype.open = function(element) {
 
 Overlay.prototype.close = function() {
   this.element.classList.remove('overlay-fade')
+  this.element.classList.add('hidden');
 
   return this.emit('closed');
 };
