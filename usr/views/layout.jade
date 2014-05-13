@@ -5,8 +5,9 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/build.css')
   body
-    include includes/header
-    include includes/content
+    main
+      include includes/header
+      include includes/content
     script(src='/javascripts/build.js')
     script
       | require('manager');

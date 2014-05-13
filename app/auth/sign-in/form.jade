@@ -1,15 +1,14 @@
-div.col-xs-6.col-xs-offset-3.overlay
-  form(role='form')
-    legend Login
-    p.help-text.bg-danger.hidden
-      | An error occured while checking account permissions.
-    fieldset.col-xs-10.col-xs-offset-1
-      div.form-group
-        label(for='username') Username
-        input.form-control(id='username', name='username', type='text',
-          placeholder='Your username', required)
-      div.form-group
-        label(for='password') Password
-        input.form-control(id='password', name='password', type='password',
-          placeholder='Your password', required)
-      button.btn.btn-default(type='submit') Authenticate
+form(role='form')
+  legend Login
+  p.help-text.bg-danger.hidden
+    | An error occured while checking account permissions.
+  fieldset.col-xs-10.col-xs-offset-1
+    div.form-group
+      label(for='username') Username
+      input.form-control(id='username', name='username', type='text',
+        placeholder='Your username', required)
+    div.form-group
+      label(for='password') Password
+      input.form-control(id='password', name='password', type='password',
+        placeholder='Your password', required)
+    button.btn.btn-default(type='submit') Authenticate

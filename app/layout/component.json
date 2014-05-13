@@ -3,17 +3,27 @@
   "name": "layout",
 
   "styles": [
-    "style.css"
+    "body/style.css",
+    "overlay/style.css"
   ],
 
   "scripts": [
     "index.js",
-    "layout.js"
+    "body/index.js",
+    "content/index.js",
+    "sidebar/index.js",
+    "overlay/index.js"
+  ],
+
+  "templates": [
+    "overlay/section.jade"
   ],
 
   "dependencies": {
     "component/query": "~0.0.3",
-    "component/domify": "~1.2.2"
+    "component/domify": "~1.2.2",
+    "component/emitter": "~1.1.2",
+    "visionmedia/jade": "~1.3.1"
   }
 
 }

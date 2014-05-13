@@ -13,8 +13,10 @@ page('/customers', function(context, next) {
   var table = new Table();
 
   manager.get(function(ok, body) {
-    layout.insert(table.list(body).element);
+    table.list(body);
   });
+
+  layout.content.empty().append(table.element);
 });
 
 page('/customers/create', function(context, next) {
@@ -26,13 +28,13 @@ page('/customers/create', function(context, next) {
     });
   });
 
-  layout.insert(form.element);
+  layout.content.empty().append(form.element);
 });
 
 page('/customers/:customer', resolve, function(context, next) {
   var show = new Show(context.state.customer);
 
-  layout.insert(show.element);
+  layout.content.empty().append(show.element);
 });
 
 page('/customers/:customer/change', resolve, function(context, next) {
@@ -46,7 +48,7 @@ page('/customers/:customer/change', resolve, function(context, next) {
     });
   });
 
-  layout.insert(form.element);
+  layout.content.empty().append(form.element);
 });
 
 page('/customers/:customer/delete', resolve, function(context, next) {
@@ -54,18 +56,18 @@ page('/customers/:customer/delete', resolve, function(context, next) {
 
   confirm.once('submit', function(customer) {
     manager.del(customer.id, function(ok, body) {
-      layout.closeOverlay();
+      layout.overlay.close();
 
       page('/customers');
     });
   });
   confirm.once('cancel', function(customer) {
-    layout.closeOverlay();
+    layout.overlay.close();
 
     page('/customers/' + customer.id)
   });
 
-  layout.openOverlay(confirm.element);
+  layout.overlay.open(confirm.element);
 });
 
 function resolve(context, next) {

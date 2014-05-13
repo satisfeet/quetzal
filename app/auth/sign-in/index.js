@@ -9,7 +9,7 @@ function SignIn() {
   this.element = domify(form());
 
   this.events = events(this.element, this);
-  this.events.bind('submit form');
+  this.events.bind('submit');
 }
 
 emitter(SignIn.prototype);
