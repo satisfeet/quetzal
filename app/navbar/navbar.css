@@ -1,0 +1,18 @@
+.navbar {
+  border-radius: 1px;
+  background-color: #9a3f3f;
+}
+
+.navbar .navbar-brand {
+  color: #fff;
+}
+
+.navbar .navbar-nav > li > a {
+  color: #fff;
+}
+
+.navbar .navbar-nav > li > a:hover,
+.navbar .navbar-nav > li > a:focus,
+.navbar .navbar-nav .open > a {
+  background-color: #702e2e;
+}

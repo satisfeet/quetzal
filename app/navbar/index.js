@@ -9,9 +9,5 @@ auth.on('signin', transform);
 auth.on('signout', transform);
 
 function transform(success) {
-  if (!success) {
-    navbar.hideActions();
-  } else {
-    navbar.showActions();
-  }
+  navbar.active = success;
 }
