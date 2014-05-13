@@ -3,16 +3,16 @@
   background-color: #9a3f3f;
 }
 
-.navbar .navbar-brand {
+.navbar-brand {
   color: #fff;
 }
 
-.navbar .navbar-nav > li > a {
+.navbar-nav > li > a {
   color: #fff;
 }
 
-.navbar .navbar-nav > li > a:hover,
-.navbar .navbar-nav > li > a:focus,
-.navbar .navbar-nav .open > a {
+.navbar-nav.nav > li > a:hover,
+.navbar-nav.nav > li > a:focus,
+.navbar-nav.nav .open > a {
   background-color: #702e2e;
 }
