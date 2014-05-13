@@ -1,5 +1,3 @@
-import query   from 'query';
-import events  from 'events';
 import domify  from 'domify';
 import emitter from 'emitter';
 
@@ -9,23 +7,36 @@ function Form(model) {
   this.element = domify(form(model));
 
   emitter(this);
-
-  this.events = events(this.element, this);
-  this.events.bind('submit form');
+  bindToSubmitEvent(this.element, this);
 }
 
-Form.prototype.onsubmit = function(e) {
-  if (e) e.preventDefault();
+Form.prototype.resolve = function() {
+  var element = this.element;
 
-  this.emit('submit', {
-    name:  query('#name', this.element).value,
-    email: query('#email', this.element).value,
-    address: {
-      street: query('#street', this.element).value,
-      city:   query('#city', this.element).value,
-      zip:    query('#zip', this.element).value
+  var entity = {
+    name:  element.name.value,
+    email: element.email.value,
+  };
+
+  if (element.city.value) {
+    entity.address = {
+      city: element.city.value
+    };
+    if (element.street.value && element.zip.value) {
+      entity.address.street = element.street.value;
+      entity.address.zip = element.zip.value;
     }
-  });
+  }
+
+  return entity;
 };
 
 export default Form;
+
+function bindToSubmitEvent(element, view) {
+  element.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    view.emit('submit', view.resolve());
+  });
+}

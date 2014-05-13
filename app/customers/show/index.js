@@ -1,7 +1,4 @@
-import query   from 'query';
 import domify  from 'domify';
-import events  from 'events';
-import emitter from 'emitter';
 
 import section from './section';
 

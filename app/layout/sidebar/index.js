@@ -1,4 +1,4 @@
-import query  from 'query';
+import query from 'query';
 
 import nav from './nav';
 
@@ -8,7 +8,7 @@ function Sidebar(context) {
 }
 
 Sidebar.prototype.select = function(path) {
-  var result = query.all('.nav li > a', this.element);
+  var result = this.element.querySelectorAll('.nav li > a');
 
   [].slice.call(result).forEach(function(element) {
     if (element.pathname === path) {

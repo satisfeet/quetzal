@@ -1,26 +1,25 @@
-div.col-xs-10.col-xs-offset-1
-  form(role='form')
-    legend Customer
-    fieldset
-      div.form-group
-        label.control-label(for='name') Name
-        input.form-control(id='name', name='name', type='text',
-          value=name, placeholder='Max Mustermann', required)
-      div.form-group
-        label(for='email') Email
-        input.form-control(id='email', name='email', type='email',
-          value=email, placeholder='info@example.com', required)
-      div.form-group
-        label(for='street') Street
-        input.form-control(id='street', name='street', type='text',
-          value=address && address.street, placeholder='Hauptstraße 1')
-      div.form-group
-        label(for='city') City
-        input.form-control(id='city', name='city', type='text',
-          value=address && address.city, placeholder='Berlin')
-      div.form-group
-        label(for='zip') Zip
-        input.form-control(id='zip', name='zip', type='number',
-          value=address && address.zip, placeholder='10000',
-          min='10000', max='99999')
-      button.btn.btn-default.pull-right(type='submit') Save
+form(role='form')
+  legend Customer
+  fieldset
+    div.form-group
+      label.control-label(for='name') Name
+      input.form-control(id='name', name='name', type='text',
+        value=name, placeholder='Max Mustermann', required)
+    div.form-group
+      label(for='email') Email
+      input.form-control(id='email', name='email', type='email',
+        value=email, placeholder='info@example.com', required)
+    div.form-group
+      label(for='street') Street
+      input.form-control(id='street', name='street', type='text',
+        value=address && address.street, placeholder='Hauptstraße 1')
+    div.form-group
+      label(for='city') City
+      input.form-control(id='city', name='city', type='text',
+        value=address && address.city, placeholder='Berlin')
+    div.form-group
+      label(for='zip') Zip
+      input.form-control(id='zip', name='zip', type='number',
+        value=address && address.zip, placeholder='10000',
+        min='10000', max='99999')
+    button.btn.btn-default.pull-right(type='submit') Save
