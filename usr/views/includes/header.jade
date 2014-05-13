@@ -1,8 +1,13 @@
-header.navbar.navbar-default(role='navigation')
+header.navbar(role='navigation')
   div.container-fluid
     div.navbar-header
-      a.navbar-brand(href='/') Manager
-    ul.navbar-nav.nav
-      li: a(href='/customers') Customers
-    ul.navbar-nav.navbar-right.nav.hidden
-      li: a(href='/sign-out') Logout
+      a.navbar-brand(href='/') manager
+    ul.navbar-nav.navbar-right.nav
+      li.dropdown
+        a(href='#').dropdown-toggle
+          | Actions
+          b.caret
+        ul.dropdown-menu
+          li: a(href='/settings') Settings
+          li.divider
+          li: a(href='/sign-out') Logout

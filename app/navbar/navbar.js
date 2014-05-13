@@ -1,19 +1,17 @@
-import query from 'query';
+import query  from 'query';
+import events from 'events';
 
 function Navbar() {
   this.element = query('.navbar');
+
+  this.events = events(this.element, this);
+  this.events.bind('click .dropdown-toggle', 'toggleActions');
 }
 
-Navbar.prototype.showActions = function() {
-  query('.navbar-right', this.element).classList.remove('hidden');
+Navbar.prototype.toggleActions = function() {
+  if (this.active) query('.dropdown', this.element).classList.toggle('open');
 
   return this;
 };
-
-Navbar.prototype.hideActions = function() {
-  query('.navbar-right', this.element).classList.add('hidden');
-
-  return this;
-}
 
 export default Navbar;

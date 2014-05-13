@@ -6,13 +6,19 @@
     "auth"
   ],
 
+  "styles": [
+    "navbar.css",
+    "dropdown.css"
+  ],
+
   "scripts": [
     "index.js",
     "navbar.js"
   ],
 
   "dependencies": {
-    "component/query": "~0.0.3"
+    "component/query": "~0.0.3",
+    "component/events": "~1.0.6"
   }
 
 }
