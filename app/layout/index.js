@@ -15,5 +15,9 @@ page(function(context, next) {
   next();
 });
 
-overlay.on('opened', body.addBlur.bind(body));
-overlay.on('closed', body.removeBlur.bind(body));
+overlay.on('opened', toggleBlur);
+overlay.on('closed', toggleBlur);
+
+function toggleBlur() {
+  body.toggleBlur();
+}
