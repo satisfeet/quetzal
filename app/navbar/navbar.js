@@ -9,6 +9,12 @@ function Navbar() {
   this.events.bind('click .dropdown-menu li > a', 'toggleActions');
 }
 
+Navbar.prototype.setActions = function(name) {
+  query('.dropdown-toggle #user').innerText = name;
+
+  return this;
+};
+
 Navbar.prototype.toggleActions = function(e) {
   // we only want to prevent the default event on .dropdown-toggle
   if (e && e.target.className) e.preventDefault();
@@ -26,9 +32,9 @@ Navbar.prototype.toggleActionsState = function(active) {
   var element = query('.dropdown', this.element);
 
   if (!this.active) {
-    element.classList.add('disabled');
+    element.classList.add('hidden');
   } else {
-    element.classList.remove('disabled');
+    element.classList.remove('hidden');
   }
 
   return this;

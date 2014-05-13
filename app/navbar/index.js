@@ -11,6 +11,6 @@ auth.on('signin', transform);
 auth.on('signout', transform);
 
 function transform(success) {
-  console.log('transform');
+  navbar.setActions(auth.user());
   navbar.toggleActionsState(success);
 }
