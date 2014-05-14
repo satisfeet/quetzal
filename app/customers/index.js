@@ -3,13 +3,13 @@ import agent  from 'agent';
 import layout from 'layout';
 
 import Form    from './form';
-import Show    from './show';
 import Table   from './table';
+import Section from './section';
 import Confirm from './confirm';
 
 var manager = agent('/customers');
 
-page('/customers', function(context, next) {
+page('/customers', function list(context, next) {
   var table = new Table();
 
   manager.get(function(ok, body) {
@@ -19,7 +19,7 @@ page('/customers', function(context, next) {
   layout.content.empty().append(table.element);
 });
 
-page('/customers/create', function(context, next) {
+page('/customers/create', function create(context, next) {
   var form = new Form();
 
   form.once('submit', function(customer) {
@@ -31,13 +31,22 @@ page('/customers/create', function(context, next) {
   layout.content.empty().append(form.element);
 });
 
-page('/customers/:customer', resolve, function(context, next) {
-  var show = new Show(context.state.customer);
+page('/customers/:customer', resolve, function details(context, next) {
+  var section = new Section(context.state.customer);
 
-  layout.content.empty().append(show.element);
+  section.on('submit', function(customer) {
+    manager.put(customer.id, customer, function(ok, body) {
+      if (!ok) section.alert('Could not save your changes.');
+    });
+  });
+  section.once('reset', function() {
+    details(context);
+  });
+
+  layout.content.empty().append(section.element);
 });
 
-page('/customers/:customer/change', resolve, function(context, next) {
+page('/customers/:customer/change', resolve, function change(context, next) {
   var form = new Form(context.state.customer);
 
   form.once('submit', function(customer) {
@@ -51,7 +60,7 @@ page('/customers/:customer/change', resolve, function(context, next) {
   layout.content.empty().append(form.element);
 });
 
-page('/customers/:customer/remove', resolve, function(context, next) {
+page('/customers/:customer/remove', resolve, function remove(context, next) {
   var confirm = new Confirm(context.state.customer);
 
   confirm.once('submit', function(customer) {
