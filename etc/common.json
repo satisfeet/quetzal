@@ -7,11 +7,12 @@
     "default": "jade"
   },
 
-	"static": {
-		"path": "/srv"
-	},
+  "static": {
+    "path": "/srv"
+  },
 
   "builder": {
+    "entry": "/",
     "output": {
       "script": "/srv/javascripts/build.js",
       "style": "/srv/stylesheets/build.css"
