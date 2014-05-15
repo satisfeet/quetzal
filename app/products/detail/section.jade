@@ -1,6 +1,8 @@
 section(data-id=product.id)
   div.col-xs-8
     div.row
+      p.alert.alert-danger.hidden
+    div.row
       div.page-header
         h3#name(contenteditable='true')= product.name
     div.row
@@ -10,7 +12,7 @@ section(data-id=product.id)
           a.btn.btn-default(href='/products/' + product.id + '/remove') Remove
         div.btn-group.hidden#controls.hidden
           button.btn.btn-danger(type='click') Submit
-          button.btn.btn-default(type='click') Cancel
+          a.btn.btn-default(href='/products/' + product.id) Cancel
   div.col-xs-4
     div.thumbnail
       img.img-rounded.img-responsive(alt='Image of ' + product.name,

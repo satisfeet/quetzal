@@ -14,17 +14,21 @@ page('/products', find, function(context) {
 });
 
 page('/products/create', function(context) {
+  var form = new Form().once('submit', create);
 
+  layout.content.empty().append(form.element);
 });
 
 page('/products/:product', findOne, function(context) {
-  var detail = new Detail(context.product);
+  var detail = new Detail(context.product).once('submit', update);
 
   layout.content.empty().append(detail.element);
 });
 
 page('/products/:product/change', findOne, function(context) {
+  var form = new Form().once('submit', update);
 
+  layout.content.empty().append(form.element);
 });
 
 page('/products/:product/remove', findOne, function(context) {
@@ -44,5 +48,29 @@ function findOne(context, next) {
     context.product = body;
 
     next();
+  });
+}
+
+function create(model, view) {
+  manager.post(model, function(ok) {
+    if (!ok) return view.alert('Could not create product.');
+
+    page('/products/' + model.id);
+  });
+}
+
+function destroy(model, view) {
+  manager.del(model.id, function(ok) {
+    if (!ok) return view.alert('Could not destroy product.');
+
+    page('/products');
+  });
+}
+
+function update(model, view) {
+  manager.put(model.id, model, function(ok) {
+    if (!ok) return view.alert('Could not update product.');
+
+    page('/products/' + model.id);
   });
 }
