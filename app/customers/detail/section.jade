@@ -1,4 +1,4 @@
-article(data-id=customer.id)
+section(data-id=customer.id)
   div.col-xs-8
     div.row
       div.page-header
@@ -22,7 +22,7 @@ article(data-id=customer.id)
           a.btn.btn-default(href='/customers/' + customer.id + '/remove') Remove
         div.btn-group.hidden#controls.hidden
           button.btn.btn-danger(type='click') Submit
-          button.btn.btn-default(type='click') Cancel
+          a.btn.btn-default(href='/customers/' + customer.id) Cancel
   div.col-xs-4
     div.thumbnail
       img.img-rounded.img-responsive(alt='Image of ' + customer.name,

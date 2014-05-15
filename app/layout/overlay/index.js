@@ -28,12 +28,14 @@ Overlay.prototype.fade = function() {
 };
 
 Overlay.prototype.open = function(element) {
+  this.opened = true;
   this.insert(element).fade();
 
   return this.emit('opened');
 };
 
 Overlay.prototype.close = function() {
+  this.opened = false;
   this.element.classList.remove('overlay-fade')
   this.element.classList.add('hidden');
 
