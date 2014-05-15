@@ -9,7 +9,6 @@ function Confirm(model) {
   }));
 
   bindToSubmitEvent(this.element, this);
-  bindToClickButtonEvent(this.element, this);
 }
 
 emitter(Confirm.prototype);
@@ -26,15 +25,6 @@ function bindToSubmitEvent(element, view) {
   element.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    view.emit('submit', view.resolve());
+    view.emit('submit', view.resolve(), view);
   });
-}
-
-function bindToClickButtonEvent(element, view) {
-  element.querySelector('.btn-default')
-    .addEventListener('click', function(e) {
-      e.preventDefault();
-
-      view.emit('cancel', view.resolve());
-    });
 }

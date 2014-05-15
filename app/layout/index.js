@@ -17,7 +17,12 @@ page(function(context, next) {
 
 overlay.on('opened', toggleBlur);
 overlay.on('closed', toggleBlur);
+content.on('appended', closeOverlay);
 
 function toggleBlur() {
   body.toggleBlur();
+}
+
+function closeOverlay() {
+  if (overlay.opened) overlay.close();
 }

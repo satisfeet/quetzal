@@ -52,6 +52,6 @@ function bindToSubmitEvent(element, model, view) {
     var entity = view.resolve();
     if (model && model.id) entity.id = model.id;
 
-    view.emit('submit', entity);
+    view.emit('submit', entity, view);
   });
 }

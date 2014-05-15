@@ -5,4 +5,4 @@ form(data-id=customer.id, role='form')
       | Do you really want to delete customer #{customer.name}?
     div.btn-group.pull-right
       button.btn.btn-danger Delete
-      button.btn.btn-default Cancel
+      a.btn.btn-default(href='/customers/' + customer.id) Cancel
