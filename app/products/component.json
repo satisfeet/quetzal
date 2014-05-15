@@ -7,11 +7,25 @@
     "layout"
   ],
 
+  "styles": [
+    "list/style.css"
+  ],
+
   "scripts": [
-    "index.js"
+    "index.js",
+    "list/index.js"
+  ],
+
+  "templates": [
+    "list/item.jade",
+    "list/list.jade"
   ],
 
   "dependencies": {
+    "component/clone": "^0.2.2",
+    "component/domify": "^1.2.2",
+    "component/emitter": "^1.1.2",
+    "visionmedia/jade": "^1.3.1",
     "visionmedia/page.js": "^1.3.7"
   }
 
