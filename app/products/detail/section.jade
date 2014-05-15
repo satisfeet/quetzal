@@ -1,0 +1,17 @@
+section(data-id=product.id)
+  div.col-xs-8
+    div.row
+      div.page-header
+        h3#name(contenteditable='true')= product.name
+    div.row
+      div.col-xs-4.col-xs-offset-8
+        div.btn-group.show#actions
+          a.btn.btn-danger(href='/products/' + product.id + '/change') Change
+          a.btn.btn-default(href='/products/' + product.id + '/remove') Remove
+        div.btn-group.hidden#controls.hidden
+          button.btn.btn-danger(type='click') Submit
+          button.btn.btn-default(type='click') Cancel
+  div.col-xs-4
+    div.thumbnail
+      img.img-rounded.img-responsive(alt='Image of ' + product.name,
+        src='//placehold.it/600x600')

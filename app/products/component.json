@@ -13,12 +13,14 @@
 
   "scripts": [
     "index.js",
-    "list/index.js"
+    "list/index.js",
+    "detail/index.js"
   ],
 
   "templates": [
     "list/item.jade",
-    "list/list.jade"
+    "list/list.jade",
+    "detail/section.jade"
   ],
 
   "dependencies": {
