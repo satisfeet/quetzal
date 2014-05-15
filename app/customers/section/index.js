@@ -8,7 +8,6 @@ function Section(model) {
   // do not overwrite the source model!
   model = clone(model);
 
-console.log(model);
   this.element = domify(section({
     customer: model
   }));
