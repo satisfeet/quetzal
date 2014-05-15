@@ -3,13 +3,13 @@ import agent   from 'agent';
 import emitter from 'emitter';
 
 function Auth() {
-  emitter(this);
-
   this.agent = agent('/session');
   this.agent.on('error', function(err) {
     this.emit('error', err);
   }.bind(this));
 }
+
+emitter(Auth.prototype);
 
 Auth.prototype.user = function() {
   return store.get('user');

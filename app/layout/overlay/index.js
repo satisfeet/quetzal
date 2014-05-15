@@ -12,9 +12,9 @@ function Overlay() {
 
     document.body.appendChild(this.element);
   }
-
-  emitter(this);
 }
+
+emitter(Overlay.prototype);
 
 Overlay.prototype.fade = function() {
   var element = this.element;

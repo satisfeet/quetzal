@@ -24,6 +24,8 @@ page('/customers/create', function create(context, next) {
 
   form.once('submit', function(customer) {
     manager.post(customer, function(ok, body) {
+      if (!ok) return form.alert('Could not create customer.');
+
       page('/customers');
     });
   });
@@ -32,7 +34,7 @@ page('/customers/create', function create(context, next) {
 });
 
 page('/customers/:customer', resolve, function details(context, next) {
-  var section = new Section(context.state.customer);
+  var section = new Section(context.customer);
 
   section.on('submit', function(customer) {
     manager.put(customer.id, customer, function(ok, body) {
@@ -47,11 +49,9 @@ page('/customers/:customer', resolve, function details(context, next) {
 });
 
 page('/customers/:customer/change', resolve, function change(context, next) {
-  var form = new Form(context.state.customer);
+  var form = new Form(context.customer);
 
   form.once('submit', function(customer) {
-    customer.id = context.state.customer.id;
-
     manager.put(customer.id, customer, function(ok, body) {
       page('/customers/' + customer.id);
     });
@@ -61,7 +61,7 @@ page('/customers/:customer/change', resolve, function change(context, next) {
 });
 
 page('/customers/:customer/remove', resolve, function remove(context, next) {
-  var confirm = new Confirm(context.state.customer);
+  var confirm = new Confirm(context.customer);
 
   confirm.once('submit', function(customer) {
     manager.del(customer.id, function(ok, body) {
@@ -81,7 +81,7 @@ page('/customers/:customer/remove', resolve, function remove(context, next) {
 
 function resolve(context, next) {
   manager.get(context.params.customer, function(ok, body) {
-    context.state.customer = body;
+    context.customer = body;
 
     next();
   });

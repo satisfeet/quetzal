@@ -1,20 +1,20 @@
-tr(data-id=id)
-  td= name
+tr(data-id=customer.id)
+  td= customer.name
   td
-    if (email)
-      a(href='mailto:' + email)= email
+    if (customer.email)
+      a(href='mailto:' + customer.email)= customer.email
     else
       | No email present.
   td
-    if (address && address.street)
-      | #{address.street}
+    if (customer.address && customer.address.street)
+      | #{customer.address.street}
     else
       | No address present.
   td
-    if (address && address.zip)
-      | #{address.zip}, #{address.city}
+    if (customer.address && customer.address.zip)
+      | #{customer.address.zip}, #{customer.address.city}
     else
-      if (address && address.city)
-        | #{address.city}
+      if (customer.address && customer.address.city)
+        | #{customer.address.city}
       else
         | No address present.

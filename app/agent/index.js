@@ -6,9 +6,9 @@ function Agent(path) {
   if (!(this instanceof Agent)) return new Agent(path);
 
   this.resource = 'http://engine.satisfeet.me' + (path || '');
-
-  emitter(this);
 }
+
+emitter(Agent.prototype)
 
 Agent.prototype.post = function(path, object, callback) {
   if (arguments.length === 2) {
