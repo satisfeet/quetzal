@@ -1,8 +1,8 @@
-form(data-id=id, role='form')
+form(data-id=customer.id, role='form')
   legend Confirm
   fieldset
     div.alert.alert-danger
-      | Do you really want to delete customer #{name}?
+      | Do you really want to delete customer #{customer.name}?
     div.btn-group.pull-right
       button.btn.btn-danger Delete
       button.btn.btn-default Cancel

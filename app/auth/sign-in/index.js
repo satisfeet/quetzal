@@ -6,9 +6,10 @@ import form from './form.jade';
 function SignIn() {
   this.element = domify(form());
 
-  emitter(this);
   bindToSubmitEvent(this.element, this);
 }
+
+emitter(SignIn.prototype);
 
 SignIn.prototype.state = function(state) {
   var result = this.element.querySelectorAll('.form-group');

@@ -4,12 +4,15 @@ import emitter from 'emitter';
 import form from './form';
 
 function Confirm(model) {
-  this.element = domify(form(model));
+  this.element = domify(form({
+    customer: model
+  }));
 
-  emitter(this);
   bindToSubmitEvent(this.element, this);
   bindToClickButtonEvent(this.element, this);
 }
+
+emitter(Confirm.prototype);
 
 Confirm.prototype.resolve = function(e) {
   return {

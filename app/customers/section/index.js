@@ -8,7 +8,10 @@ function Section(model) {
   // do not overwrite the source model!
   model = clone(model);
 
-  this.element = domify(section(model));
+console.log(model);
+  this.element = domify(section({
+    customer: model
+  }));
 
   bindToInputEvent(this.element, model, this);
   bindToButtonClickEvents(this.element, model, this);

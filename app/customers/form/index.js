@@ -4,11 +4,23 @@ import emitter from 'emitter';
 import form from './form';
 
 function Form(model) {
-  this.element = domify(form(model));
+  this.element = domify(form({
+    customer: model
+  }));
 
-  emitter(this);
-  bindToSubmitEvent(this.element, this);
+  bindToSubmitEvent(this.element, model, this);
 }
+
+emitter(Form.prototype);
+
+Form.prototype.alert = function(message) {
+  var element = this.element.querySelector('.alert');
+
+  element.classList.remove('hidden');
+  element.innerText = message;
+
+  return this;
+};
 
 Form.prototype.resolve = function() {
   var element = this.element;
@@ -33,10 +45,13 @@ Form.prototype.resolve = function() {
 
 export default Form;
 
-function bindToSubmitEvent(element, view) {
+function bindToSubmitEvent(element, model, view) {
   element.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    view.emit('submit', view.resolve());
+    var entity = view.resolve();
+    if (model && model.id) entity.id = model.id;
+
+    view.emit('submit', entity);
   });
 }

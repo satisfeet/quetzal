@@ -5,7 +5,9 @@ import row   from './row';
 import table from './table';
 
 function Row(model) {
-  this.element = domify(row(model));
+  this.element = domify(row({
+    customer: model
+  }));
 
   bindToClickEvent(this.element, this);
 }

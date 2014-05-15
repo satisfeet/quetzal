@@ -2,24 +2,24 @@ section
   div.col-xs-8
     div.row
       div.page-header
-        h3#name(contenteditable='true')= name
-        h4#email(contenteditable='true')= email
+        h3#name(contenteditable='true')= customer.name
+        h4#email(contenteditable='true')= customer.email
         address
-        if (address && address.city)
-          if (address.street && address.city && address.zip)
-            span#street(contenteditable='true')= address.street
+        if (customer.address && customer.address.city)
+          if (customer.address.street && customer.address.city && customer.address.zip)
+            span#street(contenteditable='true')= customer.address.street
             br
-            span#city(contenteditable='true')= address.city
-            span#zip(contenteditable='true')= address.zip
+            span#city(contenteditable='true')= customer.address.city
+            span#zip(contenteditable='true')= customer.address.zip
           else
-            span#city(contenteditable='true')= address.city
+            span#city(contenteditable='true')= customer.address.city
         else
           | You can add an address with a click the "change" button.
     div.row
       div.col-xs-4.col-xs-offset-8
         div.btn-group.show#actions
-          a.btn.btn-danger(href='/customers/' + id + '/change') Change
-          a.btn.btn-default(href='/customers/' + id + '/remove') Remove
+          a.btn.btn-danger(href='/customers/' + customer.id + '/change') Change
+          a.btn.btn-default(href='/customers/' + customer.id + '/remove') Remove
         div.btn-group.hidden#controls.hidden
           button.btn.btn-danger(type='click') Submit
           button.btn.btn-default(type='click') Cancel
