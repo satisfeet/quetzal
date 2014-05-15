@@ -10,9 +10,9 @@ function Item(model) {
 }
 
 function List(models) {
-  this.element = domify(list({
-    products: models
-  }));
+  this.element = domify(list());
+
+  this.list(models);
 }
 
 List.prototype.add = function(model) {
