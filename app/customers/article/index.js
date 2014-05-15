@@ -2,13 +2,13 @@ import clone   from 'clone';
 import domify  from 'domify';
 import emitter from 'emitter';
 
-import section from './section';
+import article from './article';
 
-function Section(model) {
+function Article(model) {
   // do not overwrite the source model!
   model = clone(model);
 
-  this.element = domify(section({
+  this.element = domify(article({
     customer: model
   }));
 
@@ -16,9 +16,9 @@ function Section(model) {
   bindToButtonClickEvents(this.element, model, this);
 }
 
-emitter(Section.prototype);
+emitter(Article.prototype);
 
-Section.prototype.alert = function(message) {
+Article.prototype.alert = function(message) {
   var element = this.element.querySelector('.alert');
 
   element.classList.remove('hidden');
@@ -27,7 +27,7 @@ Section.prototype.alert = function(message) {
   return this;
 };
 
-Section.prototype.toggleActions = function() {
+Article.prototype.toggleActions = function() {
   if (!this.toggledActions) {
     this.element.querySelector('#actions').classList.toggle('hidden');
     this.element.querySelector('#controls').classList.toggle('hidden');
@@ -36,7 +36,7 @@ Section.prototype.toggleActions = function() {
   return this;
 };
 
-export default Section;
+export default Article;
 
 function bindToInputEvent(element, model, view) {
   element.addEventListener('input', function(e) {
