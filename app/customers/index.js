@@ -4,7 +4,7 @@ import layout from 'layout';
 
 import Form    from './form';
 import Table   from './table';
-import Section from './section';
+import Article from './article';
 import Confirm from './confirm';
 
 var manager = agent('/customers');
@@ -34,18 +34,18 @@ page('/customers/create', function create(context, next) {
 });
 
 page('/customers/:customer', resolve, function details(context, next) {
-  var section = new Section(context.customer);
+  var article = new Article(context.customer);
 
-  section.on('submit', function(customer) {
+  article.on('submit', function(customer) {
     manager.put(customer.id, customer, function(ok, body) {
       if (!ok) section.alert('Could not save your changes.');
     });
   });
-  section.once('reset', function() {
+  article.once('reset', function() {
     details(context);
   });
 
-  layout.content.empty().append(section.element);
+  layout.content.empty().append(article.element);
 });
 
 page('/customers/:customer/change', resolve, function change(context, next) {

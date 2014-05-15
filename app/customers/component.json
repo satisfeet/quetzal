@@ -16,7 +16,7 @@
     "form/index.js",
     "table/index.js",
     "confirm/index.js",
-    "section/index.js"
+    "article/index.js"
   ],
 
   "templates": [
@@ -24,7 +24,7 @@
     "table/row.jade",
     "table/table.jade",
     "confirm/form.jade",
-    "section/section.jade"
+    "article/article.jade"
   ],
 
   "dependencies": {
