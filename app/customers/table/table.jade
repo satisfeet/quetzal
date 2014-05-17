@@ -3,13 +3,11 @@ div.row
     form(role='form')
       div.input-group
         div.input-group-btn
-          button.btn.btn-default(type='submit')
-            | Search
-            b.caret
+          button.btn.btn-default(type='submit') Search
         input.form-control(id='query', name='query', type='search',
           placeholder='Your search query', required)
   div.col-xs-12.col-md-10.col-md-offset-1(style='padding-top: 30px;')
-    table.table.table-hover.table-bordered
+    table.table
       thead
         tr
           th Name

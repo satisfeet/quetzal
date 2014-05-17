@@ -1,3 +1,7 @@
-table tbody tr {
+.table > tbody > tr > td {
   cursor: pointer;
+}
+
+.table > tbody > tr > td > a {
+  color: #333;
 }

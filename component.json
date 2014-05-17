@@ -15,7 +15,10 @@
   ],
 
   "styles": [
-    "app/index.css"
+    "app/body.css",
+    "app/form.css",
+    "app/table.css",
+    "app/button.css"
   ],
 
   "scripts": [
