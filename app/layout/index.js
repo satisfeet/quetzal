@@ -1,20 +1,20 @@
-var Overlay = require('./overlay');
+var Modal   = require('./modal');
 var Content = require('./content');
 
-var overlay = new Overlay();
+var modal   = new Modal();
 var content = new Content();
 
-overlay.on('opened', toggleBlur);
-overlay.on('closed', toggleBlur);
-content.on('inserted', closeOverlay);
+modal.on('opened', toggleBlur);
+modal.on('closed', toggleBlur);
+content.on('inserted', closeModal);
 
-exports.overlay = overlay;
+exports.modal = modal;
 exports.content = content;
 
 function toggleBlur() {
   content.blur();
 }
 
-function closeOverlay() {
-  if (overlay.opened) overlay.close();
+function closeModal() {
+  if (modal.opened) modal.close();
 }

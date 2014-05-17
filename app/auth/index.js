@@ -34,7 +34,7 @@ page('/sign-in', function(context, next) {
         signin.alert('success', 'Everything fine. We will proceed.')
 
         setTimeout(function() {
-          layout.overlay.close();
+          layout.modal.close();
 
           page('/');
         }, 1000);
@@ -44,7 +44,7 @@ page('/sign-in', function(context, next) {
     auth.signin(account);
   });
 
-  layout.overlay.open(signin.element);
+  layout.modal.insert(signin.element).open();
 });
 
 page('/sign-out', function(context, next) {
