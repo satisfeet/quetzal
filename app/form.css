@@ -9,7 +9,7 @@
 
 .form-control:hover,
 .form-control:focus {
-  border: 2px solid #3c4045;
+  border-color: #3c4045;
   -webkit-box-shadow: none;
      -moz-box-shadow: none;
           box-shadow: none;
