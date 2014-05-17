@@ -1,23 +1,37 @@
 .navbar {
-  border-radius: 1px;
-  background-color: #9a3f3f;
+  min-height: 60px;
+  background-color: #3c4045;
+  border: none;
 }
 
-.navbar-brand {
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #dfdfdf;
+  transition: all .6s;
+}
+
+.navbar .navbar-brand:hover {
   color: #fff;
 }
 
-.navbar-brand:hover {
-  color: #fff;
-  font-weight: 300;
+.navbar .navbar-nav > li > a:hover,
+.navbar .navbar-nav > li.open > a {
+  color: #3c4045;
+  background-color: #ececec;
 }
 
-.navbar-nav > li > a {
-  color: #fff;
+.navbar .navbar-nav .dropdown-menu {
+  magin: 0;
+  padding: 0;
 }
 
-.navbar-nav.nav > li > a:hover,
-.navbar-nav.nav > li > a:focus,
-.navbar-nav.nav .open > a {
-  background-color: #702e2e;
+.navbar .navbar-nav .dropdown-menu > li > a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.navbar .navbar-nav .dropdown-menu .divider {
+  margin: 0;
 }
