@@ -1,4 +1,4 @@
-import query from 'query';
+var query = require('query');
 
 function Navbar() {
   this.element = query('.navbar');
@@ -33,7 +33,7 @@ Navbar.prototype.toggleActionsState = function(active) {
   return this;
 };
 
-export default Navbar;
+module.exports = Navbar;
 
 function bindToDropdownClickEvent(element, view) {
   element.querySelector('.dropdown-toggle')

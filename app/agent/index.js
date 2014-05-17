@@ -1,6 +1,6 @@
-import store   from 'store';
-import emitter from 'emitter';
-import request from 'superagent';
+var store   = require('store');
+var emitter = require('emitter');
+var request = require('superagent');
 
 function Agent(path) {
   if (!(this instanceof Agent)) return new Agent(path);
@@ -57,7 +57,7 @@ Agent.prototype.del = function(path, callback) {
   return this;
 };
 
-export default Agent;
+module.exports = Agent;
 
 function sign(req) {
   var token = store.get('session');

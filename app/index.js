@@ -1,10 +1,10 @@
-import page  from 'page';
+var page = require('page');
 
-import 'auth';
-import 'navbar';
+require('auth');
+require('navbar');
 
-import 'home';
-import 'products';
-import 'customers';
+require('home');
+require('products');
+require('customers');
 
 page();

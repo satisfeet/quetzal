@@ -1,11 +1,11 @@
-import page   from 'page';
-import agent  from 'agent';
-import layout from 'layout';
+var page   = require('page');
+var agent  = require('agent');
+var layout = require('layout');
 
-import Form    from './form';
-import Table   from './table';
-import Detail  from './detail';
-import Confirm from './confirm';
+var Form    = require('./form');
+var Table   = require('./table');
+var Detail  = require('./detail');
+var Confirm = require('./confirm');
 
 var manager = agent('/customers');
 

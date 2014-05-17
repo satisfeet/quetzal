@@ -1,7 +1,7 @@
-import domify  from 'domify';
-import emitter from 'emitter';
+var domify  = require('domify');
+var emitter = require('emitter');
 
-import form from './form';
+var form = require('./form');
 
 function Form(model) {
   this.element = domify(form(model));
@@ -19,7 +19,7 @@ Form.prototype.resolve = function() {
   };
 };
 
-export default Form;
+module.exports = Form;
 
 function bindToSubmitEvent(element, model, view) {
   element.querySelector('form').addEventListener('submit', function(e) {

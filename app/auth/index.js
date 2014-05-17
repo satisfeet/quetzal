@@ -1,8 +1,8 @@
-import page   from 'page';
-import layout from 'layout';
+var page   = require('page');
+var layout = require('layout');
 
-import Auth   from './auth';
-import SignIn from './sign-in';
+var Auth   = require('./auth');
+var SignIn = require('./sign-in');
 
 var auth = new Auth();
 
@@ -53,4 +53,4 @@ page('/sign-out', function(context, next) {
   page('/sign-in');
 });
 
-export default auth;
+module.exports = auth;

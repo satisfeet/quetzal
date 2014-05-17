@@ -1,7 +1,7 @@
-import page   from 'page';
-import layout from 'layout';
+var page   = require('page');
+var layout = require('layout');
 
-import List from './list';
+var List = require('./list');
 
 page('/', function() {
   layout.content.insert(List());

@@ -1,6 +1,6 @@
-import store   from 'store';
-import agent   from 'agent';
-import emitter from 'emitter';
+var store   = require('store');
+var agent   = require('agent');
+var emitter = require('emitter');
 
 function Auth() {
   this.agent = agent('/session');
@@ -52,4 +52,4 @@ Auth.prototype.signout = function() {
   return this.emit('signout');
 };
 
-export default Auth;
+module.exports = Auth;

@@ -1,8 +1,8 @@
-import clone   from 'clone';
-import domify  from 'domify';
-import emitter from 'emitter';
+var clone   = require('clone');
+var domify  = require('domify');
+var emitter = require('emitter');
 
-import section from './section';
+var section = require('./section');
 
 function Section(model) {
   // do not overwrite the source model!
@@ -36,7 +36,7 @@ Section.prototype.toggleActions = function() {
   return this;
 };
 
-export default Section;
+module.exports = Section;
 
 function bindToInputEvent(element, model, view) {
   element.addEventListener('input', function(e) {

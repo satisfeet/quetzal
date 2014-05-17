@@ -1,7 +1,7 @@
-import domify from 'domify';
+var domify = require('domify');
 
-import item from './item';
-import list from './list';
+var item = require('./item');
+var list = require('./list');
 
 function Item(model) {
   this.element = domify(item({
@@ -27,4 +27,4 @@ List.prototype.list = function(models) {
   return this;
 };
 
-export default List;
+module.exports = List;

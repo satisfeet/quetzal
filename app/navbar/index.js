@@ -1,6 +1,6 @@
-import auth from 'auth';
+var auth = require('auth');
 
-import Navbar from './navbar';
+var Navbar = require('./navbar');
 
 var navbar = new Navbar();
 
