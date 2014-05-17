@@ -10,7 +10,7 @@ var Confirm = require('./confirm');
 var manager = agent('/customers');
 
 page('/customers', find, function(context) {
-  var table = new Table().list(context.customers);
+  var table = new Table(context.customers);
 
   layout.content.insert(table.element);
 });
