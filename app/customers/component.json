@@ -8,7 +8,8 @@
   ],
 
   "styles": [
-    "table/row.css"
+    "table/style.css",
+    "detail/style.css"
   ],
 
   "scripts": [
