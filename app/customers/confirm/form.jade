@@ -1,8 +1,10 @@
-form(data-id=customer.id, role='form')
-  legend Confirm
-  fieldset
-    div.alert.alert-danger
-      | Do you really want to delete customer #{customer.name}?
-    div.btn-group.pull-right
-      button.btn.btn-danger Delete
-      a.btn.btn-default(href='/customers/' + customer.id) Cancel
+div.row
+  div.col-xs-8.col-xs-offset-2
+    form(data-id=customer.id, role='form')
+      legend Confirm
+      div.alert.alert-danger
+        | Do you really want to delete customer #{customer.name}?
+      fieldset
+        div.btn-group.pull-right
+          button.btn.btn-danger(type='submit') Delete
+          a.btn.btn-default(href='/customers/' + customer.id) Cancel

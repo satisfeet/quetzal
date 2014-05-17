@@ -3,6 +3,7 @@ import agent  from 'agent';
 import layout from 'layout';
 
 import List   from './list';
+import Form   from './form';
 import Detail from './detail';
 
 var manager = agent('/products');
@@ -10,25 +11,25 @@ var manager = agent('/products');
 page('/products', find, function(context) {
   var list = new List(context.products);
 
-  layout.content.empty().append(list.element);
+  layout.content.insert(list.element);
 });
 
 page('/products/create', function(context) {
   var form = new Form().once('submit', create);
 
-  layout.content.empty().append(form.element);
+  layout.content.insert(form.element);
 });
 
 page('/products/:product', findOne, function(context) {
   var detail = new Detail(context.product).once('submit', update);
 
-  layout.content.empty().append(detail.element);
+  layout.content.insert(detail.element);
 });
 
 page('/products/:product/change', findOne, function(context) {
   var form = new Form().once('submit', update);
 
-  layout.content.empty().append(form.element);
+  layout.content.insert(form.element);
 });
 
 page('/products/:product/remove', findOne, function(context) {

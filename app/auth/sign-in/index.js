@@ -31,7 +31,7 @@ SignIn.prototype.alert = function(state, message) {
 };
 
 SignIn.prototype.resolve = function() {
-  var element = this.element;
+  var element = this.element.querySelector('form');
 
   return {
     username: element.username.value,
@@ -42,7 +42,7 @@ SignIn.prototype.resolve = function() {
 export default SignIn;
 
 function bindToSubmitEvent(element, view) {
-  element.addEventListener('submit', function(e) {
+  element.querySelector('form').addEventListener('submit', function(e) {
     e.preventDefault();
 
     view.emit('submit', view.resolve());

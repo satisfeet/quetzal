@@ -11,13 +11,13 @@
   -webkit-transition: opacity 1s;
 }
 
-.overlay-fade {
-  opacity: 1;
-}
-
-.overlay-inner {
+.overlay > .row > div {
   padding: 30px;
   border: 1px solid #bbb;
   border-radius: 4px;
   background: #fff;
+}
+
+.overlay-fade {
+  opacity: 1;
 }

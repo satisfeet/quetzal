@@ -1,5 +1,9 @@
-section(data-id=product.id)
-  div.col-xs-8
+section.row
+  div.col-xs-6.col-xs-offset-3.col-md-3.col-md-offset-1
+    div.thumbnail
+      img.img-rounded.img-responsive(alt='Image of ' + product.name,
+        src='//placehold.it/600x600')
+  div.col-xs-12.col-md-7
     div.row
       p.alert.alert-danger.hidden
     div.row
@@ -13,7 +17,3 @@ section(data-id=product.id)
         div.btn-group.hidden#controls.hidden
           button.btn.btn-danger(type='click') Submit
           a.btn.btn-default(href='/products/' + product.id) Cancel
-  div.col-xs-4
-    div.thumbnail
-      img.img-rounded.img-responsive(alt='Image of ' + product.name,
-        src='//placehold.it/600x600')

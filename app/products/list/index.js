@@ -16,7 +16,7 @@ function List(models) {
 }
 
 List.prototype.add = function(model) {
-  this.element.appendChild(new Item(model).element);
+  this.element.querySelector('ul').appendChild(new Item(model).element);
 
   return this;
 };

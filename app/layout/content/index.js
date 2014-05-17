@@ -1,24 +1,32 @@
 import query   from 'query';
+import domify  from 'domify';
 import emitter from 'emitter';
 
 function Content() {
-  this.element = query('#content');
+  this.element = query('main');
 }
 
 emitter(Content.prototype);
 
-Content.prototype.empty = function() {
-  while (this.element.lastElementChild) {
-    this.element.lastElementChild.remove();
-  }
+Content.prototype.blur = function() {
+  this.element.classList.toggle('blur');
 
-  return this.emit('emptied');
+  return this;
 };
 
-Content.prototype.append = function(element) {
-  this.element.appendChild(element);
+Content.prototype.insert = function(element) {
+  var content = this.element.querySelector('#content');
 
-  return this.emit('appended');
+  if (typeof element === 'string') {
+    element = domify(element);
+  }
+
+  while (content.lastElementChild) {
+    content.lastElementChild.remove();
+  }
+  content.appendChild(element);
+
+  return this.emit('inserted');
 };
 
 export default Content;

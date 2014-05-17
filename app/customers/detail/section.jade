@@ -1,5 +1,9 @@
-section(data-id=customer.id)
-  div.col-xs-8
+div.row
+  div.col-xs-6.col-xs-offset-3.col-md-3.col-md-offset-1
+    div.thumbnail
+      img.img-rounded.img-responsive(alt='Image of ' + customer.name,
+        src=customer.image.url)
+  div.col-xs-12.col-md-7
     div.row
       div.page-header
         h3#name(contenteditable='true')= customer.name
@@ -23,7 +27,3 @@ section(data-id=customer.id)
         div.btn-group.hidden#controls.hidden
           button.btn.btn-danger(type='click') Submit
           a.btn.btn-default(href='/customers/' + customer.id) Cancel
-  div.col-xs-4
-    div.thumbnail
-      img.img-rounded.img-responsive(alt='Image of ' + customer.name,
-        src=customer.image.url)
