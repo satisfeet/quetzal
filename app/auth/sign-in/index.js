@@ -42,7 +42,7 @@ SignIn.prototype.resolve = function() {
 module.exports = SignIn;
 
 function bindToSubmitEvent(element, view) {
-  element.querySelector('form').addEventListener('submit', function(e) {
+  element.addEventListener('submit', function(e) {
     e.preventDefault();
 
     view.emit('submit', view.resolve());

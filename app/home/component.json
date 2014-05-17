@@ -13,14 +13,17 @@
 
   "scripts": [
     "index.js",
-    "list/index.js"
+    "list/index.js",
+    "content/index.js"
   ],
 
   "templates": [
-    "list/list.jade"
+    "list/list.jade",
+    "content/content.jade"
   ],
 
   "dependencies": {
+    "component/domify": "^1.2.2",
     "visionmedia/jade": "^1.3.1",
     "visionmedia/page.js": "^1.3.7"
   }

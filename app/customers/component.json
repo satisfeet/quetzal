@@ -17,6 +17,7 @@
     "form/index.js",
     "table/index.js",
     "detail/index.js",
+    "content/index.js",
     "confirm/index.js"
   ],
 
@@ -24,6 +25,7 @@
     "form/form.jade",
     "table/row.jade",
     "table/table.jade",
+    "content/content.jade",
     "detail/section.jade",
     "confirm/form.jade"
   ],

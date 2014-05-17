@@ -3,18 +3,17 @@
   "name": "layout",
 
   "styles": [
-    "content/style.css",
-    "overlay/style.css"
+    "content/style.css"
   ],
 
   "scripts": [
     "index.js",
-    "content/index.js",
-    "overlay/index.js"
+    "modal/index.js",
+    "content/index.js"
   ],
 
   "templates": [
-    "overlay/section.jade"
+    "modal/modal.jade"
   ],
 
   "dependencies": {

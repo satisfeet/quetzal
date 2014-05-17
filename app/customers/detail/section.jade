@@ -1,9 +1,9 @@
-div.row
-  div.col-xs-6.col-xs-offset-3.col-md-3.col-md-offset-1
+div
+  div.col-xs-4
     div.thumbnail
       img.img-rounded.img-responsive(alt='Image of ' + customer.name,
         src=customer.image.url)
-  div.col-xs-12.col-md-7
+  div.col-xs-8
     div.row
       div.page-header
         h3#name(contenteditable='true')= customer.name
@@ -22,8 +22,8 @@ div.row
     div.row
       div.col-xs-4.col-xs-offset-8
         div.btn-group.show#actions
-          a.btn.btn-danger(href='/customers/' + customer.id + '/change') Change
-          a.btn.btn-default(href='/customers/' + customer.id + '/remove') Remove
-        div.btn-group.hidden#controls.hidden
-          button.btn.btn-danger(type='click') Submit
-          a.btn.btn-default(href='/customers/' + customer.id) Cancel
+          button.btn.btn-default(id='update', type='button') Update
+          button.btn(id='destroy', type='button') Destroy
+        div.btn-group.hidden#controls
+          button.btn.btn-default(id='submit', type='button') Submit
+          button.btn(id='cancel', type='button') Cancel
