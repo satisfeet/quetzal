@@ -8,15 +8,16 @@
   ],
 
   "styles": [
-    "style.css"
+    "list/style.css"
   ],
 
   "scripts": [
-    "index.js"
+    "index.js",
+    "list/index.js"
   ],
 
   "templates": [
-    "template.jade"
+    "list/list.jade"
   ],
 
   "dependencies": {

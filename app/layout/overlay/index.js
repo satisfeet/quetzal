@@ -42,13 +42,11 @@ Overlay.prototype.close = function() {
   return this.emit('closed');
 };
 
-Overlay.prototype.insert = function(el) {
-  var element = query('.overlay-inner', this.element);
-
-  if (element.lastElementChild) {
-    element.lastElementChild.remove();
+Overlay.prototype.insert = function(element) {
+  if (this.element.lastElementChild) {
+    this.element.lastElementChild.remove();
   }
-  element.appendChild(el);
+  this.element.appendChild(element);
 
   return this;
 };

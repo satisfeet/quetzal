@@ -12,25 +12,25 @@ var manager = agent('/customers');
 page('/customers', find, function(context) {
   var table = new Table().list(context.customers);
 
-  layout.content.empty().append(table.element);
+  layout.content.insert(table.element);
 });
 
 page('/customers/create', function(context) {
   var form = new Form().once('submit', create);
 
-  layout.content.empty().append(form.element);
+  layout.content.insert(form.element);
 });
 
 page('/customers/:customer', findOne, function(context) {
   var detail = new Detail(context.customer).on('submit', update);
 
-  layout.content.empty().append(detail.element);
+  layout.content.insert(detail.element);
 });
 
 page('/customers/:customer/change', findOne, function(context) {
   var form = new Form(context.customer).once('submit', update);
 
-  layout.content.empty().append(form.element);
+  layout.content.insert(form.element);
 });
 
 page('/customers/:customer/remove', findOne, function(context, next) {

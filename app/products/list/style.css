@@ -1,15 +1,10 @@
-a.thumbnail {
+.img-list .thumbnail {
+  padding-top: 30px;
+  transition: all .8s;
+  text-decoration: none;
   border: none;
 }
 
-a.thumbnail img {
-  transition: all 0.6s;
-}
-
-a.thumbnail:hover {
-  text-decoration: none;
-}
-
-a.thumbnail:hover img {
-  border: 2px solid #9a3f3f;
+.img-list .thumbnail:hover {
+  background: #eee;
 }

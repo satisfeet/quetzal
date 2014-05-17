@@ -22,7 +22,7 @@ Confirm.prototype.resolve = function(e) {
 export default Confirm;
 
 function bindToSubmitEvent(element, view) {
-  element.addEventListener('submit', function(e) {
+  element.querySelector('form').addEventListener('submit', function(e) {
     e.preventDefault();
 
     view.emit('submit', view.resolve(), view);

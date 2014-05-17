@@ -1,0 +1,6 @@
+.blur {
+  opacity: 0.8;
+          filter: blur(3px);
+     -moz-filter: blur(3px);
+  -webkit-filter: blur(3px);
+}
