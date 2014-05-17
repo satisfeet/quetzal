@@ -1,12 +1,15 @@
-import Overlay from './overlay';
-import Content from './content';
+var Overlay = require('./overlay');
+var Content = require('./content');
 
-export var overlay = new Overlay();
-export var content = new Content();
+var overlay = new Overlay();
+var content = new Content();
 
 overlay.on('opened', toggleBlur);
 overlay.on('closed', toggleBlur);
 content.on('inserted', closeOverlay);
+
+exports.overlay = overlay;
+exports.content = content;
 
 function toggleBlur() {
   content.blur();

@@ -1,10 +1,10 @@
-import page   from 'page';
-import agent  from 'agent';
-import layout from 'layout';
+var page   = require('page');
+var agent  = require('agent');
+var layout = require('layout');
 
-import List   from './list';
-import Form   from './form';
-import Detail from './detail';
+var List   = require('./list');
+var Form   = require('./form');
+var Detail = require('./detail');
 
 var manager = agent('/products');
 

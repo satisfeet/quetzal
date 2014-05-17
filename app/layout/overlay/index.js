@@ -1,8 +1,8 @@
-import query   from 'query';
-import domify  from 'domify';
-import emitter from 'emitter';
+var query   = require('query');
+var domify  = require('domify');
+var emitter = require('emitter');
 
-import section from './section';
+var section = require('./section');
 
 function Overlay() {
   this.element = query('.overlay');
@@ -51,4 +51,4 @@ Overlay.prototype.insert = function(element) {
   return this;
 };
 
-export default Overlay;
+module.exports = Overlay;

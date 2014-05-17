@@ -1,6 +1,6 @@
-import query   from 'query';
-import domify  from 'domify';
-import emitter from 'emitter';
+var query   = require('query');
+var domify  = require('domify');
+var emitter = require('emitter');
 
 function Content() {
   this.element = query('main');
@@ -29,4 +29,4 @@ Content.prototype.insert = function(element) {
   return this.emit('inserted');
 };
 
-export default Content;
+module.exports = Content;

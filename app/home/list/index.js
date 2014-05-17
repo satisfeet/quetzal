@@ -1,3 +1,1 @@
-import list from './list';
-
-export default list;
+module.exports = require('./list');

@@ -1,7 +1,7 @@
-import domify  from 'domify';
-import emitter from 'emitter';
+var domify  = require('domify');
+var emitter = require('emitter');
 
-import form from './form';
+var form = require('./form');
 
 function Confirm(model) {
   this.element = domify(form({
@@ -19,7 +19,7 @@ Confirm.prototype.resolve = function(e) {
   };
 };
 
-export default Confirm;
+module.exports = Confirm;
 
 function bindToSubmitEvent(element, view) {
   element.querySelector('form').addEventListener('submit', function(e) {

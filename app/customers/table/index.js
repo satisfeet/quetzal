@@ -1,8 +1,8 @@
-import page   from 'page';
-import domify from 'domify';
+var page   = require('page');
+var domify = require('domify');
 
-import row   from './row';
-import table from './table';
+var row   = require('./row');
+var table = require('./table');
 
 function Row(model) {
   this.element = domify(row({
@@ -28,7 +28,7 @@ Table.prototype.add = function(model) {
   return this;
 };
 
-export default Table;
+module.exports = Table;
 
 function bindToClickEvent(element, view) {
   element.addEventListener('click', function(e) {

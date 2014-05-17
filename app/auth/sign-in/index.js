@@ -1,7 +1,7 @@
-import domify  from 'domify';
-import emitter from 'emitter';
+var domify  = require('domify');
+var emitter = require('emitter');
 
-import form from './form.jade';
+var form = require('./form');
 
 function SignIn() {
   this.element = domify(form());
@@ -39,7 +39,7 @@ SignIn.prototype.resolve = function() {
   };
 };
 
-export default SignIn;
+module.exports = SignIn;
 
 function bindToSubmitEvent(element, view) {
   element.querySelector('form').addEventListener('submit', function(e) {

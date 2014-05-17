@@ -29,7 +29,6 @@
     "sqwish": "~0.2.2",
     "then-jade": "~2.0.0",
     "builder-jade": "~1.0.1",
-    "builder-es6-module-to-cjs": "~1.1.0",
     "component-builder": "~1.1.5",
     "component-resolver": "~1.1.3"
   },
