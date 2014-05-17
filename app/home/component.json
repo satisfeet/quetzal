@@ -1,10 +1,14 @@
 {
 
-  "name": "reporter",
+  "name": "home",
 
   "locals": [
     "agent",
     "layout"
+  ],
+
+  "styles": [
+    "style.css"
   ],
 
   "scripts": [

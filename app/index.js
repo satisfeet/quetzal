@@ -3,7 +3,7 @@ import page  from 'page';
 import 'auth';
 import 'navbar';
 
-import 'reporter';
+import 'home';
 import 'products';
 import 'customers';
 

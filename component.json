@@ -8,8 +8,8 @@
 
   "locals": [
     "auth",
+    "home",
     "navbar",
-    "reporter",
     "products",
     "customers"
   ],
