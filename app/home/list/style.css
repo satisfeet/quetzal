@@ -1,19 +1,19 @@
 .icon-list .thumbnail {
   padding-top: 30px;
+  background: none;
   border: none;
 }
 
 .icon-list .thumbnail:hover {
   text-decoration: none;
-  background-color: #eee;
+  background-color: none;
 }
 
-.icon-list .thumbnail > .glyphicon {
-  color: #333;
+.icon-list .thumbnail {
+  color: #3c4045;
   font-size: 60px;
-  font-weight: 100;
 }
 
-.icon-list .thumbnail > .caption {
-  color: #555;
+.icon-list .thumbnail:hover {
+  background-color: #dfdfdf;
 }
