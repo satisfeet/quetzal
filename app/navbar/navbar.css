@@ -1,6 +1,7 @@
 .navbar {
   background-color: #3c4045;
   border: none;
+  border-radius: 2px;
 }
 
 .navbar .navbar-brand,

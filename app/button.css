@@ -1,0 +1,17 @@
+.btn {
+  font-size: 16px;
+  font-weight: 200;
+  border-radius: 2px;
+  border-color: #3c4045;
+}
+
+.btn-default {
+  color: #dfdfdf;
+  background-color: #3c4045;
+}
+
+.btn-default:hover,
+.btn-default:focus {
+  color: #fff;
+  background-color: #3c4045;
+}
