@@ -1,5 +1,5 @@
-var page   = require('page');
-var layout = require('layout');
+var page  = require('page');
+var modal = require('modal');
 
 var Auth   = require('./auth');
 var SignIn = require('./sign-in');
@@ -34,7 +34,7 @@ page('/sign-in', function(context, next) {
         signin.alert('success', 'Everything fine. We will proceed.')
 
         setTimeout(function() {
-          layout.modal.close();
+          modal.close();
 
           page('/');
         }, 1000);
@@ -44,7 +44,7 @@ page('/sign-in', function(context, next) {
     auth.signin(account);
   });
 
-  layout.modal.title('Authentication').insert(signin.element).open();
+  modal.title('Authentication').insert(signin.element).open();
 });
 
 page('/sign-out', function(context, next) {

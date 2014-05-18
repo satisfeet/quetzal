@@ -2,7 +2,7 @@ var domify  = require('domify');
 var emitter = require('emitter');
 var replace = require('replace');
 
-var content = require('./content');
+var content = require('./layout');
 
 function Content() {
   this.element = domify(content());

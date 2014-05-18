@@ -3,8 +3,7 @@
   "name": "products",
 
   "locals": [
-    "agent",
-    "layout"
+    "agent"
   ],
 
   "styles": [
@@ -16,7 +15,7 @@
     "list/index.js",
     "form/index.js",
     "detail/index.js",
-    "content/index.js"
+    "layout/index.js"
   ],
 
   "templates": [
@@ -24,7 +23,7 @@
     "list/list.jade",
     "form/form.jade",
     "detail/section.jade",
-    "content/content.jade"
+    "layout/layout.jade"
   ],
 
   "dependencies": {
@@ -33,6 +32,7 @@
     "component/emitter": "^1.1.2",
     "visionmedia/jade": "^1.3.1",
     "visionmedia/page.js": "^1.3.7",
+    "bodokaiser/component-modal": "^0.0.3",
     "bodokaiser/component-replace": "^1.1.0"
   }
 
