@@ -15,7 +15,7 @@ emitter(Confirm.prototype);
 
 module.exports = Confirm;
 
-function bindToSubmitEvent(element, view) {
+function bindToSubmitEvent(element, model, view) {
   element.addEventListener('submit', function(e) {
     e.preventDefault();
 

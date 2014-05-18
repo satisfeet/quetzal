@@ -80,17 +80,23 @@ page('/customers/:customer', findOne, function(context) {
 function create(model, view) {
   manager.post(model, function(ok) {
     if (!ok) return view.alert('Could not create customer.');
+
+    page('/customers');
   });
 }
 
 function destroy(model, view) {
   manager.del(model.id, function(ok) {
     if (!ok) return view.alert('Could not destroy customer.');
+
+    page('/customers');
   });
 }
 
 function update(model, view) {
   manager.put(model.id, model, function(ok) {
     if (!ok) return view.alert('Could not save your changes.');
+
+    page('/customers/' + model.id);
   });
 }
