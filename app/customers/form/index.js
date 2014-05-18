@@ -23,7 +23,7 @@ Form.prototype.alert = function(message) {
 };
 
 Form.prototype.resolve = function() {
-  var element = this.element.querySelector('form');
+  var element = this.element;
 
   var entity = {
     name:  element.name.value,
@@ -46,7 +46,7 @@ Form.prototype.resolve = function() {
 module.exports = Form;
 
 function bindToSubmitEvent(element, model, view) {
-  element.querySelector('form').addEventListener('submit', function(e) {
+  element.addEventListener('submit', function(e) {
     e.preventDefault();
 
     var entity = view.resolve();

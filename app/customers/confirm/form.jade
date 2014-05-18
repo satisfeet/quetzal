@@ -1,9 +1,6 @@
-div.row
-  div.col-xs-8.col-xs-offset-2
-    form(data-id=customer.id, role='form')
-      legend Confirm
-      div.alert.alert-danger
-        | Do you really want to delete customer #{customer.name}?
-      fieldset
-        div.btn-group.pull-right
-          button.btn(type='submit') Destroy
+form(role='form')
+  p.alert.alert-danger
+    | Do you really want to delete customer #{customer.name}?
+  fieldset
+    div.btn-group.pull-right
+      button.btn(type='submit') Destroy

@@ -8,23 +8,17 @@ function Confirm(model) {
     customer: model
   }));
 
-  bindToSubmitEvent(this.element, this);
+  bindToSubmitEvent(this.element, model, this);
 }
 
 emitter(Confirm.prototype);
 
-Confirm.prototype.resolve = function(e) {
-  return {
-    id: this.element.dataset.id
-  };
-};
-
 module.exports = Confirm;
 
 function bindToSubmitEvent(element, view) {
-  element.querySelector('form').addEventListener('submit', function(e) {
+  element.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    view.emit('submit', view.resolve(), view);
+    view.emit('submit', model, view);
   });
 }

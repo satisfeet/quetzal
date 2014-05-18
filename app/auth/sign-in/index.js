@@ -31,7 +31,7 @@ SignIn.prototype.alert = function(state, message) {
 };
 
 SignIn.prototype.resolve = function() {
-  var element = this.element.querySelector('form');
+  var element = this.element;
 
   return {
     username: element.username.value,

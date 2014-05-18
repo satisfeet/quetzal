@@ -34,6 +34,12 @@ Modal.prototype.close = function() {
   return this.emit('closed');
 };
 
+Modal.prototype.title = function(title) {
+  this.element.querySelector('.modal-title').innerText = title;
+
+  return this;
+};
+
 Modal.prototype.insert = function(element) {
   var content = this.element.querySelector('.modal-body');
 
