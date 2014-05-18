@@ -1,11 +1,10 @@
 - customer = customer || {};
 - customer.address = customer.address || {};
 
-div
-  form(role='form')
-    legend Customer
-    p.alert.alert-danger.hidden
-    fieldset
+form(role='form')
+  p.alert.alert-danger.hidden
+  fieldset
+    div.col-xs-10.col-xs-offset-1
       div.form-group
         label.control-label(for='name') Name
         input.form-control(id='name', name='name', type='text',

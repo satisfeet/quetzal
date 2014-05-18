@@ -50,7 +50,7 @@ page('/customers', find, function(context) {
   content.on('create', function() {
     var form = new Form().once('submit', create);
 
-    layout.modal.insert(form.element).open();
+    layout.modal.title('Create Customer').insert(form.element).open();
   });
   content.showSearch().empty().append(table.element);
 
@@ -65,12 +65,12 @@ page('/customers/:customer', findOne, function(context) {
   detail.on('update', function() {
     var form = new Form(context.customer).once('submit', update);
 
-    layout.modal.insert(form.element).open();
+    layout.modal.title('Update Customer').insert(form.element).open();
   });
   detail.on('destroy', function() {
     var confirm = new Confirm(context.customer).once('submit', destroy);
 
-    layout.modal.insert(confirm.element).open();
+    layout.modal.title('Destroy Customer').insert(confirm.element).open();
   });
   content.hideSearch().empty().append(detail.element);
 

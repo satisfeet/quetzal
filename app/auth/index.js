@@ -44,7 +44,7 @@ page('/sign-in', function(context, next) {
     auth.signin(account);
   });
 
-  layout.modal.insert(signin.element).open();
+  layout.modal.title('Authentication').insert(signin.element).open();
 });
 
 page('/sign-out', function(context, next) {
