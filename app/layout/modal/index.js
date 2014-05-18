@@ -41,12 +41,7 @@ Modal.prototype.title = function(title) {
 };
 
 Modal.prototype.insert = function(element) {
-  var content = this.element.querySelector('.modal-body');
-
-  if (content.lastElementChild) {
-    content.lastElementChild.remove();
-  }
-  content.appendChild(element);
+  replace('.modal-body', element);
 
   return this;
 };

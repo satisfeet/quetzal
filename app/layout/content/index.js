@@ -1,6 +1,6 @@
 var query   = require('query');
-var domify  = require('domify');
 var emitter = require('emitter');
+var replace = require('replace');
 
 function Content() {
   this.element = query('main');
@@ -15,16 +15,7 @@ Content.prototype.blur = function() {
 };
 
 Content.prototype.insert = function(element) {
-  var content = this.element.querySelector('#content');
-
-  if (typeof element === 'string') {
-    element = domify(element);
-  }
-
-  while (content.lastElementChild) {
-    content.lastElementChild.remove();
-  }
-  content.appendChild(element);
+  replace('#content', this.element, element);
 
   return this.emit('inserted');
 };

@@ -34,7 +34,7 @@ page('/products', find, function(context) {
 
     layout.modal.title('Create Product').insert(form.element).open();
   });
-  content.empty().append(list.element);
+  content.insert(list.element);
 
   layout.content.insert(content.element);
 });
@@ -51,7 +51,7 @@ page('/products/:product', findOne, function(context) {
   detail.on('remove', function() {
     console.log('not yet implemented');
   });
-  content.empty().append(detail.element);
+  content.insert(detail.element);
 
   layout.content.insert(content.element);
 });

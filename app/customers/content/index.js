@@ -1,5 +1,6 @@
 var domify  = require('domify');
 var emitter = require('emitter');
+var replace = require('replace');
 
 var content = require('./content');
 
@@ -13,18 +14,8 @@ function Content() {
 
 emitter(Content.prototype);
 
-Content.prototype.empty = function() {
-  var element = this.element.querySelector('#content-inner');
-
-  while (element.lastElementChild) {
-    element.lastElementChild.remove();
-  }
-
-  return this;
-};
-
-Content.prototype.append = function(element) {
-  this.element.querySelector('#content-inner').appendChild(element);
+Content.prototype.insert = function(element) {
+  replace('#content-inner', this.element, element);
 
   return this;
 };
