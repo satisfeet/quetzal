@@ -22,36 +22,28 @@ Form.prototype.alert = function(message) {
   return this;
 };
 
-Form.prototype.resolve = function() {
-  var element = this.element;
-
-  var entity = {
-    name:  element.name.value,
-    email: element.email.value,
-  };
-
-  if (element.city.value) {
-    entity.address = {
-      city: element.city.value
-    };
-    if (element.street.value && element.zip.value) {
-      entity.address.street = element.street.value;
-      entity.address.zip = element.zip.value;
-    }
-  }
-
-  return entity;
-};
-
 module.exports = Form;
 
 function bindToSubmitEvent(element, model, view) {
+  model = model || {};
+
   element.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    var entity = view.resolve();
-    if (model && model.id) entity.id = model.id;
+    model.name = element.name.value;
+    model.email = element.email.value;
 
-    view.emit('submit', entity, view);
+    if (element.city.value) {
+      var address = model.address || {};
+
+      address.city = element.city.value;
+
+      if (element.street.value && element.zip.value) {
+        address.street = element.street.value;
+        address.zip = element.zip.value;
+      }
+    }
+
+    view.emit('submit', model, view);
   });
 }
