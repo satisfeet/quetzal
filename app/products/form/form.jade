@@ -1,14 +1,11 @@
 - product = product || {};
-- product.address = product.address || {};
 
-divr.row
-  div.col-md-10.col-md-offset-1
-    form(role='form')
-      legend Product
-      p.alert.alert-danger.hidden
-      fieldset
-        div.form-group
-          label.control-label(for='name') Name
-          input.form-control(id='name', name='name', type='text',
-            value=product.name, placeholder='Max Mustermann', required)
-        button.btn.btn-default.pull-right(type='submit') Save
+form(role='form')
+  p.alert.alert-danger.hidden
+  fieldset
+    div.col-xs-10.col-xs-offset-1
+      div.form-group
+        label.control-label(for='name') Name
+        input.form-control(id='name', name='name', type='text',
+          value=product.name, placeholder='Max Mustermann', required)
+      button.btn.btn-default.pull-right(type='submit') Save
