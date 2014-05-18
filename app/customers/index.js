@@ -52,7 +52,7 @@ page('/customers', find, function(context) {
 
     layout.modal.title('Create Customer').insert(form.element).open();
   });
-  content.showSearch().empty().append(table.element);
+  content.showSearch().insert(table.element);
 
   layout.content.insert(content.element);
 });
@@ -72,7 +72,7 @@ page('/customers/:customer', findOne, function(context) {
 
     layout.modal.title('Destroy Customer').insert(confirm.element).open();
   });
-  content.hideSearch().empty().append(detail.element);
+  content.hideSearch().insert(detail.element);
 
   layout.content.insert(content.element);
 });
