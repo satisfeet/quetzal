@@ -12,8 +12,8 @@ section.row
     div.row
       div.col-xs-4.col-xs-offset-8
         div.btn-group.show#actions
-          a.btn.btn-danger(href='/products/' + product.id + '/change') Change
-          a.btn.btn-default(href='/products/' + product.id + '/remove') Remove
+          button.btn.btn-default(id='update', type='button') Update
+          button.btn(id='remove', type='button') Remove
         div.btn-group.hidden#controls.hidden
-          button.btn.btn-danger(type='click') Submit
-          a.btn.btn-default(href='/products/' + product.id) Cancel
+          button.btn.btn-default(id='submit', type='button') Submit
+          button.btn(id='cancel', type='button') Cancel

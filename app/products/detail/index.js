@@ -12,7 +12,9 @@ function Detail(model) {
   }));
 
   bindToInputEvent(this.element, model, this);
-  bindToButtonClickEvent(this.element, model, this);
+  bindToUpdateClickEvent(this.element, model, this);
+  bindToRemoveClickEvent(this.element, model, this);
+  bindToSubmitClickEvent(this.element, model, this);
 }
 
 Detail.prototype.alert = function(message) {
@@ -24,11 +26,16 @@ Detail.prototype.alert = function(message) {
   return this;
 };
 
-Detail.prototype.toggleActions = function() {
-  if (!this.toggledActions) {
-    this.element.querySelector('#actions').classList.toggle('hidden');
-    this.element.querySelector('#controls').classList.toggle('hidden');
-  }
+Detail.prototype.showActions = function() {
+this.element.querySelector('#actions').classList.remove('hidden');
+this.element.querySelector('#controls').classList.add('hidden');
+
+  return this;
+};
+
+Detail.prototype.hideActions = function() {
+  this.element.querySelector('#actions').classList.add('hidden');
+  this.element.querySelector('#controls').classList.remove('hidden');
 
   return this;
 };
@@ -41,17 +48,24 @@ function bindToInputEvent(element, model, view) {
   element.addEventListener('input', function(e) {
     model[e.target.name] = e.target.value;
 
-    view.toggleActions();
-    view.toggledActions = true;
+    view.showActions();
   });
 }
 
-function bindToButtonClickEvent(element, model, view) {
-  element.querySelector('#controls .btn-danger')
-    .addEventListener('click', function(e) {
-      view.toggledActions = false;
-      view.toggleActions();
+function bindToUpdateClickEvent(element, model, view) {
+  element.querySelector('#update').addEventListener('click', function(e) {
+    view.emit('update', model, view);
+  });
+}
 
-      view.emit('submit', model, view);
-    });
+function bindToRemoveClickEvent(element, model, view) {
+  element.querySelector('#remove').addEventListener('click', function(e) {
+    view.emit('remove', model, view);
+  });
+}
+
+function bindToSubmitClickEvent(element, model, view) {
+  element.querySelector('#submit').addEventListener('click', function(e) {
+    view.emit('submit', model, view);
+  });
 }

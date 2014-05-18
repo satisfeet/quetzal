@@ -2,39 +2,12 @@ var page   = require('page');
 var agent  = require('agent');
 var layout = require('layout');
 
-var List   = require('./list');
-var Form   = require('./form');
-var Detail = require('./detail');
+var List    = require('./list');
+var Form    = require('./form');
+var Detail  = require('./detail');
+var Content = require('./content');
 
 var manager = agent('/products');
-
-page('/products', find, function(context) {
-  var list = new List(context.products);
-
-  layout.content.insert(list.element);
-});
-
-page('/products/create', function(context) {
-  var form = new Form().once('submit', create);
-
-  layout.content.insert(form.element);
-});
-
-page('/products/:product', findOne, function(context) {
-  var detail = new Detail(context.product).once('submit', update);
-
-  layout.content.insert(detail.element);
-});
-
-page('/products/:product/change', findOne, function(context) {
-  var form = new Form().once('submit', update);
-
-  layout.content.insert(form.element);
-});
-
-page('/products/:product/remove', findOne, function(context) {
-
-});
 
 function find(context, next) {
   manager.get(function(ok, body, state) {
@@ -51,6 +24,37 @@ function findOne(context, next) {
     next();
   });
 }
+
+page('/products', find, function(context) {
+  var list = new List(context.products);
+  var content = new Content();
+
+  content.on('create', function() {
+    var form = new Form().once('submit', create);
+
+    layout.modal.title('Create Product').insert(form.element).open();
+  });
+  content.empty().append(list.element);
+
+  layout.content.insert(content.element);
+});
+
+page('/products/:product', findOne, function(context) {
+  var detail = new Detail(context.product).once('submit', update);
+  var content = new Content();
+
+  detail.on('update', function() {
+    var form = new Form(context.product).once('submit', update);
+
+    layout.modal.title('Update Product').insert(form.element).open();
+  });
+  detail.on('remove', function() {
+    console.log('not yet implemented');
+  });
+  content.empty().append(detail.element);
+
+  layout.content.insert(content.element);
+});
 
 function create(model, view) {
   manager.post(model, function(ok) {
