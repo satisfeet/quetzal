@@ -1,38 +1,23 @@
-var page   = require('page');
-var agent  = require('agent');
-var layout = require('layout');
+var page    = require('page');
+var agent   = require('agent');
+var modal   = require('modal');
+var replace = require('replace');
 
 var Form    = require('./form');
 var Table   = require('./table');
 var Detail  = require('./detail');
-var Content = require('./content');
+var Layout  = require('./layout');
 var Confirm = require('./confirm');
 
 var manager = agent('/customers');
 
-function find(context, next) {
-  manager.get(function(ok, body) {
-    context.customers = body;
-
-    next();
-  });
-}
-
-function findOne(context, next) {
-  manager.get(context.params.customer, function(ok, body) {
-    context.customer = body;
-
-    next();
-  });
-}
-
 page('/customers', find, function(context) {
-  var table   = new Table();
-  var content = new Content();
+  var table  = new Table();
+  var layout = new Layout();
 
   context.customers.forEach(table.add, table);
 
-  content.on('search', function(query) {
+  layout.on('search', function(query) {
     table.empty();
 
     context.customers
@@ -47,56 +32,80 @@ page('/customers', find, function(context) {
         })
       .forEach(table.add, table);
   });
-  content.on('create', function() {
-    var form = new Form().once('submit', create);
+  layout.on('create', function() {
+    var form = new Form();
 
-    layout.modal.title('Create Customer').insert(form.element).open();
+    form.once('submit', function(model) {
+      manager.post(model, function(ok) {
+        if (!ok) return form.alert('Could not create customer.');
+
+        page('/customers');
+
+        modal.close();
+      });
+    });
+
+    modal.title('Create Customer').insert(form.element).open();
   });
-  content.showSearch().insert(table.element);
+  layout.showSearch();
 
-  layout.content.insert(content.element);
+  replace('#content', layout.insert(table.element).element);
 });
 
 page('/customers/:customer', findOne, function(context) {
+  var layout = new Layout();
   var detail = new Detail(context.customer);
-  var content = new Content();
 
-  detail.on('change', update);
+  detail.on('change', function() {
+    manager.put(model.id, model, function(ok) {});
+  });
   detail.on('update', function() {
-    var form = new Form(context.customer).once('submit', update);
+    var form = new Form(context.customer);
 
-    layout.modal.title('Update Customer').insert(form.element).open();
+    form.once('submit', function(model) {
+      manager.put(model.id, model, function(ok) {
+        if (!ok) return form.alert('Could not save your changes.');
+
+        page('/customers/' + model.id);
+
+        modal.close();
+      });
+    });
+
+    modal.title('Update Customer').insert(form.element).open();
   });
   detail.on('destroy', function() {
-    var confirm = new Confirm(context.customer).once('submit', destroy);
+    var confirm = new Confirm(context.customer);
 
-    layout.modal.title('Destroy Customer').insert(confirm.element).open();
+    confirm.once('submit', function(model) {
+      manager.del(model.id, function(ok) {
+        if (!ok) return view.alert('Could not destroy customer.');
+
+        page('/customers');
+
+        modal.close();
+      });
+    });
+
+    modal.title('Destroy Customer').insert(confirm.element).open();
   });
-  content.hideSearch().insert(detail.element);
+  layout.hideSearch();
 
-  layout.content.insert(content.element);
+  replace('#content', layout.insert(detail.element).element);
 });
 
-function create(model, view) {
-  manager.post(model, function(ok) {
-    if (!ok) return view.alert('Could not create customer.');
+function find(context, next) {
+  manager.get(function(ok, body) {
+    context.customers = body;
 
-    page('/customers');
+    next();
   });
 }
 
-function destroy(model, view) {
-  manager.del(model.id, function(ok) {
-    if (!ok) return view.alert('Could not destroy customer.');
+function findOne(context, next) {
+  manager.get(context.params.customer, function(ok, body) {
+    context.customer = body;
 
-    page('/customers');
-  });
-}
-
-function update(model, view) {
-  manager.put(model.id, model, function(ok) {
-    if (!ok) return view.alert('Could not save your changes.');
-
-    page('/customers/' + model.id);
+    next();
   });
 }

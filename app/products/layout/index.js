@@ -2,23 +2,23 @@ var domify  = require('domify');
 var emitter = require('emitter');
 var replace = require('replace');
 
-var content = require('./content');
+var layout = require('./layout');
 
-function Content() {
-  this.element = domify(content());
+function Layout() {
+  this.element = domify(layout());
 
   bindToCreateClickEvent(this.element, this);
 }
 
-emitter(Content.prototype);
+emitter(Layout.prototype);
 
-Content.prototype.insert = function(element) {
+Layout.prototype.insert = function(element) {
   replace('#content-inner', this.element, element);
 
   return this;
 };
 
-module.exports = Content;
+module.exports = Layout;
 
 function bindToCreateClickEvent(element, view) {
   element.querySelector('#create').addEventListener('click', function(e) {

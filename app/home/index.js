@@ -1,13 +1,12 @@
-var page   = require('page');
-var layout = require('layout');
+var page    = require('page');
+var replace = require('replace');
 
-var List    = require('./list');
-var Content = require('./content');
+var List   = require('./list');
+var Layout = require('./layout');
 
 page('/', function() {
-  var list    = new List();
-  var content = new Content();
+  var list = new List();
+  var layout = new Layout();
 
-  content.append(list.element);
-  layout.content.insert(content.element);
+  replace('#content', layout.insert(list.element).element);
 });

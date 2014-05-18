@@ -3,8 +3,7 @@
   "name": "customers",
 
   "locals": [
-    "agent",
-    "layout"
+    "agent"
   ],
 
   "styles": [
@@ -17,7 +16,7 @@
     "form/index.js",
     "table/index.js",
     "detail/index.js",
-    "content/index.js",
+    "layout/index.js",
     "confirm/index.js"
   ],
 
@@ -25,7 +24,7 @@
     "form/form.jade",
     "table/row.jade",
     "table/table.jade",
-    "content/content.jade",
+    "layout/layout.jade",
     "detail/section.jade",
     "confirm/form.jade"
   ],
@@ -36,6 +35,7 @@
     "component/emitter": "^1.1.2",
     "visionmedia/jade": "^1.3.1",
     "visionmedia/page.js": "^1.3.7",
+    "bodokaiser/component-modal": "^0.0.3",
     "bodokaiser/component-replace": "^1.1.0"
   }
 
