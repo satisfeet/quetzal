@@ -7,13 +7,13 @@
   ],
 
   "styles": [
-    "navbar.css",
-    "dropdown.css"
+    "navbar/style.css",
+    "dropdown/style.css"
   ],
 
   "scripts": [
     "index.js",
-    "navbar.js"
+    "navbar/index.js"
   ],
 
   "dependencies": {
