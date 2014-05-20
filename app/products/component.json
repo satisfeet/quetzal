@@ -32,7 +32,7 @@
     "component/emitter": "^1.1.2",
     "visionmedia/jade": "^1.3.1",
     "visionmedia/page.js": "^1.3.7",
-    "bodokaiser/component-modal": "^0.0.3",
+    "bodokaiser/component-modal": "^0.0.5",
     "bodokaiser/component-replace": "^1.1.0"
   }
 
