@@ -21,21 +21,13 @@ page('/sign-in', function(context, next) {
   var signin = new SignIn();
 
   signin.on('submit', function(account) {
-    auth.once('error', function(error) {
-      signin.state('error');
-      signin.alert('danger', 'We had a network error. Sorry try later.');
-    });
     auth.once('signin', function(success) {
       if (!success) {
-        signin.state('warning');
         signin.alert('warning', 'Your credentials were not accepted.');
       } else {
-        signin.state('success');
         signin.alert('success', 'Everything fine. We will proceed.')
 
         setTimeout(function() {
-          modal.close();
-
           page('/');
         }, 1000);
       }
