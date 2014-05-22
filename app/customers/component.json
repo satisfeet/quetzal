@@ -2,10 +2,6 @@
 
   "name": "customers",
 
-  "locals": [
-    "agent"
-  ],
-
   "styles": [
     "table/style.css",
     "detail/style.css"
@@ -36,6 +32,7 @@
     "visionmedia/jade": "^1.3.1",
     "visionmedia/page.js": "^1.3.7",
     "bodokaiser/component-modal": "^0.0.5",
+    "bodokaiser/component-rester": "^1.0.0",
     "bodokaiser/component-replace": "^1.1.0"
   }
 

@@ -1,12 +1,14 @@
 var store   = require('store');
-var agent   = require('agent');
+var rester  = require('rester');
 var emitter = require('emitter');
 
 function Auth() {
-  this.agent = agent('/session');
-  this.agent.on('error', function(err) {
-    this.emit('error', err);
-  }.bind(this));
+  var self = this;
+
+  this.agent = rester('http://engine.satisfeet.me/session');
+  this.agent.on('error', function(error) {
+    self.emit('error', error);
+  });
 }
 
 emitter(Auth.prototype);
@@ -20,28 +22,34 @@ Auth.prototype.token = function() {
 };
 
 Auth.prototype.check = function() {
+  var self = this;
+
   if (!store.get('session')) {
     return this.emit('check', false);
   }
 
-  this.agent.get(function(ok, body) {
-    if (!ok) store.set('session', null);
+  this.agent.find()
+    .set('Authorization', 'Bearer ' + this.token())
+    .end(function(respond) {
+      if (!respond.ok) store.set('session', null);
 
-    this.emit('check', ok);
-  }.bind(this));
+      self.emit('check', respond.ok);
+    });
 
   return this;
 };
 
 Auth.prototype.signin = function(account) {
-  this.agent.post(account, function(ok, body) {
-    if (ok) {
+  var self = this;
+
+  this.agent.persist(account, function(respond) {
+    if (respond.ok) {
       store.set('user', account.username);
-      store.set('session', body.token);
+      store.set('session', respond.body.token);
     }
 
-    this.emit('signin', ok);
-  }.bind(this));
+    self.emit('signin', respond.ok);
+  });
 
   return this;
 };
