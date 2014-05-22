@@ -3,95 +3,86 @@ var modal   = require('modal');
 var rester  = require('rester');
 var replace = require('replace');
 
+var Show    = require('./show');
 var Form    = require('./form');
 var Table   = require('./table');
-var Detail  = require('./detail');
 var Layout  = require('./layout');
-var Confirm = require('./confirm');
+var Destroy = require('./destroy');
 
 var agent = rester('http://engine.satisfeet.me/customers');
 
 page('/customers', find, function(context) {
-  var table  = new Table();
+  var table  = new Table(context.customers);
   var layout = new Layout();
 
-  context.customers.forEach(table.add, table);
-
   layout.on('search', function(query) {
-    table.empty();
-
-    context.customers
-      .forEach(function(model) {
-        return Object.keys(model)
-          .map(function(key) {
-            return model[key];
-          })
-          .some(function(value) {
-            return query.test(value);
-          });
-        })
-      .forEach(table.add, table);
+    table.filter(context.customers, query);
   });
-  layout.on('create', function() {
-    var form = new Form();
-
-    form.once('submit', function(model) {
-      manager.persist(model, function(response) {
-        if (!response.ok) return form.alert('Could not create customer.');
-
-        page('/customers');
-
-        modal.close();
-      });
-    });
-
-    modal.title('Create Customer').insert(form.element).open();
-  });
-  layout.showSearch();
 
   replace('#content', layout.insert(table.element).element);
 });
 
+page('/customers/create', function(context) {
+  var form = new Form();
+
+  form.once('submit', function(model) {
+    agent.persist(model, function(response) {
+      if (!response.ok) return form.alert('Could not create customer.');
+
+      page('/customers');
+
+      modal.close();
+    });
+  });
+
+  modal.title('Customer Create').insert(form.element).open();
+});
+
 page('/customers/:customer', findOne, function(context) {
-  var layout = new Layout();
-  var detail = new Detail(context.customer);
+  var show   = new Show(context.customer);
+  var layout = new Layout(context.customer);
 
-  detail.on('change', function() {
-    manager.persist(model).end();
-  });
-  detail.on('update', function() {
-    var form = new Form(context.customer);
-
-    form.once('submit', function(model) {
-      agent.persist(model, function(response) {
-        if (!response.ok) return form.alert('Could not save your changes.');
-
-        page('/customers/' + model.id);
-
-        modal.close();
-      });
+  show.on('submit', function(model) {
+    agent.persist(model, function() {
+      page('/customers/' + model.id);
     });
-
-    modal.title('Update Customer').insert(form.element).open();
   });
-  detail.on('destroy', function() {
-    var confirm = new Confirm(context.customer);
+  show.on('cancel', function(model) {
+    page('/customers/' + model.id);
+  });
 
-    confirm.once('submit', function(model) {
-      agent.destroy(model.id, function(response) {
-        if (!response.ok) return view.alert('Could not destroy customer.');
+  replace('#content', layout.insert(show.element).element);
+});
 
-        page('/customers');
+page('/customers/:customer/update', findOne, function(context) {
+  var form = new Form(context.customer);
 
-        modal.close();
-      });
+  form.once('submit', function(model) {
+    agent.persist(model, function() {
+      page('/customers/' + model.id);
+
+      modal.close();
     });
-
-    modal.title('Destroy Customer').insert(confirm.element).open();
   });
-  layout.hideSearch();
 
-  replace('#content', layout.insert(detail.element).element);
+  modal.title('Customer Update').insert(form.element).open();
+});
+
+page('/customers/:customer/destroy', findOne, function(context) {
+  var destroy = new Destroy(context.customer);
+
+  destroy.once('submit', function(model) {
+    agent.destroy(model, function() {
+      page('/customers');
+
+      modal.close();
+    });
+  });
+  destroy.once('cancel', function() {
+    modal.close();
+  });
+
+  modal.title('Customer Destroy').insert(destroy.element).open();
 });
 
 function find(context, next) {

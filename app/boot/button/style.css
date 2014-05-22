@@ -1,9 +1,16 @@
 .btn {
+  color: #3c4045;
   font-size: 16px;
   font-weight: 200;
   border-radius: 2px;
   border-color: #3c4045;
   background-color: #fff;
+  transition: all 0.6s;
+}
+
+.btn:hover {
+  color: #fff;
+  background-color: #3c4045;
 }
 
 .btn-default {
