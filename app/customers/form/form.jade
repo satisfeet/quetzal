@@ -26,4 +26,9 @@ form(role='form')
         input.form-control(id='zip', name='zip', type='number',
           value=customer.address.zip, placeholder='10000',
           min='10000', max='99999')
-      button.btn.btn-default.pull-right(type='submit') Save
+      div.btn-group.pull-right
+        button.btn(type='submit') Save
+        if (customer.id)
+          a.btn.btn-default(href='/customers/' + customer.id) Cancel
+        else
+          a.btn.btn-default(href='/customers') Cancel

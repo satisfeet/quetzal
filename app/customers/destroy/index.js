@@ -9,7 +9,6 @@ function Destroy(model) {
   }));
 
   bindToSubmitEvent(this.element, model, this);
-  bindToCancelClickEvent(this.element, model, this);
 }
 
 emitter(Destroy.prototype);
@@ -21,11 +20,5 @@ function bindToSubmitEvent(element, model, view) {
     e.preventDefault();
 
     view.emit('submit', model, view);
-  });
-}
-
-function bindToCancelClickEvent(element, model, view) {
-  element.querySelector('#cancel').addEventListener('click', function(e) {
-    view.emit('cancel');
   });
 }
