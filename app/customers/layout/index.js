@@ -4,41 +4,26 @@ var replace = require('replace');
 
 var content = require('./layout');
 
-function Content() {
-  this.element = domify(content());
+function Layout(model) {
+  this.element = domify(content({
+    customer: model
+  }));
 
-  bindToCreateClickEvent(this.element, this);
+  // we dont have a search query normaly
+  if (model) return;
   bindToSearchInputEvent(this.element, this);
   bindToSearchSubmitEvent(this.element, this);
 }
 
-emitter(Content.prototype);
+emitter(Layout.prototype);
 
-Content.prototype.insert = function(element) {
+Layout.prototype.insert = function(element) {
   replace('#content-inner', this.element, element);
 
   return this;
 };
 
-Content.prototype.showSearch = function() {
-  this.element.querySelector('#search').classList.remove('hidden');
-
-  return this;
-};
-
-Content.prototype.hideSearch = function() {
-  this.element.querySelector('#search').classList.add('hidden');
-
-  return this;
-};
-
-module.exports = Content;
-
-function bindToCreateClickEvent(element, view) {
-  element.querySelector('#create').addEventListener('click', function(e) {
-    view.emit('create');
-  });
-}
+module.exports = Layout;
 
 function bindToSearchInputEvent(element, view) {
   element.querySelector('#search').addEventListener('input', function(e) {

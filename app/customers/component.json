@@ -3,26 +3,26 @@
   "name": "customers",
 
   "styles": [
-    "table/style.css",
-    "detail/style.css"
+    "show/style.css",
+    "table/style.css"
   ],
 
   "scripts": [
     "index.js",
+    "show/index.js",
     "form/index.js",
     "table/index.js",
-    "detail/index.js",
     "layout/index.js",
-    "confirm/index.js"
+    "destroy/index.js"
   ],
 
   "templates": [
+    "show/show.jade",
     "form/form.jade",
     "table/row.jade",
     "table/table.jade",
     "layout/layout.jade",
-    "detail/section.jade",
-    "confirm/form.jade"
+    "destroy/destroy.jade"
   ],
 
   "dependencies": {

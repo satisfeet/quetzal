@@ -2,26 +2,24 @@ var clone   = require('clone');
 var domify  = require('domify');
 var emitter = require('emitter');
 
-var section = require('./section');
+var show = require('./show');
 
-function Section(model) {
+function Show(model) {
   // do not overwrite the source model!
   model = clone(model);
 
-  this.element = domify(section({
+  this.element = domify(show({
     customer: model
   }));
 
   bindToInputEvent(this.element, model, this);
   bindToSubmitClickEvent(this.element, model, this);
   bindToCancelClickEvent(this.element, model, this);
-  bindToUpdateClickEvent(this.element, model, this);
-  bindToDestroyClickEvent(this.element, model, this);
 }
 
-emitter(Section.prototype);
+emitter(Show.prototype);
 
-Section.prototype.alert = function(message) {
+Show.prototype.alert = function(message) {
   var element = this.element.querySelector('.alert');
 
   element.classList.remove('hidden');
@@ -30,21 +28,13 @@ Section.prototype.alert = function(message) {
   return this;
 };
 
-Section.prototype.showActions = function() {
-  this.element.querySelector('#actions').classList.add('hidden');
-  this.element.querySelector('#controls').classList.remove('hidden');
-
-  return this;
-};
-
-Section.prototype.hideActions = function() {
+Show.prototype.showActions = function() {
   this.element.querySelector('#actions').classList.remove('hidden');
-  this.element.querySelector('#controls').classList.add('hidden');
 
   return this;
 };
 
-module.exports = Section;
+module.exports = Show;
 
 function bindToInputEvent(element, model, view) {
   element.addEventListener('input', function(e) {
@@ -60,28 +50,12 @@ function bindToInputEvent(element, model, view) {
 
 function bindToSubmitClickEvent(element, model, view) {
   element.querySelector('#submit').addEventListener('click', function(e) {
-    view.emit('change', model, view);
-
-    view.hideActions();
+    view.emit('submit', model);
   });
 }
 
 function bindToCancelClickEvent(element, model, view) {
   element.querySelector('#cancel').addEventListener('click', function(e) {
-    // TODO: reset content back to origin model state
-
-    view.hideActions();
+    view.emit('cancel', model);
   });
 };
-
-function bindToUpdateClickEvent(element, model, view) {
-  element.querySelector('#update').addEventListener('click', function(e) {
-    view.emit('update', model, view);
-  });
-}
-
-function bindToDestroyClickEvent(element, model, view) {
-  element.querySelector('#destroy').addEventListener('click', function(e) {
-    view.emit('destroy', model, view);
-  });
-}

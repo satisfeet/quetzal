@@ -1,17 +1,20 @@
 div.container
   div.row
-    div.col-xs-6
-      form(id='search', role='form')
-        div.input-group
-          div.input-group-btn
-            button.btn.btn-default(type='submit')
-              span.glyphicon.glyphicon-search
-              |  Search
-          input.form-control(id='query', name='query', type='search',
-            placeholder='Your search query', required)
-    div.col-xs-6
-      button.btn.btn-default.pull-right(id='create', type='button')
-        span.glyphicon.glyphicon-plus
-        |  Create
+    div.col-xs-4
+      if (!customer)
+        form(id='search', role='form')
+          div.input-group
+            div.input-group-btn
+              button.btn(type='submit') Search
+            input.form-control(id='query', name='query', type='search',
+              placeholder='Your search query', required)
+      else
+        a.btn(href='/customers') Back
+    div.col-xs-3.col-xs-offset-5
+      div.btn-group.pull-right
+        a.btn(href='/customers/create') Create
+        if (customer && customer.id)
+          a.btn(href='/customers/' + customer.id + '/update') Update
+          a.btn(href='/customers/' + customer.id + '/destroy') Destroy
   div.row
     div#content-inner(style='padding-top: 30px;')

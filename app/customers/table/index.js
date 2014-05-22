@@ -14,6 +14,8 @@ function Row(model) {
 
 function Table(models) {
   this.element = domify(table());
+
+  models.forEach(this.add, this);
 }
 
 Table.prototype.empty = function() {
@@ -22,6 +24,20 @@ Table.prototype.empty = function() {
   while (element.lastElementChild) {
     element.lastElementChild.remove();
   }
+
+  return this;
+};
+
+Table.prototype.filter = function(models, query) {
+  this.empty();
+
+  models
+    .filter(function(model) {
+      return Object.keys(model)
+        .map(function(key) { return model[key] })
+        .some(function(value) { return query.test(value) });
+    })
+    .forEach(this.add, this);
 
   return this;
 };
