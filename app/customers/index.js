@@ -1,6 +1,6 @@
 var page    = require('page');
-var agent   = require('agent');
 var modal   = require('modal');
+var rester  = require('rester');
 var replace = require('replace');
 
 var Form    = require('./form');
@@ -9,7 +9,7 @@ var Detail  = require('./detail');
 var Layout  = require('./layout');
 var Confirm = require('./confirm');
 
-var manager = agent('/customers');
+var agent = rester('http://engine.satisfeet.me/customers');
 
 page('/customers', find, function(context) {
   var table  = new Table();
@@ -36,8 +36,8 @@ page('/customers', find, function(context) {
     var form = new Form();
 
     form.once('submit', function(model) {
-      manager.post(model, function(ok) {
-        if (!ok) return form.alert('Could not create customer.');
+      manager.persist(model, function(response) {
+        if (!response.ok) return form.alert('Could not create customer.');
 
         page('/customers');
 
@@ -57,14 +57,14 @@ page('/customers/:customer', findOne, function(context) {
   var detail = new Detail(context.customer);
 
   detail.on('change', function() {
-    manager.put(model.id, model, function(ok) {});
+    manager.persist(model).end();
   });
   detail.on('update', function() {
     var form = new Form(context.customer);
 
     form.once('submit', function(model) {
-      manager.put(model.id, model, function(ok) {
-        if (!ok) return form.alert('Could not save your changes.');
+      agent.persist(model, function(response) {
+        if (!response.ok) return form.alert('Could not save your changes.');
 
         page('/customers/' + model.id);
 
@@ -78,8 +78,8 @@ page('/customers/:customer', findOne, function(context) {
     var confirm = new Confirm(context.customer);
 
     confirm.once('submit', function(model) {
-      manager.del(model.id, function(ok) {
-        if (!ok) return view.alert('Could not destroy customer.');
+      agent.destroy(model.id, function(response) {
+        if (!response.ok) return view.alert('Could not destroy customer.');
 
         page('/customers');
 
@@ -95,16 +95,18 @@ page('/customers/:customer', findOne, function(context) {
 });
 
 function find(context, next) {
-  manager.get(function(ok, body) {
-    context.customers = body;
+  agent.find(function(response) {
+    context.customers = response.body;
 
     next();
   });
 }
 
 function findOne(context, next) {
-  manager.get(context.params.customer, function(ok, body) {
-    context.customer = body;
+  var param = context.params.customer;
+
+  agent.findOne(param, function(response) {
+    context.customer = response.body;
 
     next();
   });

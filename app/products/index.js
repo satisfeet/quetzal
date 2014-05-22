@@ -1,6 +1,6 @@
 var page    = require('page');
-var agent   = require('agent');
 var modal   = require('modal');
+var rester  = require('rester');
 var replace = require('replace');
 
 var List   = require('./list');
@@ -8,19 +8,21 @@ var Form   = require('./form');
 var Detail = require('./detail');
 var Layout = require('./layout');
 
-var manager = agent('/products');
+var agent = rester('http://engine.satisfeet.me/products');
 
 function find(context, next) {
-  manager.get(function(ok, body, state) {
-    context.products = body;
+  agent.find(function(response) {
+    context.products = response.body;
 
     next();
   });
 }
 
 function findOne(context, next) {
-  manager.get(context.params.product, function(ok, body, state) {
-    context.product = body;
+  var param = context.params.product;
+
+  agent.findOne(param, function(response) {
+    context.product = response.body;
 
     next();
   });

@@ -2,10 +2,6 @@
 
   "name": "home",
 
-  "locals": [
-    "agent"
-  ],
-
   "styles": [
     "list/style.css"
   ],
