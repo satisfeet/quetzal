@@ -18,7 +18,8 @@
   ],
 
   "scripts": [
-    "index.js"
+    "index.js",
+    "body/index.js"
   ],
 
   "dependencies": {
