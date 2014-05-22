@@ -28,6 +28,8 @@ page('/sign-in', function(context, next) {
         signin.alert('success', 'Everything fine. We will proceed.')
 
         setTimeout(function() {
+          modal.element.querySelector('.close').classList.remove('hidden');
+
           page('/');
         }, 1000);
       }
@@ -35,6 +37,9 @@ page('/sign-in', function(context, next) {
 
     auth.signin(account);
   });
+
+  // hide the fucking close button - should be done by modal.closable(false)
+  modal.element.querySelector('.close').classList.add('hidden');
 
   modal.title('Authentication').insert(signin.element).open();
 });
