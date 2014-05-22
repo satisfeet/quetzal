@@ -30,8 +30,6 @@ page('/customers/create', function(context) {
       if (!response.ok) return form.alert('Could not create customer.');
 
       page('/customers');
-
-      modal.close();
     });
   });
 
@@ -43,12 +41,11 @@ page('/customers/:customer', findOne, function(context) {
   var layout = new Layout(context.customer);
 
   show.on('submit', function(model) {
-    agent.persist(model, function() {
+    agent.persist(model, function(response) {
+      if (!response.ok) return show.alert('Could not update customer.');
+
       page('/customers/' + model.id);
     });
-  });
-  show.on('cancel', function(model) {
-    page('/customers/' + model.id);
   });
 
   replace('#content', layout.insert(show.element).element);
@@ -58,10 +55,10 @@ page('/customers/:customer/update', findOne, function(context) {
   var form = new Form(context.customer);
 
   form.once('submit', function(model) {
-    agent.persist(model, function() {
-      page('/customers/' + model.id);
+    agent.persist(model, function(response) {
+      if (!response.ok) return form.alert('Could not update customer.');
 
-      modal.close();
+      page('/customers/' + model.id);
     });
   });
 
@@ -74,12 +71,7 @@ page('/customers/:customer/destroy', findOne, function(context) {
   destroy.once('submit', function(model) {
     agent.destroy(model, function() {
       page('/customers');
-
-      modal.close();
     });
-  });
-  destroy.once('cancel', function() {
-    modal.close();
   });
 
   modal.title('Customer Destroy').insert(destroy.element).open();
