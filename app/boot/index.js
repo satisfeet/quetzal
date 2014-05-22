@@ -6,21 +6,7 @@ var rester = require('rester');
 
 rester.use(bearer);
 
-// for some reason it is not possible to use sub modules in boot
-// setting up sub modules will cause "undefined" to be thrown...
-modal.on('opened', function() {
-  query('main').classList.add('blur');
-});
-
-modal.on('closed', function() {
-  query('main').classList.remove('blur');
-});
-
-page(function(context, next) {
-  modal.close();
-
-  next();
-});
+require('./body');
 
 require('auth');
 require('navbar');
