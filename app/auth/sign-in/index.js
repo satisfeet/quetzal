@@ -24,6 +24,8 @@ SignIn.prototype.state = function(state) {
 SignIn.prototype.alert = function(state, message) {
   var element = this.element.querySelector('.alert');
 
+  this.state(state);
+
   element.className = 'alert alert-' + state;
   element.innerText = message;
 
