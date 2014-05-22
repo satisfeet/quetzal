@@ -1,6 +1,5 @@
 var page   = require('page');
 var modal  = require('modal');
-var rester = require('rester');
 
 var Auth   = require('./auth');
 var SignIn = require('./sign-in');
@@ -55,10 +54,3 @@ page('/sign-out', function(context, next) {
 });
 
 module.exports = auth;
-
-// this will set the Authorization header for all following requests
-rester.use(function(request) {
-  var token = auth.token();
-
-  if (token) request.set('Authorization', 'Bearer ' + token);
-});

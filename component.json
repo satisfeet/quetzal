@@ -7,26 +7,11 @@
   ],
 
   "locals": [
-    "auth",
-    "home",
-    "navbar",
-    "products",
-    "customers"
-  ],
-
-  "styles": [
-    "app/body.css",
-    "app/form.css",
-    "app/table.css",
-    "app/button.css"
+    "boot"
   ],
 
   "scripts": [
     "app/index.js"
-  ],
-
-  "dependencies": {
-    "visionmedia/page.js": "^1.3.7"
-  }
+  ]
 
 }
