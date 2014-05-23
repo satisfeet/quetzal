@@ -11,15 +11,12 @@
   ],
 
   "styles": [
-    "body/style.css",
-    "form/style.css",
-    "table/style.css",
-    "button/style.css"
+    "modal/style.css"
   ],
 
   "scripts": [
     "index.js",
-    "body/index.js"
+    "modal/index.js"
   ],
 
   "dependencies": {

@@ -6,7 +6,7 @@ var rester = require('rester');
 
 rester.use(bearer);
 
-require('./body');
+require('./modal');
 
 require('auth');
 require('navbar');
