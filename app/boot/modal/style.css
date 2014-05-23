@@ -1,0 +1,16 @@
+body {
+  color: #333;
+  font-weight: 200;
+  background-color: #fcfcfc
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+}
+
+.blur {
+  opacity: 0.8;
+          filter: blur(3px);
+     -moz-filter: blur(3px);
+  -webkit-filter: blur(3px);
+}
