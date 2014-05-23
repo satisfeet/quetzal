@@ -3,5 +3,9 @@ form(role='form')
     | Do you really want to delete customer #{customer.name}?
   fieldset
     div.btn-group.pull-right
-      button.btn(type='submit') Destroy
-      a.btn.btn-default(href='/customers/' + customer.id) Cancel
+      button.btn.btn-default(type='submit')
+        span.glyphicon.glyphicon-ok
+        |  Destroy
+      a.btn.btn-primary(href='/customers/' + customer.id)
+        span.glyphicon.glyphicon-remove
+        |  Cancel

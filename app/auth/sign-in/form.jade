@@ -10,4 +10,7 @@ form(role='form')
         label(for='password') Password
         input.form-control(id='password', name='password', type='password',
           placeholder='Your password', required)
-    button.btn.btn-default.center-block(type='submit') Authenticate
+      div.btn.group.center-block
+        button.btn.btn-primary.center-block(type='submit')
+          span.glyphicon.glyphicon-lock
+          |  Authenticate

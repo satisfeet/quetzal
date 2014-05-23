@@ -5,16 +5,26 @@ div.container
         form(id='search', role='form')
           div.input-group
             div.input-group-btn
-              button.btn(type='submit') Search
+              button.btn.btn-default(type='submit')
+                span.glyphicon.glyphicon-search
+                |  Search
             input.form-control(id='query', name='query', type='search',
               placeholder='Your search query', required)
       else
-        a.btn(href='/customers') Back
+        a.btn.btn-default(href='/customers')
+          span.glyphicon.glyphicon-arrow-left
+          |  Back
     div.col-xs-3.col-xs-offset-5
       div.btn-group.pull-right
-        a.btn(href='/customers/create') Create
+        a.btn.btn-primary(href='/customers/create')
+          span.glyphicon.glyphicon-plus
+          |  Create
         if (customer && customer.id)
-          a.btn(href='/customers/' + customer.id + '/update') Update
-          a.btn(href='/customers/' + customer.id + '/destroy') Destroy
+          a.btn.btn-default(href='/customers/' + customer.id + '/update')
+            span.glyphicon.glyphicon-pencil
+            |  Update
+          a.btn.btn-default(href='/customers/' + customer.id + '/destroy')
+            span.glyphicon.glyphicon-trash
+            |  Destroy
   div.row
     div#content-inner(style='padding-top: 30px;')

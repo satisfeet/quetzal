@@ -5,10 +5,57 @@ var replace = require('replace');
 
 var List   = require('./list');
 var Form   = require('./form');
-var Detail = require('./detail');
+var Show   = require('./show');
 var Layout = require('./layout');
 
 var agent = rester('http://engine.satisfeet.me/products');
+
+page('/products', find, function(context) {
+  var list = new List(context.products);
+
+  replace('#content', new Layout().insert(list.element).element);
+});
+
+page('/products/create', function(context) {
+  var form = new Form();
+
+  form.once('submit', function(model) {
+    agent.persist(model, function(response) {
+      if (!response.ok) return form.alert('Could not create Product.');
+
+      page('/products');
+    });
+  });
+
+  modal.title('Create Product').insert(form.element).open();
+});
+
+page('/products/:product', findOne, function(context) {
+  var show = new Show(context.product);
+  var layout = new Layout(context.product);
+
+  show.on('submit', function(model) {
+    agent.persist(model);
+  });
+
+  replace('#content', layout.insert(show.element).element);
+});
+
+page('/products/:product/change', findOne, function(context) {
+  var form = new Form(context.product);
+
+  form.once('submit', function(model) {
+    agent.persist(model);
+
+    page('/products/' + model.id);
+  });
+
+  modal.title('Change Product').insert(form.element).open();
+});
+
+page('/products/:product/destroy', findOne, function(context) {
+  modal.title('Destroy Product').open();
+});
 
 function find(context, next) {
   agent.find(function(response) {
@@ -27,37 +74,3 @@ function findOne(context, next) {
     next();
   });
 }
-
-page('/products', find, function(context) {
-  var list = new List(context.products);
-  var layout = new Layout();
-
-  layout.on('create', function() {
-    var form = new Form();
-
-    form.once('submit', function() {
-      modal.close();
-    });
-
-    modal.title('Create Product').insert(form.element).open();
-  });
-
-  replace('#content', layout.insert(list.element).element);
-});
-
-page('/products/:product', findOne, function(context) {
-  var detail = new Detail(context.product);
-  var layout = new Layout();
-
-  detail.on('update', function() {
-    var form = new Form(context.product);
-
-    form.once('submit', function(model) {
-      modal.close();
-    });
-
-    modal.title('Update Product').insert(form.element).open();
-  });
-
-  replace('#content', layout.insert(detail.element).element);
-});

@@ -11,9 +11,10 @@ section.row
         h3#name(contenteditable='true')= product.name
     div.row
       div.col-xs-4.col-xs-offset-8
-        div.btn-group.show#actions
-          button.btn.btn-default(id='update', type='button') Update
-          button.btn(id='remove', type='button') Remove
-        div.btn-group.hidden#controls.hidden
-          button.btn.btn-default(id='submit', type='button') Submit
-          button.btn(id='cancel', type='button') Cancel
+        div.btn-group.hidden#actions
+          button.btn.btn-primary(id='submit', type='button')
+            span.glyphicon.glyphicon-ok
+            |  Submit
+          button.btn.btn-default(id='cancel', type='button')
+            span.glyphicon.glyphicon-remove
+            |  Cancel

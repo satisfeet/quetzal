@@ -10,7 +10,7 @@
     "index.js",
     "list/index.js",
     "form/index.js",
-    "detail/index.js",
+    "show/index.js",
     "layout/index.js"
   ],
 
@@ -18,7 +18,7 @@
     "list/item.jade",
     "list/list.jade",
     "form/form.jade",
-    "detail/section.jade",
+    "show/show.jade",
     "layout/layout.jade"
   ],
 
