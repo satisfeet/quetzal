@@ -4,10 +4,10 @@ var replace = require('replace');
 
 var layout = require('./layout');
 
-function Layout() {
-  this.element = domify(layout());
-
-  bindToCreateClickEvent(this.element, this);
+function Layout(model) {
+  this.element = domify(layout({
+    product: model
+  }));
 }
 
 emitter(Layout.prototype);
@@ -19,9 +19,3 @@ Layout.prototype.insert = function(element) {
 };
 
 module.exports = Layout;
-
-function bindToCreateClickEvent(element, view) {
-  element.querySelector('#create').addEventListener('click', function(e) {
-    view.emit('create');
-  });
-}

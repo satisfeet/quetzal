@@ -27,8 +27,14 @@ form(role='form')
           value=customer.address.zip, placeholder='10000',
           min='10000', max='99999')
       div.btn-group.pull-right
-        button.btn(type='submit') Save
+        button.btn.btn-primary(type='submit')
+          span.glyphicon.glyphicon-ok
+          |  Submit
         if (customer.id)
-          a.btn.btn-default(href='/customers/' + customer.id) Cancel
+          a.btn.btn-default(href='/customers/' + customer.id)
+            span.glyphicon.glyphicon-remove
+            |  Cancel
         else
-          a.btn.btn-default(href='/customers') Cancel
+          a.btn.btn-default(href='/customers')
+            span.glyphicon.glyphicon-remove
+            |  Cancel

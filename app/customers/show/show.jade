@@ -20,7 +20,11 @@ div
         else
           | You can add an address with a click the "change" button.
     div.row
-      div.col-xs-4.col-xs-offset-8
-        div.btn-group.hidden#actions
-          button.btn.btn-default(id='submit', type='button') Submit
-          button.btn(id='cancel', type='button') Cancel
+      div.col-xs-12
+        div.btn-group.pull-right.hidden#actions
+          button.btn.btn-primary(id='submit', type='button')
+            span.glyphicon.glyphicon-ok
+            |  Submit
+          button.btn.btn-default(id='cancel', type='button')
+            span.glyphicon.glyphicon-remove
+            |  Cancel
