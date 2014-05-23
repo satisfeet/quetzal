@@ -11,6 +11,11 @@
     "path": "/srv"
   },
 
+  "styles": {
+    "path": "/usr/styles",
+    "prefix": "stylesheets"
+  },
+
   "builder": {
     "entry": "/",
     "output": {
