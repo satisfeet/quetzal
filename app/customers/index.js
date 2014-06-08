@@ -9,7 +9,7 @@ var Table   = require('./table');
 var Layout  = require('./layout');
 var Destroy = require('./destroy');
 
-var agent = rester('http://engine.satisfeet.me/customers');
+var agent = rester('https://engine.satisfeet.me/customers');
 
 page('/customers', find, function(context) {
   var table  = new Table(context.customers);
