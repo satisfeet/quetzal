@@ -5,7 +5,7 @@ var emitter = require('emitter');
 function Auth() {
   var self = this;
 
-  this.agent = rester('http://engine.satisfeet.me/session');
+  this.agent = rester('https://engine.satisfeet.me/session');
   this.agent.on('error', function(error) {
     self.emit('error', error);
   });

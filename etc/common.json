@@ -23,6 +23,12 @@
       "style": "/srv/stylesheets/build.css"
     },
     "install": true
+  },
+
+  "server": {
+    "cert": {
+      "path": "/etc/cert/cert.pfx"
+    }
   }
 
 }
