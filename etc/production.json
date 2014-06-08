@@ -5,8 +5,8 @@
   },
 
   "styles": {
-    "compress": true,
-    "cache": true
+    "once": true,
+    "compress": true
   }
 
 }
