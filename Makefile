@@ -8,6 +8,7 @@ MOCHA_FLAGS = \
 SUPERVISOR_FLAGS = 			\
 	--harmony         		\
 	--watch etc,lib				\
+	--ignore srv \
 	--extensions js,json	\
 	--no-restart-on error
 

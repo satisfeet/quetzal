@@ -23,7 +23,7 @@
     "koa": "~0.6.1",
     "koa-etag": "~1.2.4",
     "koa-views": "~2.0.3",
-    "koa-lessie": "^0.0.2",
+    "koa-lessie": "^1.1.1",
     "koa-static": "~1.4.5",
     "koa-compress": "~1.0.7",
     "uglify-js": "~2.4.13",

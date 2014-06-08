@@ -12,7 +12,8 @@
   },
 
   "styles": {
-    "path": "/usr/styles",
+    "src": "/usr/styles",
+    "dest": "/srv/stylesheets",
     "prefix": "stylesheets"
   },
 
