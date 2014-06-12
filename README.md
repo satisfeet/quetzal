@@ -1,7 +1,6 @@
 # Manager
 
-The inventory management frontend service for
-[satisfeet](http://manager.satisfeet.me).
+The inventory management frontend for [satisfeet](http://manager.satisfeet.me).
 
 ## License
 

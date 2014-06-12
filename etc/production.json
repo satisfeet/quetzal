@@ -1,12 +1,16 @@
 {
 
   "server": {
-    "port": 443
+    "port": 5200
   },
 
   "styles": {
     "once": true,
     "compress": true
+  },
+
+  "static": {
+    "maxAge": 86400
   }
 
 }
