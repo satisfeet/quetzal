@@ -9,8 +9,8 @@
     "compress": true
   },
 
-  "static": {
-    "maxAge": 86400
+  "views": {
+    "cache": true
   }
 
 }
