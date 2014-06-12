@@ -2,7 +2,7 @@
 
   "name": "manager",
 
-  "version": "0.0.5",
+  "version": "0.0.6",
 
   "author": "Bodo Kaiser <i@bodokaiser.io>",
 
@@ -20,12 +20,14 @@
   "dependencies": {
     "lodash": "^2.4.1",
     "koa": "^0.7.0",
+    "koa-etag": "^1.2.4",
     "koa-views": "^2.0.3",
     "koa-lessie": "^1.1.1",
+    "koa-logger": "^1.2.1",
     "koa-static": "^1.4.5",
-    "koa-static-cache": "^1.0.10",
-    "uglify-js": "^2.4.13",
+    "koa-conditional-get": "^1.0.2",
     "sqwish": "^0.2.2",
+    "uglify-js": "^2.4.13",
     "then-jade": "^2.0.0",
     "builder-jade": "^1.0.1",
     "component-builder": "^1.1.6",

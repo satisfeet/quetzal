@@ -8,7 +8,7 @@
   },
 
   "static": {
-    "dir": "/srv"
+    "path": "/srv"
   },
 
   "styles": {
@@ -22,8 +22,7 @@
     "output": {
       "script": "/srv/javascripts/build.js",
       "style": "/srv/stylesheets/build.css"
-    },
-    "install": true
+    }
   }
 
 }
