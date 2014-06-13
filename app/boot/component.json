@@ -3,7 +3,6 @@
   "name": "boot",
 
   "locals": [
-    "auth",
     "home",
     "navbar",
     "products",

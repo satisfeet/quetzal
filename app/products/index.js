@@ -8,7 +8,7 @@ var Form   = require('./form');
 var Show   = require('./show');
 var Layout = require('./layout');
 
-var agent = rester('https://engine.satisfeet.me/products');
+var agent = rester('/products');
 
 page('/products', find, function(context) {
   var list = new List(context.products);

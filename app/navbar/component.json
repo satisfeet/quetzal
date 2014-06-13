@@ -2,10 +2,6 @@
 
   "name": "navbar",
 
-  "locals": [
-    "auth"
-  ],
-
   "styles": [
     "navbar/style.css",
     "dropdown/style.css"
