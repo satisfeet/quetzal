@@ -5,7 +5,7 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap-theme.css')
   body
-    main(class=!session.secure && 'blur')
+    main(class=modal ? 'blur' : '')
       include includes/header
       include includes/content
     include includes/modal

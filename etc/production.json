@@ -4,10 +4,6 @@
     "port": 9000
   },
 
-  "views": {
-    "cache": true
-  },
-
   "styles": {
     "once": true,
     "compress": true

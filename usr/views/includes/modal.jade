@@ -1,5 +1,10 @@
-section#modal
-  div.modal.fade.in(class=session.secure ? 'hide' : 'show')
-    div.modal-dialog
-      div.modal-content
-        block modal
+if modal
+	section#modal
+		div.modal.fade.in.show
+			div.modal-dialog
+				div.modal-content
+					div.modal-header
+						h3.modal-title
+							| #{modal.title}
+					div.modal-body
+						block modal

@@ -4,7 +4,7 @@ PATH  := node_modules/.bin:$(PATH)
 boot:
 	@supervisor \
 	  --harmony \
-	  --ignore srv \
+	  --ignore srv,usr \
 	  --extensions js,json \
 	  lib
 

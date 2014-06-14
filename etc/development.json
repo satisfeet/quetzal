@@ -2,10 +2,6 @@
 
   "server": {
     "port": 3000
-  },
-
-  "views": {
-    "cache": false
   }
 
 }
