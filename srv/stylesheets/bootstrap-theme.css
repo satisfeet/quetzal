@@ -1,0 +1,59 @@
+.blur {
+  opacity: 0.8;
+          filter: blur(3px);
+     -moz-filter: blur(3px);
+  -webkit-filter: blur(3px);
+}
+
+.thumbnail {
+  border: none;
+}
+
+.dropdown .glyphicon {
+  margin-right: 6px;
+}
+
+.dropdown-menu > li > a {
+  color: #111;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.icon-list .thumbnail {
+  padding-top: 30px;
+  background: none;
+  border: none;
+}
+
+.icon-list .thumbnail:hover {
+  text-decoration: none;
+  background-color: none;
+}
+
+.icon-list .thumbnail {
+  color: #3c4045;
+  font-size: 60px;
+}
+
+.icon-list .thumbnail:hover {
+  background-color: #dfdfdf;
+}
+
+.img-list .thumbnail {
+  padding-top: 30px;
+  transition: all .8s;
+  text-decoration: none;
+  border: none;
+}
+
+.img-list .thumbnail:hover {
+  background: #eee;
+}
+
+.table > tbody > tr > td {
+  cursor: pointer;
+}
+
+.table > tbody > tr > td > a {
+  color: #333;
+}
