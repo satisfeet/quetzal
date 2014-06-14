@@ -13,7 +13,7 @@ test:
 	@mocha \
 	  --harmony \
 	  --reporter spec \
-	  test
+	  opt/test
 
 clean:
 	@rm -rf components node_modules
