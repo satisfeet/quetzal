@@ -1,3 +1,24 @@
 extends layout
 
 block content
+  ul.icon-list.list-unstyled.text-center
+    li.col-xs-4.col-md-3
+      a.thumbnail(href='/customers')
+        span.glyphicon.glyphicon-user
+        div.caption
+          h3 Customers
+    li.col-xs-4.col-md-3
+      a.thumbnail(href='/products')
+        span.glyphicon.glyphicon-shopping-cart
+        div.caption
+          h3 Products
+    li.col-xs-4.col-md-3
+      a.thumbnail(href='/orders')
+        span.glyphicon.glyphicon-inbox
+        div.caption
+          h3 Orders
+    li.col-xs-4.col-md-3
+      a.thumbnail(href='/settings')
+        span.glyphicon.glyphicon-cog
+        div.caption
+          h3 Settings

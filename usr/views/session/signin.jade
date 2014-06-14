@@ -1,0 +1,35 @@
+extends ../layout
+
+block modal
+  div.modal-header
+    h3.modal-title
+      | Sign-In
+  div.modal-body
+    form(role='form', method='POST')
+      p.alert(class=flash.error ? 'alert-danger' : 'hidden')
+        | #{flash.message}
+      fieldset
+        div.col-xs-10.col-xs-offset-1
+          div.form-group
+            label(for='username') Username
+            input.form-control(
+              type='text',
+              id='username',
+              name='username',
+              required='required'
+              placeholder='Your username',
+            )
+          div.form-group
+            label(for='password') Password
+            input.form-control(
+              type='password',
+              id='password',
+              name='password',
+              placeholder='Your password',
+              required='required'
+            )
+          input(type='hidden', name='_method', value='PUT')
+          div.btn.group.center-block
+            button.btn.btn-primary.center-block(type='submit')
+              span.glyphicon.glyphicon-lock
+              |  Authenticate

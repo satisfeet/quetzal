@@ -20,17 +20,18 @@
   "dependencies": {
     "koa": "^0.8.0",
     "koa-etag": "^1.2.4",
+    "koa-sess": "^0.3.3",
     "koa-views": "^2.0.3",
+    "koa-redis": "^0.1.1",
     "koa-lessie": "^1.1.1",
     "koa-logger": "^1.2.1",
     "koa-static": "^1.4.5",
+    "koa-router": "^3.1.4",
+    "koa-bodyparser": "^1.0.1",
     "koa-conditional-get": "^1.0.2",
-    "sqwish": "^0.2.2",
-    "uglify-js": "^2.4.13",
+    "koa-override-method": "^1.0.0",
     "then-jade": "^2.0.0",
-    "builder-jade": "^1.0.1",
-    "component-builder": "^1.1.6",
-    "component-resolver": "^1.1.6"
+    "superagent": "^0.18.0"
   },
 
   "devDependencies": {
