@@ -3,11 +3,9 @@ html
   head
     title= name
     link(rel='stylesheet', href='/stylesheets/bootstrap.css')
-    link(rel='stylesheet', href='/stylesheets/build.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-theme.css')
   body
-    main
+    main(class=!session.secure && 'blur')
       include includes/header
       include includes/content
-    script(src='/javascripts/build.js')
-    script
-      | require('manager');
+    include includes/modal

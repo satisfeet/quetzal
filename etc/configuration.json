@@ -2,27 +2,24 @@
 
   "name": "satisfeet-quetzal",
 
-  "views": {
-    "path": "/usr/views",
-    "default": "jade"
-  },
+  "keys": [
+    "one",
+    "two"
+  ],
 
   "static": {
     "path": "/srv"
+  },
+
+  "views": {
+    "path": "/usr/views",
+    "default": "jade"
   },
 
   "styles": {
     "src": "/usr/styles",
     "dest": "/srv/stylesheets",
     "prefix": "stylesheets"
-  },
-
-  "builder": {
-    "entry": "/",
-    "output": {
-      "script": "/srv/javascripts/build.js",
-      "style": "/srv/stylesheets/build.css"
-    }
   }
 
 }

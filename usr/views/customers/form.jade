@@ -1,0 +1,43 @@
+extends layout
+
+- customer = customer || {};
+- customer.address = customer.address || {};
+
+block content-inner
+  form(role='form')
+    p.alert.alert-danger.hidden
+    fieldset
+      div.col-xs-10.col-xs-offset-1
+        div.form-group
+          label.control-label(for='name') Name
+          input.form-control(id='name', name='name', type='text',
+            value=customer.name, placeholder='Max Mustermann', required)
+        div.form-group
+          label(for='email') Email
+          input.form-control(id='email', name='email', type='email',
+            value=customer.email, placeholder='info@example.com', required)
+        div.form-group
+          label(for='street') Street
+          input.form-control(id='street', name='street', type='text',
+            value=customer.address.street, placeholder='Hauptstraße 1')
+        div.form-group
+          label(for='city') City
+          input.form-control(id='city', name='city', type='text',
+            value=customer.address.city, placeholder='Berlin')
+        div.form-group
+          label(for='zip') Zip
+          input.form-control(id='zip', name='zip', type='number',
+            value=customer.address.zip, placeholder='10000',
+            min='10000', max='99999')
+        div.btn-group.pull-right
+          button.btn.btn-primary(type='submit')
+            span.glyphicon.glyphicon-ok
+            |  Submit
+          if (customer.id)
+            a.btn.btn-default(href='/customers/' + customer.id)
+              span.glyphicon.glyphicon-remove
+              |  Cancel
+          else
+            a.btn.btn-default(href='/customers')
+              span.glyphicon.glyphicon-remove
+              |  Cancel
