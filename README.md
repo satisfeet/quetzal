@@ -1,6 +1,7 @@
-# Manager
+# Quetzal
 
-The inventory management frontend for [satisfeet](http://manager.satisfeet.me).
+**Quetzal** is the internal management tool for
+[satisfeet](https://satisfeet.me).
 
 ## License
 
