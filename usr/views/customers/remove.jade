@@ -1,0 +1,23 @@
+extends layout
+
+block modal
+  form(
+    role='form',
+    method='POST',
+    action='/customers/' + customer.id
+  )
+    p.alert.alert-danger
+      | Do you really want to delete customer #{customer.name}?
+    fieldset
+      input(
+        type='hidden',
+        name='_method',
+        value='DELETE'
+      )
+      div.btn-group.pull-right
+        button.btn.btn-default(type='submit')
+          span.glyphicon.glyphicon-ok
+          |  Destroy
+        a.btn.btn-primary(href='/customers/' + customer.id)
+          span.glyphicon.glyphicon-remove
+          |  Cancel
