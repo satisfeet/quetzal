@@ -1,34 +1,40 @@
 extends ../layout
 
 block content
+  - customer = customer || {}
   div.container
     div.row
       div.col-xs-4
-        if (!customer)
-          form(id='search', role='form')
+        if (customers)
+          form(role='form')
             div.input-group
               div.input-group-btn
                 button.btn.btn-default(type='submit')
                   span.glyphicon.glyphicon-search
                   |  Search
-              input.form-control(id='query', name='query', type='search',
-                placeholder='Your search query', required)
+              input.form-control(
+                name='search',
+                type='search',
+                value=search,
+                required,
+                placeholder='Your search query'
+              )
         else
           a.btn.btn-default(href='/customers')
             span.glyphicon.glyphicon-arrow-left
             |  Back
-      div.col-xs-3.col-xs-offset-5
+      div.col-xs-4.col-xs-offset-4
         div.btn-group.pull-right
           a.btn.btn-primary(href='/customers/create')
             span.glyphicon.glyphicon-plus
             |  Create
-          if (customer && customer.id)
+          if (customer.id)
             a.btn.btn-default(href='/customers/' + customer.id + '/update')
               span.glyphicon.glyphicon-pencil
               |  Update
-            a.btn.btn-default(href='/customers/' + customer.id + '/destroy')
+            a.btn.btn-default(href='/customers/' + customer.id + '/remove')
               span.glyphicon.glyphicon-trash
-              |  Destroy
+              |  Remove
     div.row
       div#content-inner(style='padding-top: 30px;')
         block content-inner

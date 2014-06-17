@@ -7,6 +7,11 @@
     "two"
   ],
 
+  "auth": {
+    "username": "bodokaiser",
+    "password": "erdbeere71"
+  },
+
   "static": {
     "path": "/srv"
   },
