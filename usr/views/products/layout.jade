@@ -1,16 +1,20 @@
-div.container
-  div.row
-    div.col-xs-6.col-xs-offset-6
-      div.btn-group.pull-right
-        a.btn.btn-primary(href='/products/create')
-          span.glyphicon.glyphicon-plus
-          |  Create
-        if (product && product.id)
-          a.btn.btn-default(href='/products/' + product.id + '/change')
-            span.glyphicon.glyphicon-pencil
-            |  Change
-          a.btn.btn-default(href='/products/' + product.id + '/destroy')
-            span.glyphicon.glyphicon-trash
-            |  Destroy
-  div.row
-    div#content-inner(style='padding-top: 30px;')
+extends ../layout
+
+block content
+  div.container
+    div.row
+      div.col-xs-6.col-xs-offset-6
+        div.btn-group.pull-right
+          a.btn.btn-primary(href='/products/create')
+            span.glyphicon.glyphicon-plus
+            |  Create
+          if (product && product.id)
+            a.btn.btn-default(href='/products/' + product.id + '/change')
+              span.glyphicon.glyphicon-pencil
+              |  Change
+            a.btn.btn-default(href='/products/' + product.id + '/destroy')
+              span.glyphicon.glyphicon-trash
+              |  Destroy
+    div.row
+      div#content-inner(style='padding-top: 30px;')
+        block content-inner
