@@ -1,22 +1,24 @@
-- product = product || {};
+extends layout
 
-form(role='form')
-  p.alert.alert-danger.hidden
-  fieldset
-    div.col-xs-10.col-xs-offset-1
-      div.form-group
-        label.control-label(for='name') Name
-        input.form-control(id='name', name='name', type='text',
-          value=product.name, placeholder='Max Mustermann', required)
-      div.btn-group.pull-right
-        button.btn.btn-primary(type='submit')
-          span.glyphicon.glyphicon-ok
-          |  Submit
-        if (product && product.id)
-          a.btn.btn-default(href='/products/' + product.id)
-            span.glyphicon.glyphicon-remove
-            |  Cancel
-        else
-          a.btn.btn-default(href='/products')
-            span.glyphicon.glyphicon-remove
-            |  Cancel
+block content-inner
+  - product = product || {};
+  form(role='form')
+    p.alert.alert-danger.hidden
+    fieldset
+      div.col-xs-10.col-xs-offset-1
+        div.form-group
+          label.control-label(for='name') Name
+          input.form-control(id='name', name='name', type='text',
+            value=product.name, placeholder='Max Mustermann', required)
+        div.btn-group.pull-right
+          button.btn.btn-primary(type='submit')
+            span.glyphicon.glyphicon-ok
+            |  Submit
+          if (product && product.id)
+            a.btn.btn-default(href='/products/' + product.id)
+              span.glyphicon.glyphicon-remove
+              |  Cancel
+          else
+            a.btn.btn-default(href='/products')
+              span.glyphicon.glyphicon-remove
+              |  Cancel
