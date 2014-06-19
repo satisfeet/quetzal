@@ -1,3 +1,7 @@
+.text-capitalize {
+  text-transform: capitalize;
+}
+
 .blur {
   opacity: 0.8;
           filter: blur(3px);

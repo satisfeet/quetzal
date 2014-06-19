@@ -2,19 +2,20 @@ extends layout
 
 block content-inner
   section.row
-    div.col-xs-6.col-xs-offset-3.col-md-3.col-md-offset-1
+    div.col-xs-6
       div.thumbnail
         img.img-rounded.img-responsive(
           alt=product.name,
           src=product.images[0].url
         )
-    div.col-xs-12.col-md-7
+    div.col-xs-6
       div.row
         p.alert.alert-danger.hidden
       div.row
         div.page-header
-          h2#name(contenteditable='true')= product.name
-        p.lead= product.description
+          h2= product.name
+        p
+          | #{product.description}
         p.lead.text-right
           | Retail Price: #{product.pricing.retail} €
       div.row
@@ -27,13 +28,21 @@ block content-inner
               tr
                 td= image.name
                 td= image.url
-      div.row
+      div.row.text-capitalize
         div.col-xs-6
-          h4 Details
-            pre#details(contenteditable='true')= JSON.stringify(product.details, null, 2)
+          h3 Details
+          ul: each details, name in product.details
+            li
+              h4= name
+              ul: each detail, name in details
+                li!= name + ': <em>' + detail + '</em>'
         div.col-xs-6
-          h4 Variations
-            pre#variations(contenteditable='true')= JSON.stringify(product.variations, null, 2)
+          h3 Variations
+          ul: each variation, name in product.variations
+            li
+              h4= name
+              ul: each attr in variation
+                li= attr
       div.row
         div.col-xs-4.col-xs-offset-8
           div.btn-group.hidden#actions
