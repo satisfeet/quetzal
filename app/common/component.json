@@ -1,0 +1,19 @@
+{
+
+  "name": "common",
+
+  "main": "index.js",
+
+  "paths": [
+    "./"
+  ],
+
+  "locals": [
+    "boot"
+  ],
+
+  "scripts": [
+    "index.js"
+  ]
+
+}

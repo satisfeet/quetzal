@@ -25,6 +25,13 @@
     "src": "/usr/styles",
     "dest": "/srv/stylesheets",
     "prefix": "stylesheets"
+  },
+
+  "builder": {
+    "paths": {
+      "scripts": "/srv/javascripts/build-%s.js",
+      "styles": "/srv/stylesheets/build-%s.css"
+    }
   }
 
 }
