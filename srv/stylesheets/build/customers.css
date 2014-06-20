@@ -1,0 +1,16 @@
+#customers-content table tbody > tr {
+  cursor: pointer;
+}
+
+
+#customers-header .navbar {
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e6e6e6;
+}
+
+#customers-header .navbar .navbar-brand {
+  color: #555;
+  font-size: 22px;
+}
+
+

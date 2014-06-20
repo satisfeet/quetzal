@@ -1,0 +1,18 @@
+.navbar {
+  background-color: #27333d;
+  border: none;
+  border-radius: 1px;
+}
+
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #fff;
+  font-weight: 200;
+  transition: .2s;
+}
+
+.navbar .navbar-brand:hover,
+.navbar .navbar-nav > li:hover > a {
+  color: #27333d;
+  background-color: #dfdfdf;
+}

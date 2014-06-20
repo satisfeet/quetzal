@@ -1,24 +1,34 @@
 extends layout
 
+block styles
+  link(rel='stylesheet', href='/stylesheets/build/common.css')
+
 block content
-  ul.icon-list.list-unstyled.text-center
-    li.col-xs-4.col-md-3
-      a.thumbnail(href='/customers')
-        span.glyphicon.glyphicon-user
-        div.caption
-          h3 Customers
-    li.col-xs-4.col-md-3
-      a.thumbnail(href='/products')
-        span.glyphicon.glyphicon-shopping-cart
-        div.caption
-          h3 Products
-    li.col-xs-4.col-md-3
-      a.thumbnail(href='/orders')
-        span.glyphicon.glyphicon-inbox
-        div.caption
-          h3 Orders
-    li.col-xs-4.col-md-3
-      a.thumbnail(href='/settings')
-        span.glyphicon.glyphicon-cog
-        div.caption
-          h3 Settings
+  .container
+    .row
+      ul.icon-list.list-unstyled.text-center
+        li.col-xs-4.col-md-3
+          a.thumbnail(href='/customers')
+            span.glyphicon.glyphicon-user
+            .caption
+              h3 Customers
+        li.col-xs-4.col-md-3
+          a.thumbnail(href='/products')
+            span.glyphicon.glyphicon-shopping-cart
+            .caption
+              h3 Products
+        li.col-xs-4.col-md-3
+          a.thumbnail(href='/orders')
+            span.glyphicon.glyphicon-inbox
+            .caption
+              h3 Orders
+        li.col-xs-4.col-md-3
+          a.thumbnail(href='/settings')
+            span.glyphicon.glyphicon-cog
+            .caption
+              h3 Settings
+
+block scripts
+  script(src='/javascripts/build/common.js')
+  script
+    | require('./app/common');

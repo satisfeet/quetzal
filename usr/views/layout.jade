@@ -1,14 +1,13 @@
 doctype
 html
   head
-    title= name
+    title Quetzal
     link(rel='stylesheet', href='/stylesheets/bootstrap.css')
-    link(rel='stylesheet', href='/stylesheets/bootstrap-theme.css')
+    block styles
   body
-    main(class=modal ? 'blur' : '')
+    main#page(class=secure ? '' : 'blur')
       include includes/header
       include includes/content
-    include includes/modal
-    script(src='/javascripts/build-common.js')
-    script(src='/javascripts/build-products.js')
-    script(src='/javascripts/build-customers.js')
+    main#overlay
+      include includes/overlay
+    block scripts

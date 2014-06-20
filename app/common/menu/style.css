@@ -1,0 +1,25 @@
+.icon-list .thumbnail {
+  padding-top: 30px;
+  background: none;
+  box-shadow: none;
+  border: none;
+}
+
+.icon-list .thumbnail:hover {
+  text-decoration: none;
+  background-color: none;
+}
+
+.icon-list .thumbnail {
+  color: #27333d;
+  font-size: 60px;
+}
+
+.icon-list .thumbnail:hover {
+  color: #232d35;
+  background-color: #dfdfdf;
+}
+
+.icon-list .thumbnail:hover .caption {
+  color: #232d35;
+}

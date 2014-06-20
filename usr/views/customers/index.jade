@@ -1,0 +1,23 @@
+extends layout
+
+block content-inner
+  table.table.table-hover.table-bordered.table-striped
+    thead
+      tr
+        th Name
+        th Email
+        th Address
+    tbody
+      each customer in customers
+        tr
+          td= customer.name
+          if customer.email
+            td: a(href='mailto:' + customer.email)= customer.email
+          else
+            td no email
+          if customer.address.street
+            td
+              | #{customer.address.street},
+              | #{customer.address.zip} #{customer.address.city}
+          else
+            td= customer.address.city

@@ -1,0 +1,13 @@
+{
+
+  "name": "styles",
+
+  "styles": [
+    "body.css",
+    "typo.css",
+    "form.css",
+    "media.css",
+    "button.css"
+  ]
+
+}
