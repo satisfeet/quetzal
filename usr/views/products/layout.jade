@@ -9,10 +9,10 @@ block content
             span.glyphicon.glyphicon-plus
             |  Create
           if (product && product.id)
-            a.btn.btn-default(href='/products/' + product.id + '/change')
+            a.btn.btn-default(href='/products/' + product.id + '/update')
               span.glyphicon.glyphicon-pencil
               |  Change
-            a.btn.btn-default(href='/products/' + product.id + '/destroy')
+            a.btn.btn-default(href='/products/' + product.id + '/remove')
               span.glyphicon.glyphicon-trash
               |  Destroy
     div.row
