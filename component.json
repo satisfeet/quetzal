@@ -1,0 +1,15 @@
+{
+
+  "name": "quetzal",
+
+  "paths": [
+    "app"
+  ],
+
+  "locals": [
+    "common",
+    "products",
+    "customers"
+  ]
+
+}
