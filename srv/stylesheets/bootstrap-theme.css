@@ -1,0 +1,41 @@
+body {
+  padding-top: 90px;
+  background-color: #fefefe;
+}
+
+.blur {
+  opacity: 0.8;
+          filter: blur(3px);
+     -moz-filter: blur(3px);
+  -webkit-filter: blur(3px);
+}
+
+.btn {
+  font-weight: normal;
+  text-transform: none;
+  border-radius: 2px;
+  border-bottom-width: 4px;
+}
+
+.btn:hover {
+  margin-top: 0;
+  border-bottom-width: 4px;
+}
+
+.btn-default:hover {
+  background-color: #dfdfdf;
+}
+
+.btn-primary:hover {
+  background-color: #11759c;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-width: 2px;
+  border-color: #b8b8b8;
+}
+
+.thumbnail {
+  border: none;
+}
