@@ -1,7 +1,6 @@
 extends layout
 
 block modal
-  - console.log(flash);
   - product = flash.product || product || {}
   - path = '/products' + ((product.id) ? '/' + product.id : '')
   form(
@@ -35,39 +34,39 @@ block modal
           )
         div.form-group
           label.control-label(for='details') Details
-          input.form-control(
+          textarea.form-control(
             name='details',
             type='text',
-            value=product.details,
+            rows=6,
             required='required',
-            placeholder='detail1:key1:value1, detail2:key2:value2, ...'
-          )
+            placeholder='{ "material": { "foo": "bar" } }'
+          )= product.details
         div.form-group
           label.control-label(for='variations') Variations
-          input.form-control(
+          textarea.form-control(
             name='variations',
             type='text',
-            value=product.variations,
+            rows=8,
             required='required',
-            placeholder='key1:value1, key1:value2, ...'
-          )
+            placeholder='{ "colors": ["red", "blue"] }'
+          )= product.variations
         div.form-group
           label.control-label(for='description') Description
           textarea.form-control(
             name='description',
             type='text',
-            rows=10,
+            rows=6,
             required='required',
             placeholder='This is the best product in tha world.'
           )= product.description
         div.form-group.has-feedback
           label.control-label(for='pricing') Pricing
           input.form-control(
-            name='pricing',
+            name='pricing[retail]',
             type='number',
             min=0.00,
             step=0.01,
-            value=product.variations,
+            value=product.pricing.retail
             required='required',
             placeholder='3.99'
           )
