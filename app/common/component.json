@@ -9,7 +9,9 @@
   ],
 
   "locals": [
-    "boot"
+    "menu",
+    "navbar",
+    "styles"
   ],
 
   "scripts": [

@@ -1,18 +1,19 @@
-header.navbar.navbar-default.navbar-fixed-top(role='navigation')
-  div.container-fluid
-    div.navbar-header
-      a.navbar-brand(href='/') manager
+header.navbar.navbar-fixed-top(role='navigation')
+  .container-fluid
+    .navbar-header
+      a.navbar-brand(href='/')
+        | Quetzal
     ul.navbar-nav.navbar-right.nav
       li.dropdown
         a(href='#').dropdown-toggle
           span.glyphicon.glyphicon-user
-          span#user username
+          | #{username}
           b.caret
         ul.dropdown-menu
           li: a(href='/settings')
             span.glyphicon.glyphicon-cog
             | Settings
           li.divider
-          li: a(href='/sign-out')
+          li: a(href='/session/sign-out')
             span.glyphicon.glyphicon-off
             | Logout

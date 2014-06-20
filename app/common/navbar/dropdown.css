@@ -1,0 +1,9 @@
+.dropdown .glyphicon {
+  margin-right: 6px;
+}
+
+.dropdown-menu > li > a {
+  color: #111;
+  font-size: 14px;
+  font-weight: 200;
+}

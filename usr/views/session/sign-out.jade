@@ -1,0 +1,19 @@
+extends layout
+
+block overlay-inner
+  - var secure = false;
+  .modal-header
+    h3.modal-title Sign-Out
+  .modal-body
+    form(role='form', action='/session', method='POST')
+      p.alert.alert-warning
+        | Do you really want to sign-out?
+      fieldset
+        input(type='hidden', name='_method', value='DELETE')
+        .btn.group
+          button.btn.btn-primary(type='submit')
+            span.glyphicon.glyphicon-ok
+            |  Yes
+          a.btn.btn-default(href='/')
+            span.glyphicon.glyphicon-remove
+            |  No

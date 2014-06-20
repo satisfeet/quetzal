@@ -23,7 +23,6 @@
     "koa-sess": "^0.3.3",
     "koa-views": "^2.0.3",
     "koa-redis": "^0.1.1",
-    "koa-lessie": "^1.1.1",
     "koa-logger": "^1.2.1",
     "koa-static": "^1.4.5",
     "koa-router": "^3.1.4",
