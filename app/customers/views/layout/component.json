@@ -1,0 +1,22 @@
+{
+
+  "name": "layout",
+
+  "paths": [
+    "./"
+  ],
+
+  "styles": [
+    "style.css"
+  ],
+
+  "scripts": [
+    "index.js"
+  ],
+
+  "dependencies": {
+    "component/query": "^0.0.3",
+    "component/within-element": "^0.1.0"
+  }
+
+}

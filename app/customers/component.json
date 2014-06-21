@@ -5,16 +5,24 @@
   "main": "index.js",
 
   "paths": [
-    "./"
+    "./",
+    "./views",
+    "./models"
   ],
 
   "locals": [
-    "boot",
-    "panel"
+    "list",
+    "show",
+    "layout",
+    "customer"
   ],
 
   "scripts": [
     "index.js"
-  ]
+  ],
+
+  "dependencies": {
+    "ianstormtaylor/router": "^1.0.0"
+  }
 
 }

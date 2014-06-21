@@ -1,23 +1,24 @@
-extends layout
-
-block content-inner
+section#customers-list
   table.table.table-hover.table-striped
     thead
       tr
         th Name
         th Email
-        th Address
+        th Street
+        th Place
     tbody
       each customer in customers
-        tr
+        tr(data-id=customer.id)
           td= customer.name
           if customer.email
             td: a(href='mailto:' + customer.email)= customer.email
           else
             td no email
           if customer.address.street
-            td
-              | #{customer.address.street},
-              | #{customer.address.zip} #{customer.address.city}
+            td= customer.address.street
           else
-            td= customer.address.city
+            td no address
+          if customer.address.city
+            td #{customer.address.city}, #{customer.address.zip}
+          else
+            td no city
