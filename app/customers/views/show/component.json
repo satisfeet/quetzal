@@ -1,0 +1,22 @@
+{
+
+  "name": "show",
+
+  "paths": [
+    "./"
+  ],
+
+  "scripts": [
+    "index.js"
+  ],
+
+  "templates": [
+    "template.jade"
+  ],
+
+  "dependencies": {
+    "component/query": "^0.0.3",
+    "component/domify": "^1.2.2"
+  }
+
+}

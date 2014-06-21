@@ -1,0 +1,17 @@
+{
+
+  "name": "customer",
+
+  "paths": [
+    "./"
+  ],
+
+  "scripts": [
+    "index.js"
+  ],
+
+  "dependencies": {
+    "component/model": "^0.1.4"
+  }
+
+}

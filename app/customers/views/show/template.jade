@@ -1,0 +1,17 @@
+section#customers-show
+  - customer.image = customer.image || {};
+  - customer.address = customer.address || {};
+  .col-xs-3.col-xs-offset-1
+    .thumbnail
+      img.img-rounded.img-responsive(src=customer.image.url)
+  .col-xs-7
+    button.close(type='button') &times;
+    .page-header
+      h2= customer.name
+    address
+      a(href='mailto:' + customer.email)= customer.email
+      br
+      br
+      | #{customer.address.street}
+      br
+      | #{customer.address.city}, #{customer.address.zip}

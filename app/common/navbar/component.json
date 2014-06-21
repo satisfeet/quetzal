@@ -3,8 +3,7 @@
   "name": "navbar",
 
   "styles": [
-    "navbar.css",
-    "dropdown.css"
+    "navbar.css"
   ],
 
   "scripts": [

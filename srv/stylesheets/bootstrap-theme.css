@@ -33,9 +33,24 @@ body {
 .form-control:focus {
   box-shadow: none;
   border-width: 2px;
-  border-color: #b8b8b8;
+  border-color: #158cba;
+}
+
+.close {
+  font-size: 26px;
+  color: #000;
+}
+
+.close:hover,
+.close:focus {
+  outline: none;
+  color: #333;
 }
 
 .thumbnail {
   border: none;
+}
+
+.dropdown .glyphicon {
+  margin-right: 6px;
 }
