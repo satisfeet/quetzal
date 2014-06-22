@@ -6,7 +6,7 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap-theme.css')
     block styles
   body
-    main#page(class=secure ? '' : 'blur')
+    main#page(class=username ? '' : 'blur')
       include includes/header
       include includes/content
     main#overlay
