@@ -1,0 +1,69 @@
+#customers-form
+  .col-xs-4.col-xs-offset-1
+    .col-xs-10.col-xs-offset-1
+      .thumbnail
+        img.img-rounded.img-responsive(src='http://placehold.it/600x600')
+  .col-xs-6
+    form(role='form')
+      legend Create new Customer
+      p.alert.alert-danger.hidden
+      fieldset
+        .form-group
+          label.control-label(for='name') Name:
+          .input-group
+            input.form-control(
+              type='text',
+              name='name',
+              placeholder='Max Mustermann',
+              required
+            )
+            span.input-group-addon
+              span.glyphicon.glyphicon-user
+        .form-group
+          label.control-label(for='email') Email:
+          .input-group
+            input.form-control(
+              type='email',
+              name='email',
+              placeholder='info@example.com',
+              required
+            )
+            span.input-group-addon
+              span.glyphicon.glyphicon-envelope
+        .form-group
+          label.control-label(for='street') Street:
+          .input-group
+            input.form-control(
+              type='text',
+              name='address.street',
+              placeholder='Hauptstraße 1'
+            )
+            span.input-group-addon
+              span.glyphicon.glyphicon-road
+        .form-group
+          label.control-label(for='city') City:
+          .input-group
+            input.form-control(
+              type='text',
+              name='address.city',
+              placeholder='Berlin',
+              required
+            )
+            span.input-group-addon
+              span.glyphicon.glyphicon-home
+        .form-group
+          label.control-label(for='zip') Zip:
+          .input-group
+            input.form-control(
+              type='number',
+              name='address.zip',
+              placeholder='10000',
+              min='10000',
+              max='99999'
+            )
+            span.input-group-addon
+              span.glyphicon.glyphicon-map-marker
+        .form-group
+          .btn-group
+            button.btn.btn-primary(type='submit') Submit
+            a.btn.btn-default(href='/customers') Cancel

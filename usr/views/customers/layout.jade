@@ -5,9 +5,9 @@ block styles
   link(rel='stylesheet', href='/stylesheets/build/customers.css')
 
 block content
-  .container-fluid
-    .col-xs-10.col-xs-offset-1
-      if customers
+  #customers
+    .container-fluid
+      .col-xs-10.col-xs-offset-1
         .row#customers-header
           .navbar
             a.navbar-brand(href='/customers') Customers
@@ -19,10 +19,8 @@ block content
               )
               button.btn.btn-default(type='submit') Search
               a.btn.btn-primary(href='/customers/create') Create
-      .row#customers-content
-        block content-inner
-
-
+        .row#customers-content
+          block content-inner
 
 block scripts
   script(src='/javascripts/build/common.js')

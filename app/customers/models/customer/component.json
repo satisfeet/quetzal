@@ -11,7 +11,10 @@
   ],
 
   "dependencies": {
-    "component/model": "^0.1.4"
+    "aheckmann/mpath": "0.2.1",
+    "component/emitter": "^1.1.3",
+    "component/collection": "^0.0.2",
+    "visionmedia/superagent": "^0.18.0"
   }
 
 }
