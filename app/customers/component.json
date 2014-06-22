@@ -11,6 +11,7 @@
   ],
 
   "locals": [
+    "form",
     "list",
     "show",
     "layout",

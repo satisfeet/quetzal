@@ -16,7 +16,9 @@
 
   "dependencies": {
     "component/query": "^0.0.3",
-    "component/domify": "^1.2.2"
+    "component/domify": "^1.2.2",
+    "component/events": "^1.0.7",
+    "component/emitter": "^1.1.3"
   }
 
 }
