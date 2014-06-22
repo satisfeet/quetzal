@@ -1,20 +1,21 @@
 extends ../layout
 
+block styles
+  link(rel='stylesheet', href='/stylesheets/build/common.css')
+  link(rel='stylesheet', href='/stylesheets/build/products.css')
+
 block content
-  div.container
-    div.row
-      div.col-xs-6.col-xs-offset-6
-        div.btn-group.pull-right
-          a.btn.btn-primary(href='/products/create')
-            span.glyphicon.glyphicon-plus
-            |  Create
-          if (product && product.id)
-            a.btn.btn-default(href='/products/' + product.id + '/update')
-              span.glyphicon.glyphicon-pencil
-              |  Change
-            a.btn.btn-default(href='/products/' + product.id + '/remove')
-              span.glyphicon.glyphicon-trash
-              |  Destroy
-    div.row
-      div#content-inner(style='padding-top: 30px;')
-        block content-inner
+  .container-fluid
+    .col-xs-10.col-xs-offset-1
+      .row#body
+        .col-xs-12
+          block content-inner
+
+
+
+block scripts
+  script(src='/javascripts/build/common.js')
+  script(src='/javascripts/build/products.js')
+  script
+    | require('./app/common');
+    | require('./app/products');

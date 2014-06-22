@@ -1,0 +1,20 @@
+{
+
+  "name": "common",
+
+  "main": "index.js",
+
+  "paths": [
+    "./"
+  ],
+
+  "locals": [
+    "menu",
+    "navbar"
+  ],
+
+  "scripts": [
+    "index.js"
+  ]
+
+}

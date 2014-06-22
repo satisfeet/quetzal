@@ -2,11 +2,6 @@
 
   "server": {
     "port": 9000
-  },
-
-  "styles": {
-    "once": true,
-    "compress": true
   }
 
 }

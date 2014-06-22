@@ -1,0 +1,19 @@
+{
+
+  "name": "products",
+
+  "main": "index.js",
+
+  "paths": [
+    "./"
+  ],
+
+  "locals": [
+    "item"
+  ],
+
+  "scripts": [
+    "index.js"
+  ]
+
+}

@@ -1,0 +1,29 @@
+{
+
+  "name": "customers",
+
+  "main": "index.js",
+
+  "paths": [
+    "./",
+    "./views",
+    "./models"
+  ],
+
+  "locals": [
+    "form",
+    "list",
+    "show",
+    "layout",
+    "customer"
+  ],
+
+  "scripts": [
+    "index.js"
+  ],
+
+  "dependencies": {
+    "ianstormtaylor/router": "^1.0.0"
+  }
+
+}

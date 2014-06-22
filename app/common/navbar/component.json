@@ -1,0 +1,17 @@
+{
+
+  "name": "navbar",
+
+  "styles": [
+    "navbar.css"
+  ],
+
+  "scripts": [
+    "index.js"
+  ],
+
+  "dependencies": {
+    "component/query": "^0.0.3"
+  }
+
+}

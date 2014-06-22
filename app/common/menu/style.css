@@ -1,0 +1,10 @@
+.icon-list .thumbnail {
+  padding-top: 30px;
+  color: #555;
+  font-size: 60px;
+}
+
+.icon-list .thumbnail:hover {
+  text-decoration: none;
+  background-color: #dfdfdf;
+}

@@ -1,40 +1,30 @@
 extends ../layout
 
+block styles
+  link(rel='stylesheet', href='/stylesheets/build/common.css')
+  link(rel='stylesheet', href='/stylesheets/build/customers.css')
+
 block content
-  - customer = customer || {}
-  div.container
-    div.row
-      div.col-xs-4
-        if (customers)
-          form(role='form')
-            div.input-group
-              div.input-group-btn
-                button.btn.btn-default(type='submit')
-                  span.glyphicon.glyphicon-search
-                  |  Search
+  #customers
+    .container-fluid
+      .col-xs-10.col-xs-offset-1
+        .row#customers-header
+          .navbar
+            a.navbar-brand(href='/customers') Customers
+            form.navbar-form.navbar-right(role='form')
               input.form-control(
                 name='search',
                 type='search',
-                value=search,
-                required,
-                placeholder='Your search query'
+                placeholder='Search for customer'
               )
-        else
-          a.btn.btn-default(href='/customers')
-            span.glyphicon.glyphicon-arrow-left
-            |  Back
-      div.col-xs-4.col-xs-offset-4
-        div.btn-group.pull-right
-          a.btn.btn-primary(href='/customers/create')
-            span.glyphicon.glyphicon-plus
-            |  Create
-          if (customer.id)
-            a.btn.btn-default(href='/customers/' + customer.id + '/update')
-              span.glyphicon.glyphicon-pencil
-              |  Update
-            a.btn.btn-default(href='/customers/' + customer.id + '/remove')
-              span.glyphicon.glyphicon-trash
-              |  Remove
-    div.row
-      div#content-inner(style='padding-top: 30px;')
-        block content-inner
+              button.btn.btn-default(type='submit') Search
+              a.btn.btn-primary(href='/customers/create') Create
+        .row#customers-content
+          block content-inner
+
+block scripts
+  script(src='/javascripts/build/common.js')
+  script(src='/javascripts/build/customers.js')
+  script
+    | require('./app/common');
+    | require('./app/customers');
