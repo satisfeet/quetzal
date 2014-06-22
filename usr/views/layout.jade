@@ -6,9 +6,10 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap-theme.css')
     block styles
   body
-    main#page(class=username ? '' : 'blur')
+    main#page(class=!username || overlay ? 'blur' : '')
       include includes/header
       include includes/content
-    main#overlay
-      include includes/overlay
+    if !username || overlay
+      main#overlay
+        include includes/overlay
     block scripts
