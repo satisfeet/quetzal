@@ -17,11 +17,9 @@
   },
 
   "builder": {
-    "paths": {
-      "scripts": "/srv/javascripts/build/%s.js",
-      "styles": "/srv/stylesheets/build/%s.css"
-    },
-    "install": true
+    "path": "/",
+    "styles": "/srv/stylesheets/build",
+    "scripts": "/srv/javascripts/build"
   }
 
 }
