@@ -1,9 +1,8 @@
-var Item       = require('item');
-var query      = require('query');
-var domify     = require('domify');
-var emitter    = require('emitter');
-var delegate   = require('delegate');
-var enumerable = require('enumerable');
+var Item     = require('item');
+var query    = require('query');
+var domify   = require('domify');
+var emitter  = require('emitter');
+var delegate = require('delegate');
 
 var template = require('./template.jade');
 
