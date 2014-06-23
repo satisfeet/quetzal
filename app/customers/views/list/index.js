@@ -8,7 +8,7 @@ var template = require('./template.jade');
 
 function List(collection) {
   this.element = query('#customers-list') || domify(template({
-    customers: collection.map('toJSON')
+    customers: collection.map('toJSON').value()
   }));
 
   bindToTableRowClick(this.element, collection, this);
