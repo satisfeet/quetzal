@@ -8,31 +8,31 @@ section#customers-show
       h2(
         data-name='name',
         contenteditable='true'
-      )= customer.name
+      ) #{customer.name}
     address
       a(
         href='mailto:' + customer.email,
         data-name='email',
         contenteditable='true'
-      )= customer.email
+      ) #{customer.email}
       br
       br
       if customer.address.street
         span(
           data-name='address.street',
           contenteditable='true'
-        )= customer.address.street
+        ) #{customer.address.street}
         br
       if customer.address.city
         span(
           data-name='address.city',
           contenteditable='true'
-        )= customer.address.city
+        ) #{customer.address.city}
         if customer.address.zip
           span(
             data-name='address.zip',
             contenteditable='true'
-          )= customer.address.zip
+          )  #{customer.address.zip}
     .btn-group.pull-right
       button.btn.btn-danger.hidden(type='button') Delete
       button.btn.btn-primary.hidden(type='button') Update

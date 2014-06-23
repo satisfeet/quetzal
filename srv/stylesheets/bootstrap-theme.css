@@ -36,6 +36,17 @@ body {
   border-color: #158cba;
 }
 
+[contenteditable='true'] {
+  transition: all .4s;
+}
+
+[contenteditable='true']:focus {
+  margin: 2px;
+  padding: 2px;
+  outline: none;
+  border: 2px solid #158cba;
+}
+
 .close {
   font-size: 26px;
   color: #000;
