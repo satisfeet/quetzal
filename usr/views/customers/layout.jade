@@ -11,7 +11,10 @@ block content
         .row#customers-header
           .navbar
             a.navbar-brand(href='/customers') Customers
-            form.navbar-form.navbar-right(role='form')
+            form.navbar-form.navbar-right(
+              role='form',
+              action='/customers'
+            )
               input.form-control(
                 name='search',
                 type='search',

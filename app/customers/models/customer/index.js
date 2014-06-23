@@ -11,8 +11,8 @@ function Customer(source) {
   this.set(source);
 }
 
-Customer.find = function(callback) {
-  superagent.get('/customers').accept('json')
+Customer.find = function(query, callback) {
+  superagent.get('/customers').query(query).accept('json')
     .end(function(err, res) {
       if (err) return callback(err);
 
@@ -53,6 +53,18 @@ Customer.prototype.set = function(key, value) {
   }
 
   return this;
+};
+
+Customer.prototype.contains = function(value) {
+  for (var key in this.attrs) {
+    var attr = this.get(key);
+
+    if (typeof attr === 'string') {
+      if (~attr.toLowerCase().indexOf(value)) {
+        return true;
+      }
+    }
+  }
 };
 
 Customer.prototype.persist = function(callback) {

@@ -1,29 +1,36 @@
-var query  = require('query');
-var within = require('within-element');
+var query    = require('query');
+var emitter  = require('emitter');
+var delegate = require('delegate');
 
 function Layout() {
-  this.element = query('#customers');
+  this.header = query('#customers-header');
+  this.content = query('#customers-content');
+
+  bindToFormInput(this.header, this);
+  bindToFormSubmit(this.header, this);
 }
 
-Layout.prototype.search = function(show) {
-  var element = this.element.querySelector('#customers-header form');
-
-  element.classList[show ? 'add' : 'remove']('show');
-
-  return this;
-};
+emitter(Layout.prototype);
 
 Layout.prototype.insert = function(element) {
-  var content = this.element.querySelector('#customers-content');
-
-  if (!within(element, content)) {
-    while (content.firstElementChild) {
-      content.firstElementChild.remove();
+  if (!this.content.contains(element)) {
+    while (this.content.firstElementChild) {
+      this.content.firstElementChild.remove();
     }
-    content.appendChild(element);
+    this.content.appendChild(element);
   }
-
-  return this;
 };
 
 module.exports = Layout;
+
+function bindToFormInput(element, view) {
+  delegate.bind(element, 'form', 'input', function(e) {
+    view.emit('filter', e.target.value);
+  });
+}
+
+function bindToFormSubmit(element, view) {
+  delegate.bind(element, 'form', 'submit', function(e) {
+    view.emit('search', e.target.elements.search.value);
+  });
+}

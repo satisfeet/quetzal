@@ -1,0 +1,25 @@
+{
+
+  "name": "item",
+
+  "paths": [
+    "./"
+  ],
+
+  "styles": [
+    "style.css"
+  ],
+
+  "scripts": [
+    "index.js"
+  ],
+
+  "templates": [
+    "template.jade"
+  ],
+
+  "dependencies": {
+    "component/domify": "^1.1.2"
+  }
+
+}

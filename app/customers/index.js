@@ -8,11 +8,29 @@ var Customer = require('customer');
 var router = new Router();
 var layout = new Layout();
 
+layout.on('search', function(value) {
+  console.log('search', value);
+
+  router.go('/customers?search=' + value);
+});
+
 router.on('/customers', find, function(context) {
   var list = new List(context.customers);
 
   list.once('click', function(model) {
     router.go('/customers/' + model.get('id'));
+  });
+
+  layout.on('filter', function(value) {
+    list.empty();
+
+    context.customers
+      .select(function(model) {
+        return model.contains(value);
+      })
+      .each(function(model) {
+        list.append(model);
+      });
   });
 
   layout.insert(list.element);
@@ -41,7 +59,7 @@ router.on('/customers/:customer', findOne, function(context) {
 router.listen('/customers');
 
 function find(context, next) {
-  Customer.find(function(err, collection) {
+  Customer.find(context.query, function(err, collection) {
     context.customers = collection;
 
     next();

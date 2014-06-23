@@ -1,0 +1,14 @@
+tr(data-id=customer.id)
+  td= customer.name
+  if customer.email
+    td: a(href='mailto:' + customer.email)= customer.email
+  else
+    td no email
+  if customer.address.street
+    td= customer.address.street
+  else
+    td no address
+  if customer.address.city
+    td #{customer.address.city}, #{customer.address.zip}
+  else
+    td no city
