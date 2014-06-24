@@ -8,6 +8,10 @@
     "."
   ],
 
+  "styles": [
+    "style.css"
+  ],
+
   "scripts": [
     "index.js"
   ],

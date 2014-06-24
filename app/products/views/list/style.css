@@ -1,0 +1,8 @@
+li .thumbnail {
+  padding: 20px 20px 0;
+}
+
+li:hover .thumbnail {
+  text-decoration: none;
+  background-color: #dfdfdf;
+}

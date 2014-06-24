@@ -11,16 +11,7 @@ block content
         .row#products-header
           .navbar
             a.navbar-brand(href='/products') Products
-            form.navbar-form.navbar-right(
-              role='form',
-              action='/products'
-            )
-              input.form-control(
-                name='search',
-                type='search',
-                placeholder='Search for product'
-              )
-              button.btn.btn-default(type='submit') Search
+            form.navbar-form.navbar-right(role='form')
               a.btn.btn-primary(href='/products/create') Create
         .row#products-content
           block content-inner

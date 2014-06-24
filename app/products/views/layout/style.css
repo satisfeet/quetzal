@@ -1,0 +1,9 @@
+#products-header .navbar {
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e6e6e6;
+}
+
+#products-header .navbar .navbar-brand {
+  color: #555;
+  font-size: 22px;
+}
