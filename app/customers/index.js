@@ -9,8 +9,6 @@ var router = new Router();
 var layout = new Layout();
 
 layout.on('search', function(value) {
-  console.log('search', value);
-
   router.go('/customers?search=' + value);
 });
 

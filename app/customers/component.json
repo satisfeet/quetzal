@@ -2,8 +2,6 @@
 
   "name": "customers",
 
-  "main": "index.js",
-
   "paths": [
     "./",
     "./views",

@@ -2,18 +2,25 @@
 
   "name": "products",
 
-  "main": "index.js",
-
   "paths": [
-    "./"
+    "./",
+    "./views"
   ],
 
   "locals": [
-    "item"
+    "layout",
+    "list",
+    "form",
+    "show"
   ],
 
   "scripts": [
     "index.js"
-  ]
+  ],
+
+  "dependencies": {
+    "ianstormtaylor/router": "^1.0.0",
+    "visionmedia/superagent": "^0.18.0"
+  }
 
 }

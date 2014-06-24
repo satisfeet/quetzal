@@ -5,13 +5,25 @@ block styles
   link(rel='stylesheet', href='/stylesheets/build/products.css')
 
 block content
-  .container-fluid
-    .col-xs-10.col-xs-offset-1
-      .row#body
-        .col-xs-12
+  #products
+    .container-fluid
+      .col-xs-10.col-xs-offset-1
+        .row#products-header
+          .navbar
+            a.navbar-brand(href='/products') Products
+            form.navbar-form.navbar-right(
+              role='form',
+              action='/products'
+            )
+              input.form-control(
+                name='search',
+                type='search',
+                placeholder='Search for product'
+              )
+              button.btn.btn-default(type='submit') Search
+              a.btn.btn-primary(href='/products/create') Create
+        .row#products-content
           block content-inner
-
-
 
 block scripts
   script(src='/javascripts/build/common.js')
