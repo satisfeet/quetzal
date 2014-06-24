@@ -1,1 +1,45 @@
-h1= product.name
+section#products-show
+  .col-xs-4.col-xs-offset-1
+    .thumbnail
+      img.img-rounded.img-responsive(
+        src='http://placehold.it/500x500'
+      )
+  .col-xs-6
+    button.close(type='button') &times;
+    .row
+      .page-header
+        h2(
+          id='name',
+          contenteditable='true'
+        )= product.name
+    .row
+      p.lead(
+        id='description',
+        contenteditable='true'
+      )= product.description
+    .row
+      table.table.table-striped.table-bordered
+        thead
+          tr
+            th Name
+            th Variations
+        tbody
+          each variations, variation in product.variations
+            tr(
+              id='variation.' + variation,
+              contenteditable='true'
+            )
+              td=variation
+              td=variations.join(', ')
+    .row
+      p.lead.text-right
+        span(
+          id='pricing.retail',
+          contenteditable='true'
+        )= product.pricing.retail
+        | €
+    .btn-group.pull-right
+      button.btn.btn-danger.hidden(type='button') Delete
+      button.btn.btn-primary.hidden(type='button') Update
+      button.btn.btn-default.hidden(type='button') Cancel
+

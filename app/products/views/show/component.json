@@ -5,7 +5,11 @@
   "main": "index.js",
 
   "paths": [
-    "./"
+    "."
+  ],
+
+  "styles": [
+    "style.css"
   ],
 
   "scripts": [

@@ -1,0 +1,11 @@
+table > thead > tr > th {
+  border-bottom: none !important;
+}
+
+table > tbody > tr > td {
+  text-transform: capitalize;
+}
+
+table > tbody > tr:focus > td {
+  border-top: 2px solid #158cba;
+}
