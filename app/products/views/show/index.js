@@ -7,7 +7,7 @@ var template = require('./template');
 
 function Show(model) {
   this.element = query('#products-show') || domify(template({
-    product: model.attrs
+    product: model.toJSON()
   }));
 
   this.closeBtn = query('.close', this.element);

@@ -54,21 +54,15 @@ function bindToCloseClick(element, model, view) {
 
 function bindToDangerClick(element, model, view) {
   delegate.bind(element, '.btn-danger', 'click', function(e) {
-    model.remove(function(err) {
-      if (err) throw err;
-
-      view.emit('delete', model);
-    });
+    view.emit('delete', model);
   });
 }
 
 function bindToPrimaryClick(element, model, view) {
   delegate.bind(element, '.btn-primary', 'click', function(e) {
-    model.update(function(err) {
-      if (err) throw err;
+    view.emit('update', model);
 
-      view.emit('update', model);
-    });
+    view.toggleUpdate(false);
   });
 }
 

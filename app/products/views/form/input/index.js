@@ -19,7 +19,7 @@ function bindToInputInput(element, model, view) {
   delegate.bind(element, 'input', 'input', function(e) {
     e.stopPropagation();
 
-    var name = e.target.name;
+    var name = e.target.name.replace('-', '.');
     var value = e.target.value.split(', ');
 
     model.set(name, value);
@@ -41,9 +41,11 @@ function bindToLabelInput(element, model, view) {
       var value = model.get(prev);
 
       if (value) {
-        model.set(name, value);
-        model.set(prev, null);
+        model.set(name.replace('-', '.'), value);
+        model.set(prev.replace('-', '.'), null);
       }
+
+      console.log(model.toJSON());
 
       view.emit('label');
     }

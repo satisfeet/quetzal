@@ -3,15 +3,12 @@
   "name": "product",
 
   "scripts": [
-    "index.js",
-    "statics.js",
-    "methods.js"
+    "index.js"
   ],
 
   "dependencies": {
-    "aheckmann/mpath": "0.2.1",
-    "component/collection": "^0.0.2",
-    "visionmedia/superagent": "^0.18.0"
+    "satisfeet/model": "^0.0.2",
+    "satisfeet/model-rest": "^0.0.1"
   }
 
 }

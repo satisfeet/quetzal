@@ -3,7 +3,7 @@
   "name": "customer",
 
   "paths": [
-    "./"
+    "."
   ],
 
   "scripts": [
@@ -11,10 +11,8 @@
   ],
 
   "dependencies": {
-    "aheckmann/mpath": "0.2.1",
-    "component/emitter": "^1.1.3",
-    "component/collection": "^0.0.2",
-    "visionmedia/superagent": "^0.18.0"
+    "satisfeet/model": "^0.0.2",
+    "satisfeet/model-rest": "^0.0.1"
   }
 
 }

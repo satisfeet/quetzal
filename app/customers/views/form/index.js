@@ -16,11 +16,11 @@ function Form(model) {
 
 emitter(Form.prototype);
 
-Form.prototype.error = function(error) {
+Form.prototype.alert = function(error) {
   var element = this.element.querySelector('.alert');
 
   element.classList.remove('hidden');
-  element.innerText = error;
+  element.innerText = error.toString();
 
   return this;
 };
@@ -40,10 +40,6 @@ function bindToSubmitEvent(element, model, view) {
   delegate.bind(element, 'form', 'submit', function(e) {
     e.preventDefault();
 
-    model.persist(function(err) {
-      if (err) return view.error(err);
-
-      view.emit('submit', model);
-    });
+    view.emit('submit', model);
   });
 }

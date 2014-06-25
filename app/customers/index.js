@@ -38,7 +38,11 @@ router.on('/customers/create', function(context) {
   var form = new Form(new Customer());
 
   form.on('submit', function(model) {
-    router.go('/customers/' + model.get('id'));
+    Customer.create(model, function(err) {
+      if (err) return form.alert(err);
+
+      router.go('/customers/' + model.id);
+    });
   });
 
   layout.insert(form.element);
@@ -47,8 +51,17 @@ router.on('/customers/create', function(context) {
 router.on('/customers/:customer', findOne, function(context) {
   var show = new Show(context.customer);
 
+  show.on('update', function(model) {
+    Customer.update(model, function(err) {
+      if (err) throw err;
+    });
+  });
   show.on('delete', function(model) {
-    router.go('/customers');
+    Customer.remove(model, function(err) {
+      if (err) throw err;
+
+      router.go('/customers');
+    });
   });
 
   layout.insert(show.element);

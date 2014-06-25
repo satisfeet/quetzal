@@ -1,20 +1,15 @@
-var statics = require('./statics');
-var methods = require('./methods');
+var model = require('model');
+var rest  = require('model-rest');
 
-function Product(source) {
-  this.attrs = {};
-  this.attrs.pricing = {};
-  this.attrs.variations = {};
+Product = model('Product', {
+  title: String,
+  pricing: {
+    retail: Number
+  },
+  variations: Object,
+  description: String
+});
 
-  if (source) this.set(source);
-}
-
-for (var key in statics) {
-  Product[key] = statics[key];
-}
-
-for (var key in methods) {
-  Product.prototype[key] = methods[key];
-}
+Product.use(rest);
 
 module.exports = Product;
