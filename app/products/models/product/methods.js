@@ -10,7 +10,7 @@ exports.set = function(key, value) {
       this.set(name, key[name]);
     }
   } else {
-    mpath.set(key, value, this.attrs);
+    mpath.set(key.replace('-', '.'), value, this.attrs);
   }
 
   return this;
@@ -20,7 +20,7 @@ exports.toJSON = function() {
   var obj = {};
 
   for (var key in this.attrs) {
-    var value = this.get(key);
+    var value = this.get(key.replace('-', '.'));
 
     if (typeof value === 'object') {
       if (Object.keys(value).length) {

@@ -15,7 +15,15 @@ router.on('/products', find, function(context) {
 });
 
 router.on('/products/create', function(context) {
-  var form = new Form();
+  var form = new Form(new Product());
+
+  form.on('create', function(model) {
+    Product.create(model, function(err) {
+      if (err) return form.alert(err);
+
+      router.go('/products/' + model.get('id'));
+    });
+  });
 
   layout.insert(form.element);
 });
@@ -52,6 +60,8 @@ function find(context, next) {
 }
 
 function findOne(context, next) {
+  if (context.params.product === 'create') return;
+
   Product.findOne(context.params.product, function(err, result) {
     if (err) throw err;
 

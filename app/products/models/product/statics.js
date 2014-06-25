@@ -1,4 +1,5 @@
 var superagent = require('superagent');
+var collection = require('collection');
 
 exports.find = function(query, callback) {
   var self = this;
@@ -7,9 +8,13 @@ exports.find = function(query, callback) {
     .end(function(err, res) {
       if (err) return callback(err);
 
-      callback(null, res.body.map(function(item) {
-        return new self(item);
-      }));
+      var result = new collection();
+
+      res.body.forEach(function(item) {
+        result.push(new self(item));
+      });
+
+      callback(null, result);
     });
 };
 
@@ -32,7 +37,9 @@ exports.create = function(model, callback) {
       if (err) return callback(err);
       if (!res.ok) return callback(new Error(res.body.error));
 
-      callback(null, new self(res.body));
+      model.set(res.body);
+
+      callback(null);
     });
 };
 
@@ -43,6 +50,8 @@ exports.update = function(model, callback) {
     .end(function(err, res) {
       if (err) return callback(err);
       if (!res.ok) return callback(new Error(res.body.error));
+
+      model.set(res.body);
 
       callback(null);
     });

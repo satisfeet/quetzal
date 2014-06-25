@@ -4,8 +4,8 @@ var domify = require('domify');
 var template = require('./template');
 
 function List(collection) {
-  this.element = domify(template({
-    products: collection
+  this.element = query('#products-list') || domify(template({
+    products: collection.map('toJSON').value()
   }));
 }
 

@@ -10,6 +10,7 @@
 
   "dependencies": {
     "aheckmann/mpath": "0.2.1",
+    "component/collection": "^0.0.2",
     "visionmedia/superagent": "^0.18.0"
   }
 
