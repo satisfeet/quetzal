@@ -1,10 +1,9 @@
-var superagent = require('superagent');
-
-var Router = require('router');
-var Layout = require('layout');
-var List   = require('list');
-var Show   = require('show');
-var Form   = require('form');
+var Product = require('product');
+var Router  = require('router');
+var Layout  = require('layout');
+var List    = require('list');
+var Show    = require('show');
+var Form    = require('form');
 
 var router = new Router();
 var layout = new Layout();
@@ -24,33 +23,40 @@ router.on('/products/create', function(context) {
 router.on('/products/:product', findOne, function(context) {
   var show = new Show(context.product);
 
+  show.on('update', function(model) {
+    Product.update(model, function(err) {
+      if (err) return show.alert(err);
+    });
+  });
+  show.on('delete', function(model) {
+    Product.remove(model, function(err) {
+      if (err) return show.alert(err);
+
+      router.go('/products');
+    });
+  });
+
   layout.insert(show.element);
 });
 
 router.listen('/products');
 
 function find(context, next) {
-  superagent.get('/products').accept('json')
-    .end(function(err, res) {
-      if (err) throw err;
+  Product.find(context.query, function(err, result) {
+    if (err) throw err;
 
-      context.products = res.body;
+    context.products = result;
 
-      next();
-    });
+    next();
+  });
 }
 
 function findOne(context, next) {
-  var param = context.params.product;
+  Product.findOne(context.params.product, function(err, result) {
+    if (err) throw err;
 
-  if (param === 'create') return;
+    context.product = result;
 
-  superagent.get('/products/' + param).accept('json')
-    .end(function(err, res) {
-      if (err) throw err;
-
-      context.product = res.body;
-
-      next();
-    });
+    next();
+  });
 }

@@ -9,9 +9,11 @@ section#products-show
     .row
       .page-header
         h2(
-          id='name',
+          id='title',
           contenteditable='true'
-        )= product.name
+        )= product.title
+    .row
+      p.alert.alert-danger.hidden
     .row
       p.lead(
         id='description',
@@ -25,16 +27,16 @@ section#products-show
             th Variations
         tbody
           each variations, variation in product.variations
-            tr(
-              id='variation.' + variation,
-              contenteditable='true'
-            )
+            tr
               td=variation
-              td=variations.join(', ')
+              td(
+                id='variations-' + variation,
+                contenteditable='true'
+              )=variations.join(', ')
     .row
       p.lead.text-right
         span(
-          id='pricing.retail',
+          id='pricing-retail',
           contenteditable='true'
         )= product.pricing.retail
         | €

@@ -1,0 +1,16 @@
+{
+
+  "name": "product",
+
+  "scripts": [
+    "index.js",
+    "statics.js",
+    "methods.js"
+  ],
+
+  "dependencies": {
+    "aheckmann/mpath": "0.2.1",
+    "visionmedia/superagent": "^0.18.0"
+  }
+
+}

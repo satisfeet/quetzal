@@ -3,15 +3,16 @@
   "name": "products",
 
   "paths": [
-    "./",
-    "./views"
+    "views",
+    "models"
   ],
 
   "locals": [
     "layout",
     "list",
     "form",
-    "show"
+    "show",
+    "product"
   ],
 
   "scripts": [
@@ -19,8 +20,7 @@
   ],
 
   "dependencies": {
-    "ianstormtaylor/router": "^1.0.0",
-    "visionmedia/superagent": "^0.18.0"
+    "ianstormtaylor/router": "^1.0.0"
   }
 
 }
