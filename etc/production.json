@@ -1,7 +1,11 @@
 {
 
   "server": {
-    "port": 9000
+    "port": 80
+  },
+
+  "session": {
+    "host": "redis"
   }
 
 }
